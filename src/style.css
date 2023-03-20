@@ -1,0 +1,29 @@
+.card {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ef7df3;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.button-google {
+    background-color: white;
+    border: 1px solid rgb(12, 223, 238);
+    color: black;
+    border-radius: 10px;
+}
+  
+.button-email {
+    background-color: white;
+    border: 1px solid rgb(12, 223, 238);
+    color: black;
+    border-radius: 10px;
+}
+  
+.button-criar {
+    background-color: #ef7df3;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+}
+  
