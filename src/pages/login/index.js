@@ -4,13 +4,19 @@ export default () => {
 
   const template =`
     <h2>Entre no Friandy</h2>
-    <input type="email" name="email" placeholder="Email"/>
-    <input type="password" name="password" placeholder="Senha"/>
+    <input type="email" name="email" id="loginEmail" placeholder="Email"/>
+    <input type="password" name="password" id="loginPassword" placeholder="Senha"/>
     <a>Esqueceu a senha?</a>
-    <button type="button">Entrar</button>
+    <button type="button" id="enter">Entrar</button>
   `;
 
   container.innerHTML = template;
 
-  return container;         
+  const btnLogin = container.querySelector("#enter");
+  const inputEmail = container.querySelector("#loginEmail").value;
+  const inputPassword = container.querySelector("#loginPassword").value;
+  
+
+return {container, btnLogin, inputEmail, inputPassword};
+           
 }

@@ -7,10 +7,9 @@ import register from "./pages/register/index.js";
 
 //Root definido no arquivo index.html
 const main = document.querySelector("#root")
+/* console.log('root ', document.querySelector('form')) */
 
-//Adicioando hash nos buttons
-
-console.log('root ', document.querySelector('form'))
+let logar = login();
 
 //Função inicializar a página
 const init = () => {
@@ -21,7 +20,7 @@ const init = () => {
         main.appendChild(home());
         break;
       case "#login":
-        main.appendChild(login());
+        main.appendChild(logar.container);
         break;
       case "#register":
         main.appendChild(register());
@@ -35,7 +34,23 @@ const init = () => {
 //Ao carregar a página
 window.addEventListener("load", () => {
   main.appendChild(home());
+  window.location.hash = "#";
   init();
 })
+
+  /* Importar funções de login do firebase */
+const loginEmailPassword = async () =>{
+  const loginEmail = (logar.inputEmail).value;
+  console.log("email", loginEmail)
+  const loginPassword = logar.inputPassword;
+  console.log("senha", loginPassword)
+
+  const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+  console.log(userCredential.user)
+}
+  
+
+logar.btnLogin.addEventListener("click", loginEmailPassword);
+
 
 

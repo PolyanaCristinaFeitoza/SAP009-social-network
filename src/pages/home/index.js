@@ -15,7 +15,7 @@ export default () => {
 
     //Adicionando uma hash.
     const buttonLogin = container.querySelector("#login");
-    console.log('botão login', buttonLogin)
+    /* console.log('botão login', buttonLogin) */
     buttonLogin.addEventListener("click", () => {
       window.location.hash = 'login';
     })
@@ -28,7 +28,7 @@ export default () => {
     return container;
 }
 
-console.log('home ', document.querySelector('form'))
+/* console.log('home ', document.querySelector('form')) */
 
 
 
