@@ -1,3 +1,4 @@
+import "./firebase.js"
 // Este es el punto de entrada de tu aplicacion
 
 import home from "./pages/home/index.js";
