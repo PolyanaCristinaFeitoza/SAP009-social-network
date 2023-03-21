@@ -1,4 +1,4 @@
-import "./firebase.js"
+import "./firebase.js";
 // Este es el punto de entrada de tu aplicacion
 
 import home from "./pages/home/index.js";
@@ -42,7 +42,7 @@ window.addEventListener("load", () => {
 const loginEmailPassword = async () =>{
   const loginEmail = (logar.inputEmail).value;
   console.log("email", loginEmail)
-  const loginPassword = logar.inputPassword;
+  const loginPassword = (logar.inputPassword).value;
   console.log("senha", loginPassword)
 
   const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);

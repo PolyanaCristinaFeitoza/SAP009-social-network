@@ -20,10 +20,8 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-
-
 //Login com email e senha
-/* signInWithEmailAndPassword(auth, email, password)
+/* signInWithEmailAndPassword(auth, email, senha)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
@@ -33,7 +31,9 @@ const auth = getAuth(app);
   .catch((error) => {
     console.log("error", error)
     const errorCode = error.code;
+    console.log("error1", errorCode)
     const errorMessage = error.message;
+    console.log("error2", errorMessage)
   });
   console.log("depois") */
 

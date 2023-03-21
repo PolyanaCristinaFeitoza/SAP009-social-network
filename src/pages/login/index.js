@@ -13,8 +13,8 @@ export default () => {
   container.innerHTML = template;
 
   const btnLogin = container.querySelector("#enter");
-  const inputEmail = container.querySelector("#loginEmail").value;
-  const inputPassword = container.querySelector("#loginPassword").value;
+  const inputEmail = container.querySelector("#loginEmail");
+  const inputPassword = container.querySelector("#loginPassword");
   
 
 return {container, btnLogin, inputEmail, inputPassword};

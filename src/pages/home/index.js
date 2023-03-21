@@ -2,12 +2,14 @@
 export default () => {
     const container = document.createElement("form");
 
+    container.classList.add("form");
+
     const template = `
-    <h2>Entre no Friandy</h2>
-    <button type="button">Entrar com Google</button>
-    <p>ou</p>
-    <button type="button" id="login">Entrar com Email</button>
-    <p>Não tem conta cadastrada?</p>
+    <h2 class="entre">Entre no Friandy</h2>
+    <button type="button" class="botao-login">Entrar com Google</button>
+    <p class="centralizar">ou</p>
+    <button type="button" class="botao-login" id="login">Entrar com Email</button>
+    <p class="sem-conta">Não tem conta cadastrada?</p>
     <button type="button" id="register">Criar Conta</button>
   `;
 
