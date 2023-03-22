@@ -1,6 +1,6 @@
-import "./firebase.js"
-// Este es el punto de entrada de tu aplicacion
 
+// Este es el punto de entrada de tu aplicacion
+//import about from "./pages/about/about.html";
 import home from "./pages/home/index.js";
 import login from "./pages/login/index.js";
 import register from "./pages/register/index.js";
@@ -26,6 +26,9 @@ const init = () => {
       case "#register":
         main.appendChild(register());
         break;
+      // case "#sobre":
+      //   main.appendChild(about());
+      //   break;
       default: main.appendChild(home());
     }
   })
@@ -35,6 +38,7 @@ const init = () => {
 //Ao carregar a página
 window.addEventListener("load", () => {
   main.appendChild(home());
+  window.location.hash = "#";
   init();
 })
 
