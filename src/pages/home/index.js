@@ -6,17 +6,19 @@ export default () => {
     container.classList.add("form");
 
     const template = `
-    <h2 class="entre">Entre no Friandy</h2>
-    <button type="button" class="botao-login" id="google">Entrar com Google</button>
-    <p>ou</p>
-    <button type="button" class="botao-login" id="login">Entrar com Email</button>
+    <h2 class="font-margin">Entre no Friandy</h2>
+    <button type="button" class="btn-input-wb btn-login" id="google">Entrar com Google</button>
+    <fieldset>
+      <legend>ou</legend>
+    </fieldset>  
+    <button type="button" class="btn-input-wb btn-login" id="login">Entrar com Email</button>
     <p class="sem-conta">Não tem conta cadastrada?</p>
-    <button type="button" id="register">Criar Conta</button>
+    <button type="button" class="btn-purple" id="register">Criar Conta</button>
   `;
 
     container.innerHTML = template;
 
-    //Adicionando uma hash.
+    //Adicionando hash.
     const buttonLogin = container.querySelector("#login");
     buttonLogin.addEventListener("click", () => {
       window.location.hash = 'login';

@@ -3,12 +3,13 @@ import {login} from "../../firebase.js"
 export default () => {
   const container = document.createElement("form");
 
+  container.classList.add("form");
+
   const template =`
-    <h2>Entre no Friandy</h2>
-    <input type="email" name="email" id="email" placeholder="Email"/>
-    <input type="password" name="password" id="senha" placeholder="Senha"/>
-    <a>Esqueceu a senha?</a>
-    <button type="button" id="entrar">Entrar</button>
+    <h2 class="font-margin">Entre no Friandy</h2>
+    <input type="email" name="email" id="email" class="btn-input-wb input-size" placeholder="Email"/>
+    <input type="password" name="password" id="senha" class="btn-input-wb input-size password" placeholder="Senha"/>
+    <button type="button" class="btn-purple enter" id="entrar">Entrar</button>
   `;
 
   container.innerHTML = template;
