@@ -4,10 +4,13 @@
   font-size: 2.5rem;
   margin-top: 25px;
   margin-bottom: 30px;
+  text-align: center;
+  /* font-family: "Emilys Candy";  */
 }
 
 .btn-login{
   margin-top: 10px;
+  text-align: center;
 }
 
 fieldset {
@@ -31,7 +34,6 @@ fieldset legend {
 
 #register{
   width: 30vw;
-  
   margin-bottom: 90px;
 }
 

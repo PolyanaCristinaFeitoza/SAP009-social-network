@@ -40,8 +40,8 @@ export default () => {
     container.addEventListener('click', function(event) { //pegando todos os eventos de click
       if (event.target.id === 'google' && event.target.nodeName == 'BUTTON') clicarGoogle() //event. target é o elemento no qual o evento ocorreu ou o elemento que acionou o evento. Já o nodeName mostra se o elemento clicado é um input ou boutton.
     })
-        return container;
-    }
+  return container;
+}
 
 /* console.log('home ', document.querySelector('form')) */
 

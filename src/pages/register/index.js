@@ -3,13 +3,14 @@ import { criarConta } from "../../firebase";
 export default () => {
   const container = document.createElement("form");
 
+  container.classList.add("form");
+
   const template =`
-    <h2>Criando conta no Friandy</h2>
-    <input type="text" name="nome" id="nome" placeholder="Nome"/>
-    <input type="email" name="email" id="email" placeholder="Email"/>
-    <input type="password" name="password" id="senha" placeholder="Senha"/>
-    <a>Esqueceu a senha?</a>
-    <button type="button" id="criarConta">Criar Conta</button>
+    <h2 class="font-margin">Criando conta no <br>Friandy</h2>
+    <input type="text" name="nome" class="btn-input-wb m-b" id="nome" placeholder="Nome"/>
+    <input type="email" name="email" class="btn-input-wb m-b" id="email" placeholder="Email"/>
+    <input type="password" name="password" class="btn-input-wb m-b" id="senha" placeholder="Senha"/>
+    <button type="button" class="btn-purple create" id="criarConta">Criar Conta</button>
   `;
 
   container.innerHTML = template;
