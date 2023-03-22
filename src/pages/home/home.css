@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+}
+
+.background{
+  background-image: url("../../image/background-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.position-card{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card{
+  background-color: #FFFFFF;
+  width: 80%;
+  border: 2px solid #B98DD6;
+  border-radius: 10px;
+}
+
+.card-info{
+  display: grid;
+  place-items: center;
+
+  font-family: "Emilys Candy";
+}
+
+.logo{
+  width: 20vw;
+  height: 20vh;
+}
+
+.form{
+  display: grid;
+  place-items: center;
+}
+
+.entre{
+  font-size: 2.5rem;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.botao-login{
+  width: 55vw;
+  height: 5vh;
+  border: 2px solid #55CBCD;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.centralizar{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.sem-conta{
+  margin-top: 50px;
+}
+
+#register{
+  width: 30vw;
+  height: 5vh;
+  border: none;
+  background-color: #6A4085;
+  color:#FFFFFF;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 90px;
+}
+
+.sobre{
+  margin-top: 50px;
+  color:#6A4085
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .background{
+    background-image: url("../../image/background-desktop.svg");
+  }
+
+  .position-card{
+    justify-content: flex-end;
+    margin-right: 50px;
+  }
+  .card{
+    width: 40%;
+  }
+
+  .logo{
+    width: 10vw;
+    height: 15vh;
+  }
+
+  .entre{
+    font-size: 4rem;
+    margin-top: 35px;
+    margin-bottom: 60px;
+  }
+
+  .botao-login{
+    width: 25vw;
+    font-size: 1.6rem;
+  }
+
+
+}
