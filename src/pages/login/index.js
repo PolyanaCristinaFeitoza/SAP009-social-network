@@ -7,8 +7,8 @@ export default () => {
 
   const template =`
     <h2 class="font-margin">Entre no Friandy</h2>
-    <input type="email" name="email" id="email" class="btn-input-wb input-size" placeholder="Email"/>
-    <input type="password" name="password" id="senha" class="btn-input-wb input-size password" placeholder="Senha"/>
+    <input type="email" name="email" id="email" class="btn-input-wb input-size" placeholder="Email" required/>
+    <input type="password" name="password" id="senha" class="btn-input-wb input-size password" placeholder="Senha" required/>
     <button type="button" class="btn-purple enter" id="entrar">Entrar</button>
   `;
 

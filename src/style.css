@@ -8,12 +8,13 @@
   text-decoration: none;
 }
 
-html{
-  font-size: 62.5%;
+/* Padrão usar o :root{} invés do html{} */
+:root{
+  font-size: 62.5%; /* Reseta todas as fontes. Agora tem medidas de 10px */
 }
 
 body{
-  font-size: 1.6rem;
+  font-size: 1.6rem; /* 16px === 1.6rem. dividir por 10 */
 }
 
 .background{
@@ -21,6 +22,10 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.d-w{
+  display: none;
 }
 
 .position-card{
@@ -34,9 +39,10 @@ body{
 .card{
   background-color: #FFFFFF;
   width: 80%;
+  height: 90vh;
   min-height: 80vh;
-  border: 3px solid #B98DD6;
-  border-radius: 10px;
+  border: 0.3rem solid #B98DD6;
+  border-radius: 1rem;
 }
 
 .card-info{
@@ -59,11 +65,11 @@ body{
 .btn-input-wb{
   width: 55vw;
   height: 5vh;
-  border: 2px solid #55CBCD;
+  border: 0.2rem solid #55CBCD;
   background-color: #FFFFFF;
-  border-radius: 10px;
+  border-radius: 1rem;
   font-size: 1.5rem;
-  padding: 10px;
+  padding: 1rem;
 }
 
 /* Se repete em botoes tela home, login, cadastro - cor branco e azul*/
@@ -72,30 +78,35 @@ body{
   background-color: #6A4085;
   border: none;
   color:#FFFFFF;
-  border-radius: 10px;
+  border-radius: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 1.5rem;
 }
 
 .sobre{
-  margin-top: 50px;
+ /*  margin-top: 50px; */
   color:#6A4085;
   cursor: pointer;
 }
 
-footer{
-  margin-top: 50%;
-}
 
-@media only screen and (min-width: 912px) {
+
+@media only screen and (min-width: 1024px) {
   .background{
-    background-image: url("../../image/background-desktop.svg");
+    background-image: url("../../image/fundo.png");
+  }
+
+  .d-w{
+    display: block;
+    position: fixed;
+    margin: 35rem -1rem;
+    width: 25vw;
   }
 
   .position-card{
     justify-content: flex-end;
-    margin-right: 50px;
+    margin-right: 5rem;
   }
 
   .card{
@@ -110,4 +121,11 @@ footer{
     width: 22vw;
   }
 
+}
+
+
+@media only screen and (min-width: 1366px) {
+  .d-w{
+    margin: 53rem -1rem;
+  }
 }

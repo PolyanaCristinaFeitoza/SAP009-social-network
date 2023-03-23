@@ -7,9 +7,9 @@ export default () => {
 
   const template =`
     <h2 class="font-margin">Criando conta no <br>Friandy</h2>
-    <input type="text" name="nome" class="btn-input-wb m-b" id="nome" placeholder="Nome"/>
-    <input type="email" name="email" class="btn-input-wb m-b" id="email" placeholder="Email"/>
-    <input type="password" name="password" class="btn-input-wb m-b" id="senha" placeholder="Senha"/>
+    <input type="text" name="nome" class="btn-input-wb m-b" id="nome" placeholder="Nome" required/>
+    <input type="email" name="email" class="btn-input-wb m-b" id="email" placeholder="Email" required/>
+    <input type="password" name="password" class="btn-input-wb m-b" id="senha" placeholder="Senha" required/>
     <button type="button" class="btn-purple create" id="criarConta">Criar Conta</button>
   `;
 

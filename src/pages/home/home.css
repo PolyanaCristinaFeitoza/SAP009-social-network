@@ -2,19 +2,19 @@
 
 .font-margin{
   font-size: 2.5rem;
-  margin-top: 25px;
-  margin-bottom: 30px;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
   text-align: center;
   /* font-family: "Emilys Candy";  */
 }
 
 .btn-login{
-  margin-top: 10px;
+  margin-top: 1rem;
   text-align: center;
 }
 
 fieldset {
-  border-top: 1px solid #333;
+  border-top: 0.1rem solid #333;
   border-bottom: none;
   border-left: none;
   border-right: none;
@@ -23,18 +23,18 @@ fieldset {
 }
 
 fieldset legend {
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   font-weight: bold;
   font-size: 2rem;
 }
 
 .sem-conta{
-  margin-top: 50px;
+  margin-top: 5rem;
 }
 
 #register{
   width: 30vw;
-  margin-bottom: 90px;
+  margin-bottom: 9rem;
 }
 
 button{
@@ -45,7 +45,7 @@ button{
 @media only screen and (min-width: 912px) {
   .h2-home{
     font-size: 4rem;
-    margin-top: 35px;
+    margin-top: 3.5rem;
     margin-bottom: 60px;
   }
 
