@@ -18,7 +18,7 @@ export default () => {
     const email = document.getElementById('email').value
     const senha = document.getElementById('senha').value
     login(email, senha)
-    console.log(email, senha)
+    /* console.log(email, senha) */
   }
   
   container.addEventListener('click', function(event) { //pegando todos os eventos de click

@@ -3,12 +3,17 @@
   width: 20vh;
 }
 
-.m-b{
+.form .m-b{
   margin-bottom: 15px;
+  font-size: 1.2rem;
 }
 
 @media only screen and (min-width: 912px) {
   .create{
     width: 8vw;
   }
+
+  .form .m-b{
+  font-size: 1.8rem;
+}
 }
