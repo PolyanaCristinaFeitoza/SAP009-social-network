@@ -21,27 +21,36 @@ export const login = (email, senha) => {
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.href = "pages/feed/index.html";
-      console.log("foi")
-
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage)
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    if(errorCode == "auth/user-not-found"){
+      return alert("Usuário não encontrado.");
+    }
+      return alert("Suas informações estão incorretas. Tente novamente.");
     });
 }
+
 export const criarConta = (email, senha) => {
   createUserWithEmailAndPassword(auth, email, senha)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("foi")
+      console.log("foi") /* Colocar o caminho do home */
       window.location.hash = "#login";
     })
     .catch((error) => {
       const errorCode = error.code;
+      console.log(errorCode)
       const errorMessage = error.message;
-
-  });
+      console.log(errorMessage)
+    if(errorCode == "auth/email-already-in-use"){
+      return alert("Email já em uso.");
+    }else if(errorCode == "auth/weak-password"){
+      return alert("A senha deve ter pelo menos 6 caracteres");
+    }
+      return alert("Suas informações estão incorretas. Tente novamente.");
+    });
 }
 
 const provider = new GoogleAuthProvider();
@@ -50,20 +59,25 @@ export const entrarComGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
+      // Isso fornece um token de acesso do Google. Você pode usá-lo para acessar a API do Google.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
+      // As informações do usuário conectado.
       const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
+      // Dados de IdP disponíveis usando getAdditionalUserInfo(result)
       window.location.href = "pages/feed/index.html";
       // ...
     }).catch((error) => {
       // Handle Errors here.
+      // Trate erros aqui.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
+      // O e-mail da conta do usuário usado.
       const email = error.customData.email;
       // The AuthCredential type that was used.
+      // O tipo AuthCredential que foi usado.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });

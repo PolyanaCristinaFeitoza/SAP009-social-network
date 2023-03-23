@@ -72,6 +72,10 @@ body{
   padding: 1rem;
 }
 
+button:active{
+  opacity: 0.8;
+}
+
 /* Se repete em botoes tela home, login, cadastro - cor branco e azul*/
 .btn-purple{
   height: 5vh;
