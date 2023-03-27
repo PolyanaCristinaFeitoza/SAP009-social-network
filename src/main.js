@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 import home from './pages/home/index.js';
+import about from './pages/about/about.js';
 import login from './pages/login/index.js';
 import register from './pages/register/index.js';
 
@@ -19,6 +20,9 @@ const init = () => {
         break;
       case '#register':
         main.appendChild(register());
+        break;
+      case '#about':
+        main.appendChild(about());
         break;
       default: main.appendChild(home());
     }

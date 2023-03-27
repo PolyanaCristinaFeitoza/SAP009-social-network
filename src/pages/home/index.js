@@ -1,5 +1,5 @@
 /* Template página inicial */
-import { entrarComGoogle } from '../../firebase';
+import { entrarComGoogle } from '../../firebase/firebase';
 
 export default () => {
   const container = document.createElement('form');

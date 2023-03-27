@@ -1,5 +1,5 @@
 /* Template criar conta */
-import { criarConta } from '../../firebase';
+import { criarConta } from '../../firebase/firebase';
 
 export default () => {
   const container = document.createElement('form');

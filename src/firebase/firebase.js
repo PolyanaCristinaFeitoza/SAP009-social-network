@@ -1,12 +1,11 @@
-import { initializeApp } from 'firebase/app';
-
 import {
+  initializeApp,
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-} from 'firebase/auth';
+} from './exports';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC2OxkN8MJGo9tWdGGLxCl57x4kivaa2ZA',
@@ -33,12 +32,13 @@ export const login = (email, senha) => {
     })
     .catch((error) => {
       const errorCode = error.code;
+      console.log(errorCode);
       const errorMessage = error.message;
       console.log(errorMessage);
-      if (errorCode === 'auth/user-not-found') {
+      /* if (errorCode === 'auth/user-not-found') {
         return alert('Usuário não encontrado.');
       }
-      return alert('Suas informações estão incorretas. Tente novamente.');
+      return alert('Suas informações estão incorretas. Tente novamente.'); */
     });
 };
 
