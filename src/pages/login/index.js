@@ -4,10 +4,10 @@ export default () => {
   const container = document.createElement("form");
 
   const template =`
-    <h2>Entre no Friandy</h2>
-    <input type="email" name="email" id="email" placeholder="Email"/>
-    <input type="password" name="password" id="senha" placeholder="Senha"/>
-    <a>Esqueceu a senha?</a>
+    <h2 class="entre">Entre no Friandy</h2>
+    <input type="email" class="botao-email" name="email" id="email" placeholder="Email"/>
+    <input type="password" class="botao-senha" name="password" id="senha" placeholder="Senha"/>
+    <a class="esqueceu">Esqueceu a senha?</a>
     <button type="button" id="entrar">Entrar</button>
   `;
 

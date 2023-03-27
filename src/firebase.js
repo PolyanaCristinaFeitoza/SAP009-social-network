@@ -22,12 +22,13 @@ export const login = (email, senha) => {
       const user = userCredential.user;
       window.location.href = "pages/feed/index.html";
       console.log("foi")
-
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage)
+      if (signInWithEmailAndPassword === errorCode) {
+        console.log(errorMessage)
+      }
     });
 }
 export const criarConta = (email, senha) => {
