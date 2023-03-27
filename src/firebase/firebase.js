@@ -27,14 +27,12 @@ export const login = (email, senha) => {
   signInWithEmailAndPassword(auth, email, senha)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
-      window.location.hash = 'feed';
+      console.log(user, 'user firebase');
+      /* window.location.hash = 'feed'; */
     })
     .catch((error) => {
       const errorCode = error.code;
-      /* console.log(errorCode); */
-      const errorMessage = error.message;
-      /* console.log(errorMessage); */
+      console.log(errorCode);
       /* if (errorCode === 'auth/user-not-found') {
         return alert('Usuário não encontrado.');
       }
@@ -53,16 +51,16 @@ export const criarConta = (email, senha) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      /* console.log(errorCode); */
+      console.log(errorCode);
       const errorMessage = error.message;
-      /* console.log(errorMessage); */
-/*       if (errorCode === 'auth/email-already-in-use') {
+      console.log(errorMessage);
+      /* if (errorCode === 'auth/email-already-in-use') {
         alert('Email já em uso.');
       } if (errorCode === 'auth/weak-password') {
         alert('A senha deve ter pelo menos 6 caracteres');
       }
       alert('Suas informações estão incorretas. Tente novamente.'); */
-      return false;
+      return errorCode;
     });
 };
 
@@ -88,12 +86,12 @@ export const entrarComGoogle = () => {
     }).catch((error) => {
       // Handle Errors here.
       // Trate erros aqui.
-      const errorCode = error.code;
+      /* const errorCode = error.code; */
       /* console.log(errorCode); */
-      const errorMessage = error.message;
+      /* const errorMessage = error.message; */
       /* console.log(errorMessage); */
       // O e-mail da conta do usuário usado.
-      const email = error.customData.email;
+      /* const email = error.customData.email; */
       /* console.log(email); */
       // The AuthCredential type that was used.
       // O tipo AuthCredential que foi usado.

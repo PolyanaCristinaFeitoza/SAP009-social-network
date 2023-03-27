@@ -1,4 +1,5 @@
 /* Template página login com email e senha */
+/* import { signInWithEmailAndPassword } from 'firebase/auth'; */
 import { login } from '../../firebase/firebase.js';
 
 export default () => {
@@ -21,23 +22,18 @@ export default () => {
     const senha = document.getElementById('senha').value;
     /* const mError = document.querySelector('.messagerror'); */
     login(email, senha);
-    /* .then((userCredential) =>
-      { if (userCredential) {
-          console.log('Usuário permitido');
-          window.location.hash = 'feed';
-        } else {
-          console.log('Usuário não permitido');
-          if (errorCode === 'auth/user-not-found') {
-            return mError.innerHTML = 'Usuário não encontrado.';
-          }
-          mError.innerHTML = 'Suas informações estão incorretas. Tente novamente.';
-        }
-      }); */
+    /* if (signInWithEmailAndPassword(email, senha) === error){
+      console.log('usuario permitido');
+    } */
     /* console.log(email, senha) */
   };
 
   container.addEventListener('click', (event) => { // pegando todos os eventos de click
-    if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') valoresLogin(); // event. target é o elemento no qual o evento ocorreu ou o elemento que acionou o evento. Já o nodeName mostra se o elemento clicado é um input ou boutton.
+    if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') {
+      valoresLogin();
+    }
+    /* event. target é o elemento no qual o evento ocorreu ou o elemento que acionou o evento.
+    Já o nodeName mostra se o elemento clicado é um input ou boutton. */
   });
 
   return container;

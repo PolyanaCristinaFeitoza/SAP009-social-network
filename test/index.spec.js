@@ -40,8 +40,8 @@ describe('Login com o Google', () => {
   it('Deve realizar login com Google com sucesso', async () => {
     await signInWithPopup(undefined, 'adrianakatarina.estudos@gmail.com');
     /* Conta quantas vezes a função foi chamada  */
-    expect(signInWithPopup).toHaveBeenCalledTimes(1); 
-    /* Com quais parâmetros a função foi chamada */ 
-    expect(signInWithPopup).toHaveBeenCalledWith(undefined, 'adrianakatarina.estudos@gmail.com'); 
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
+    /* Com quais parâmetros a função foi chamada */
+    expect(signInWithPopup).toHaveBeenCalledWith(undefined, 'adrianakatarina.estudos@gmail.com');
   });
 });
