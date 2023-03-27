@@ -1,129 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+/* CSS - Página inicial */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-html{
-  font-size: 62.5%;
-}
-
-body{
-  font-size: 1.6rem;
-}
-
-.background{
-  background-image: url("../../image/background-mobile.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.position-card{
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.card{
-  background-color: #FFFFFF;
-  width: 80%;
-  border: 2px solid #B98DD6;
-  border-radius: 10px;
-}
-
-.card-info{
-  display: grid;
-  place-items: center;
-
-  font-family: "Emilys Candy";
-}
-
-.logo{
-  width: 20vw;
-  height: 20vh;
-}
-
-.form{
-  display: grid;
-  place-items: center;
-}
-
-.entre{
+.font-margin{
   font-size: 2.5rem;
-  margin-top: 25px;
-  margin-bottom: 30px;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  /* font-family: "Emilys Candy";  */
 }
 
-.botao-login{
-  width: 55vw;
-  height: 5vh;
-  border: 2px solid #55CBCD;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  margin-top: 10px;
+.btn-login{
+  margin-top: 1rem;
+  text-align: center;
 }
 
-.centralizar{
+fieldset {
+  border-top: 0.1rem solid #333;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  display: block;
+  text-align: center;
+}
+
+fieldset legend {
+  padding: 0.5rem 1rem;
   font-weight: bold;
   font-size: 2rem;
 }
 
 .sem-conta{
-  margin-top: 50px;
+  margin-top: 5rem;
 }
 
 #register{
   width: 30vw;
-  height: 5vh;
-  border: none;
-  background-color: #6A4085;
-  color:#FFFFFF;
-  border-radius: 10px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 90px;
+  margin-bottom: 9rem;
 }
 
-.sobre{
-  margin-top: 50px;
-  color:#6A4085
+button{
+  cursor: pointer;
 }
 
 
-@media only screen and (min-width: 1024px) {
-  .background{
-    background-image: url("../../image/background-desktop.svg");
-  }
-
-  .position-card{
-    justify-content: flex-end;
-    margin-right: 50px;
-  }
-  .card{
-    width: 40%;
-  }
-
-  .logo{
-    width: 10vw;
-    height: 15vh;
-  }
-
-  .entre{
+@media only screen and (min-width: 912px) {
+  .h2-home{
     font-size: 4rem;
-    margin-top: 35px;
+    margin-top: 3.5rem;
     margin-bottom: 60px;
   }
 
-  .botao-login{
-    width: 25vw;
-    font-size: 1.6rem;
+  .sem-conta {
+    font-size: 2rem;
   }
 
+  #register{
+    width: 10vw;
+  }
+
+  .sobre {
+    font-size: 2rem;
+  }
 
 }

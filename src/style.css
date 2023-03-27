@@ -1,29 +1,135 @@
-.card {
-    width: 400px;
-    background-color: #fff;
-    border: 1px solid #ef7df3;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+/* CSS - Padrões das Páginas*/
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-.button-google {
-    background-color: white;
-    border: 1px solid rgb(12, 223, 238);
-    color: black;
-    border-radius: 10px;
+/* Padrão usar o :root{} invés do html{} */
+:root{
+  font-size: 62.5%; /* Reseta todas as fontes. Agora tem medidas de 10px */
 }
-  
-.button-email {
-    background-color: white;
-    border: 1px solid rgb(12, 223, 238);
-    color: black;
-    border-radius: 10px;
+
+body{
+  font-size: 1.6rem; /* 16px === 1.6rem. dividir por 10 */
 }
-  
-.button-criar {
-    background-color: #ef7df3;
-    border: 1px solid white;
-    color: white;
-    border-radius: 10px;
+
+.background{
+  background-image: url("../../image/background-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
-  
+
+.d-w{
+  display: none;
+}
+
+.position-card{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card{
+  background-color: #FFFFFF;
+  width: 80%;
+  height: 90vh;
+  min-height: 80vh;
+  border: 0.3rem solid #B98DD6;
+  border-radius: 1rem;
+}
+
+.card-info{
+  display: grid;
+  place-items: center;
+}
+
+.logo{
+  width: 20vw;
+  height: 20vh;
+}
+
+.form{
+  display: grid;
+  place-items: center;
+}
+
+/* Se repete em botoes e inputs da tela home, login, cadastro - cor branco e azul*/
+
+.btn-input-wb{
+  width: 55vw;
+  height: 5vh;
+  border: 0.2rem solid #55CBCD;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+button:active{
+  opacity: 0.8;
+}
+
+/* Se repete em botoes tela home, login, cadastro - cor branco e azul*/
+.btn-purple{
+  height: 5vh;
+  background-color: #6A4085;
+  border: none;
+  color:#FFFFFF;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.sobre{
+ /*  margin-top: 50px; */
+  color:#6A4085;
+  cursor: pointer;
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+  .background{
+    background-image: url("../../image/fundo.png");
+  }
+
+  .d-w{
+    display: block;
+    position: fixed;
+    margin: 35rem -1rem;
+    width: 25vw;
+  }
+
+  .position-card{
+    justify-content: flex-end;
+    margin-right: 5rem;
+  }
+
+  .card{
+    width: 40%;
+  }
+
+  .logo{
+    width: 8vw;
+  }
+
+  .btn-input-wb{
+    width: 22vw;
+  }
+
+}
+
+
+@media only screen and (min-width: 1366px) {
+  .d-w{
+    margin: 53rem -1rem;
+  }
+}
