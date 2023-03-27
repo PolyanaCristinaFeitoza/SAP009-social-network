@@ -24,7 +24,7 @@ export default () => {
     /* .then((userCredential) =>
       { if (userCredential) {
           console.log('Usuário permitido');
-          window.location.href = 'pages/feed/index.html';
+          window.location.hash = 'feed';
         } else {
           console.log('Usuário não permitido');
           if (errorCode === 'auth/user-not-found') {

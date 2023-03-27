@@ -3,6 +3,7 @@ import home from './pages/home/index.js';
 import about from './pages/about/about.js';
 import login from './pages/login/index.js';
 import register from './pages/register/index.js';
+import feed from './pages/feed/feed.js';
 
 // Root definido no arquivo index.html
 const main = document.querySelector('#root');
@@ -23,6 +24,9 @@ const init = () => {
         break;
       case '#about':
         main.appendChild(about());
+        break;
+      case '#feed':
+        main.appendChild(feed());
         break;
       default: main.appendChild(home());
     }

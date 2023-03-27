@@ -28,13 +28,13 @@ export const login = (email, senha) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
-      /* window.location.href = "pages/feed/index.html"; */
+      window.location.hash = 'feed';
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log(errorCode);
+      /* console.log(errorCode); */
       const errorMessage = error.message;
-      console.log(errorMessage);
+      /* console.log(errorMessage); */
       /* if (errorCode === 'auth/user-not-found') {
         return alert('Usuário não encontrado.');
       }
@@ -48,19 +48,21 @@ export const criarConta = (email, senha) => {
       const user = userCredential.user;
       console.log('foi'); /* Colocar o caminho do home */
       console.log(user);
-      window.location.hash = '#login';
+      window.location.hash = 'feed';
+      return true;
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log(errorCode);
+      /* console.log(errorCode); */
       const errorMessage = error.message;
-      console.log(errorMessage);
-      if (errorCode === 'auth/email-already-in-use') {
-        return alert('Email já em uso.');
+      /* console.log(errorMessage); */
+/*       if (errorCode === 'auth/email-already-in-use') {
+        alert('Email já em uso.');
       } if (errorCode === 'auth/weak-password') {
-        return alert('A senha deve ter pelo menos 6 caracteres');
+        alert('A senha deve ter pelo menos 6 caracteres');
       }
-      return alert('Suas informações estão incorretas. Tente novamente.');
+      alert('Suas informações estão incorretas. Tente novamente.'); */
+      return false;
     });
 };
 
@@ -80,22 +82,24 @@ export const entrarComGoogle = () => {
       console.log(user);
       // IdP data available using getAdditionalUserInfo(result)
       // Dados de IdP disponíveis usando getAdditionalUserInfo(result)
-      window.location.href = 'pages/feed/index.html';
+      window.location.hash = 'feed';
+      return true;
       // ...
     }).catch((error) => {
       // Handle Errors here.
       // Trate erros aqui.
       const errorCode = error.code;
-      console.log(errorCode);
+      /* console.log(errorCode); */
       const errorMessage = error.message;
-      console.log(errorMessage);
+      /* console.log(errorMessage); */
       // O e-mail da conta do usuário usado.
       const email = error.customData.email;
-      console.log(email);
+      /* console.log(email); */
       // The AuthCredential type that was used.
       // O tipo AuthCredential que foi usado.
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(credential);
       // ...
+      return false;
     });
 };
