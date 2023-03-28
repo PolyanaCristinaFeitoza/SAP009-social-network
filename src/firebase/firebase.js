@@ -28,11 +28,11 @@ export const login = (email, senha) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user, 'user firebase');
-      /* window.location.hash = 'feed'; */
+      window.location.hash = 'feed';
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log(errorCode);
+      console.log(errorCode, 'firebase');
       /* if (errorCode === 'auth/user-not-found') {
         return alert('Usuário não encontrado.');
       }
