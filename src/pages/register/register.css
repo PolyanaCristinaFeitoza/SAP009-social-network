@@ -1,0 +1,19 @@
+/* CSS - Página de Criar Conta */
+.create{
+  width: 20vh;
+}
+
+.form .m-b{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 912px) {
+  .create{
+    width: 10vw;
+  }
+
+  .form .m-b{
+  font-size: 1.8rem;
+}
+}

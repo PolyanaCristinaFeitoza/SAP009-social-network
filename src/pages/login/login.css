@@ -1,0 +1,21 @@
+/* CSS - Página de Login com Email e Senha */
+
+.input-size{
+  cursor: text;
+}
+
+.password{
+  margin-top: 2rem;
+}
+
+.enter{
+  width: 20vw;
+  position: relative;
+  left: 6rem;
+}
+
+@media only screen and (min-width: 912px) {
+  .enter{
+    width: 6vw;
+  }
+}
