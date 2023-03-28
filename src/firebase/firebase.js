@@ -32,7 +32,7 @@ export const login = (email, senha) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      console.log(errorCode);
+      console.log(errorCode, 'firebase');
       /* if (errorCode === 'auth/user-not-found') {
         return alert('Usuário não encontrado.');
       }

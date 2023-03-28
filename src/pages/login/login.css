@@ -14,6 +14,13 @@
   left: 6rem;
 }
 
+.messagerror{
+  text-align: center;
+  margin-top: 5rem;
+  color: #D42222;
+  display: block;
+}
+
 @media only screen and (min-width: 912px) {
   .enter{
     width: 6vw;
