@@ -17,7 +17,7 @@ body{
   font-size: 1.6rem; /* 16px === 1.6rem. dividir por 10 */
 }
 
-.background{
+.background-h-r-l{
   background-image: url("../../image/background-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,28 +31,38 @@ body{
 .position-card{
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 .card{
   background-color: #FFFFFF;
-  width: 80%;
+  width: 80vw;
   height: 90vh;
   min-height: 80vh;
   border: 0.3rem solid #B98DD6;
   border-radius: 1rem;
-}
-
-.card-info{
   display: grid;
   place-items: center;
 }
 
+position-header{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.seta{
+  position: fixed;
+  left: 5rem;
+  top: 8rem;
+  border: none;
+  background-color: #ffffff;
+}
+
 .logo{
   width: 20vw;
-  height: 20vh;
+  /* height: 20vh; */
 }
 
 .form{
@@ -94,11 +104,9 @@ button:active{
   cursor: pointer;
 }
 
-
-
 @media only screen and (min-width: 1024px) {
-  .background{
-    background-image: url("../../image/fundo.png");
+  .background-h-r-l{
+    background-image: url("../../image/background-desktop.svg");
   }
 
   .d-w{
@@ -110,6 +118,7 @@ button:active{
 
   .position-card{
     justify-content: flex-end;
+    flex-direction: row;
     margin-right: 5rem;
   }
 
@@ -126,7 +135,6 @@ button:active{
   }
 
 }
-
 
 @media only screen and (min-width: 1366px) {
   .d-w{
