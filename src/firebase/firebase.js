@@ -28,6 +28,7 @@ export const login = (email, senha) => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user, 'user firebase');
+      window.location.hash = 'feed';
     })
     .catch((error) => {
       const errorCode = error.code;

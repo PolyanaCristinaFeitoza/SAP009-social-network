@@ -46,14 +46,16 @@ export default () => {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
     /* const mError = document.querySelector('.messagerror'); */
-    login(email, senha);
-    signInWithEmailAndPassword(email, senha).then(() => {
+  login(email, senha);
+/*     console.log('login index', result)
+    signInWithEmailAndPassword().then(() => {
+      console.log('then')
       window.location.hash = 'feed';
     })
       .catch((error) => {
         const doError = error.code;
         console.log(doError, 'index');
-      });
+      }); */
   };
 
   container.addEventListener('click', (event) => { // pegando todos os eventos de click

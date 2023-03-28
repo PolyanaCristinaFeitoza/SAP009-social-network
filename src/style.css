@@ -47,7 +47,7 @@ body{
   place-items: center;
 }
 
-position-header{
+.position-header{
   display: grid;
   grid-template-columns: auto auto;
 }
@@ -126,12 +126,17 @@ button:active{
     width: 40%;
   }
 
+  .seta{
+    display: none;
+  }
+
   .logo{
     width: 8vw;
   }
 
   .btn-input-wb{
     width: 22vw;
+    font-size: 1.8rem;
   }
 
 }
