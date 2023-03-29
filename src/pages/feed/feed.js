@@ -11,7 +11,7 @@ export default () => {
   <section>
     <form>
       <img src='/image/user.svg' alt='user'>
-      <input type='text' id="post" name="post" placeholder='No que está pensando...'>
+      <input type='text' id='post' name='post' placeholder='No que está pensando...' rows='10' cols='50'>
       <button>
           <img src='/image/add.svg' alt='adicionar'>
       </button>

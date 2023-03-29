@@ -18,7 +18,7 @@
   text-align: center;
   margin-top: 5rem;
   color: #D42222;
-  display: block;
+  display: none;
 }
 
 @media only screen and (min-width: 912px) {
