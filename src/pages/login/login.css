@@ -25,4 +25,8 @@
   .enter{
     width: 6vw;
   }
+
+  .btn-input-wb .input-size{
+    width: 22vw;
+  }
 }

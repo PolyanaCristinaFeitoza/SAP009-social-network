@@ -14,7 +14,12 @@
 }
 
 body{
-  font-size: 1.6rem; /* 16px === 1.6rem. dividir por 10 */
+  font-size: 1.6rem;
+ /* 16px === 1.6rem. dividir por 10 */
+}
+
+.font-margin{
+  font-family: 'Emilys Candy', cursive;
 }
 
 .background-h-r-l{
@@ -73,6 +78,10 @@ body{
 /* Se repete em botoes e inputs da tela home, login, cadastro - cor branco e azul*/
 
 .btn-input-wb{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
   width: 55vw;
   height: 5vh;
   border: 0.2rem solid #55CBCD;
@@ -80,6 +89,10 @@ body{
   border-radius: 1rem;
   font-size: 1.5rem;
   padding: 1rem;
+}
+
+.icon-login{
+  width: 6vw;
 }
 
 button:active{
@@ -102,18 +115,38 @@ button:active{
  /*  margin-top: 50px; */
   color:#6A4085;
   cursor: pointer;
+  font-family: 'Emilys Candy', cursive;
 }
-/* 
+
 @media only screen and (min-width: 600px) {
   .seta {
-    left: 8rem;
+    left: 9rem;
     width: 10vw;
     height: 10vh;
   }
   .img-seta {
     width: 6vw;
   }
-} */
+
+  .btn-input-wb{
+    width: 31vw;
+    font-size: 1.8rem;
+  }
+
+  .icon-login{
+    width: 4vw;
+  }
+
+  .btn-purple{
+    font-size: 2rem;
+    width: 16vw;
+    height: 4vh;
+  }
+
+  .sobre{
+    font-size: 2.3rem;
+  }
+}
 
 @media only screen and (min-width: 1024px) {
   .background-h-r-l{
@@ -146,8 +179,12 @@ button:active{
   }
 
   .btn-input-wb{
-    width: 22vw;
+    width: 18vw;
     font-size: 1.8rem;
+  }
+
+  .icon-login{
+    width: 2vw;
   }
 
 }
@@ -155,5 +192,28 @@ button:active{
 @media only screen and (min-width: 1366px) {
   .d-w{
     margin: 53rem -1rem;
+  }
+
+  .position-card{
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 5rem;
+  }
+
+  .card{
+    width: 40%;
+  }
+
+  .seta{
+    display: none;
+  }
+
+  .logo{
+    width: 8vw;
+  }
+
+  .btn-input-wb{
+    width: 13vw;
+    font-size: 2rem;
   }
 }

@@ -23,13 +23,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Entrar com email e senha
-export const login = (email, senha) => {
-  return signInWithEmailAndPassword(auth, email, senha);
-};
+export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
-export const criarConta = (email, senha) => {
-  return createUserWithEmailAndPassword(auth, email, senha);
-};
+export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
 
 const provider = new GoogleAuthProvider();
 
@@ -49,22 +45,9 @@ export const entrarComGoogle = () => {
       // Dados de IdP disponíveis usando getAdditionalUserInfo(result)
       window.location.hash = 'feed';
       return true;
-      // ...
     }).catch((error) => {
-      // Handle Errors here.
-      // Trate erros aqui.
-      /* const errorCode = error.code; */
-      /* console.log(errorCode); */
-      /* const errorMessage = error.message; */
-      /* console.log(errorMessage); */
-      // O e-mail da conta do usuário usado.
-      /* const email = error.customData.email; */
-      /* console.log(email); */
-      // The AuthCredential type that was used.
-      // O tipo AuthCredential que foi usado.
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(credential);
-      // ...
       return false;
     });
 };

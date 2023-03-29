@@ -1,5 +1,6 @@
 import { login } from '../../firebase/firebase.js';
 import { firebaseError } from '../../lib/errors.js';
+
 export default () => {
   const container = document.createElement('main');
 
@@ -48,10 +49,11 @@ export default () => {
         window.location.hash = 'feed';
       })
       .catch((error) => {
-        const errorParagraph = document.querySelector('.message-error');
-        errorParagraph.innerHTML = firebaseError(error);
+        const errorMessage = firebaseError(error);
+        const errorParagraph = container.querySelector('.message-error');
+        errorParagraph.innerHTML = errorMessage;
       });
-  }
+  };
   container.addEventListener('click', (event) => { // pegando todos os eventos de click
     if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') {
       valoresLogin();
