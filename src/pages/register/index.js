@@ -1,6 +1,5 @@
-/* Template criar conta */
 import { criarConta } from '../../firebase/firebase';
-
+import { firebaseError } from '../../lib/errors.js';
 export default () => {
   const container = document.createElement('main');
 
@@ -14,7 +13,7 @@ export default () => {
     <section class='card'>
       <header class='position-header'>
         <button class='seta'>
-          <img src='/image/arrow.svg' alt='seta'>
+          <img src='/image/arrow.svg' alt='seta' class='img-seta'>
         </button>
         <img src='/image/logo.svg' alt='Logo' class='logo'>
       </header>
@@ -24,7 +23,7 @@ export default () => {
         <input type='email' name='email' class='btn-input-wb m-b' id='email' placeholder='Email' required/>
         <input type='password' name='password' class='btn-input-wb m-b' id='senha' placeholder='Senha' required/>
         <button type='button' class='btn-purple create' id='criarConta'>Criar Conta</button>
-        <p class=messagerror>Suas informações estão incorretas. <br>Tente novamente.</p>
+        <p class='message-error'></p>
       </form>
       <footer>
         <a href="/#about" class="sobre">Sobre Friandy</a>
@@ -44,7 +43,14 @@ export default () => {
   const valoresCriarConta = () => {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
-    criarConta(email, senha);
+    criarConta(email, senha)
+      .then(() => {
+        window.location.hash = 'login';
+      })
+      .catch((error) => {
+        const errorParagraph = document.querySelector('.message-error');
+        errorParagraph.innerHTML = firebaseError(error);
+      });
   };
 
   container.addEventListener('click', (event) => { // pegando todos os eventos de click
