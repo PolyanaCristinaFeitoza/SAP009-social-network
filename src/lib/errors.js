@@ -15,5 +15,8 @@ export const firebaseError = (error) => {
   if (errorCode === 'auth/weak-password') {
     return 'A senha deve ter pelo menos 6 caracteres';
   }
+  if (errorCode === 'auth/too-many-requests') {
+    return 'Confira seus dados';
+  }
   return errorCode;
 };

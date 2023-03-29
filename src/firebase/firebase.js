@@ -34,5 +34,9 @@ export const entrarComGoogle = () => {
     .then(() => {
       window.location.hash = 'feed';
       return true;
-    }).catch(() => false);
+    }).catch((error) => {
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(credential);
+      return false;
+    });
 };

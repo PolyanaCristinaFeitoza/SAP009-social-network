@@ -17,11 +17,17 @@ export default () => {
     </header>
       <h2 class='font-margin'>Entre no Friandy</h2>
       <form class='form'>
-        <button type='button' class='btn-input-wb btn-login' id='google'>Entrar com Google</button>
+        <button type='button' class='btn-input-wb btn-login' id='google'>
+          <img src='/image/google.svg' alt='google' class='icon-login'>
+          <p>Entrar com Google</p>
+        </button>
         <fieldset>
           <legend>ou</legend>
         </fieldset>  
-        <button type='button' class='btn-input-wb btn-login' id='login'>Entrar com Email</button>
+        <button type='button' class='btn-input-wb btn-login' id='login'>
+          <img src='/image/email.svg' alt='email' class='icon-login'>
+          <p>Entrar com Email</p>
+        </button>
         <p class='sem-conta'>Não tem conta cadastrada?</p>
         <button type='button' class='btn-purple' id='register'>Criar Conta</button>
       </form>
