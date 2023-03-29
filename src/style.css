@@ -103,6 +103,17 @@ button:active{
   color:#6A4085;
   cursor: pointer;
 }
+/* 
+@media only screen and (min-width: 600px) {
+  .seta {
+    left: 8rem;
+    width: 10vw;
+    height: 10vh;
+  }
+  .img-seta {
+    width: 6vw;
+  }
+} */
 
 @media only screen and (min-width: 1024px) {
   .background-h-r-l{

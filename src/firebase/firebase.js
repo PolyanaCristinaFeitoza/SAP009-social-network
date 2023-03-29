@@ -24,44 +24,11 @@ const auth = getAuth(app);
 
 // Entrar com email e senha
 export const login = (email, senha) => {
-  signInWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user, 'user firebase');
-      window.location.hash = 'feed';
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(errorCode, 'firebase');
-      /* if (errorCode === 'auth/user-not-found') {
-        return alert('Usuário não encontrado.');
-      }
-      return alert('Suas informações estão incorretas. Tente novamente.'); */
-    });
+  return signInWithEmailAndPassword(auth, email, senha);
 };
 
 export const criarConta = (email, senha) => {
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log('foi'); /* Colocar o caminho do home */
-      console.log(user);
-      window.location.hash = 'feed';
-      return true;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      /* if (errorCode === 'auth/email-already-in-use') {
-        alert('Email já em uso.');
-      } if (errorCode === 'auth/weak-password') {
-        alert('A senha deve ter pelo menos 6 caracteres');
-      }
-      alert('Suas informações estão incorretas. Tente novamente.'); */
-      return errorCode;
-    });
+  return createUserWithEmailAndPassword(auth, email, senha);
 };
 
 const provider = new GoogleAuthProvider();

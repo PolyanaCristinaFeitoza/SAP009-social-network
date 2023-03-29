@@ -1,8 +1,5 @@
-/* Template página login com email e senha */
-/* import { signInWithEmailAndPassword } from 'firebase/auth'; */
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { login } from '../../firebase/firebase.js';
-
+import { firebaseError } from '../../lib/errors.js';
 export default () => {
   const container = document.createElement('main');
 
@@ -16,7 +13,7 @@ export default () => {
     <section class='card'>
       <header class='position-header'>
         <button class='seta'>
-          <img src='/image/arrow.svg' alt='seta'>
+          <img src='/image/arrow.svg' alt='seta' class='img-seta'>
         </button>
         <img src='/image/logo.svg' alt='Logo' class='logo'>
       </header>
@@ -25,7 +22,7 @@ export default () => {
         <input type='email' name='email' id='email' class='btn-input-wb input-size' placeholder='Email' required/>
         <input type='password' name='password' id='senha' class='btn-input-wb input-size password' placeholder='Senha' required/>
         <button type='button' class='btn-purple enter' id='entrar'>Entrar</button>
-        <p class=messagerror>Suas informações estão incorretas. <br>Tente novamente.</p>
+        <p class='message-error'></p>
       </form>
       <footer>
         <a href="/#about" class="sobre">Sobre Friandy</a>
@@ -46,18 +43,15 @@ export default () => {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
     /* const mError = document.querySelector('.messagerror'); */
-  login(email, senha);
-/*     console.log('login index', result)
-    signInWithEmailAndPassword().then(() => {
-      console.log('then')
-      window.location.hash = 'feed';
-    })
+    login(email, senha)
+      .then(() => {
+        window.location.hash = 'feed';
+      })
       .catch((error) => {
-        const doError = error.code;
-        console.log(doError, 'index');
-      }); */
-  };
-
+        const errorParagraph = document.querySelector('.message-error');
+        errorParagraph.innerHTML = firebaseError(error);
+      });
+  }
   container.addEventListener('click', (event) => { // pegando todos os eventos de click
     if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') {
       valoresLogin();
