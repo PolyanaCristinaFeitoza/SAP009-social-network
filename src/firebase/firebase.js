@@ -23,48 +23,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Entrar com email e senha
-export const login = (email, senha) => {
-  return signInWithEmailAndPassword(auth, email, senha);
-};
+export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
-export const criarConta = (email, senha) => {
-  return createUserWithEmailAndPassword(auth, email, senha);
-};
+export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
 
 const provider = new GoogleAuthProvider();
 
 export const entrarComGoogle = () => {
   signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // Isso fornece um token de acesso do Google. Você pode usá-lo para acessar a API do Google.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      console.log(token);
-      // The signed-in user info.
-      // As informações do usuário conectado.
-      const user = result.user;
-      console.log(user);
-      // IdP data available using getAdditionalUserInfo(result)
-      // Dados de IdP disponíveis usando getAdditionalUserInfo(result)
+    .then(() => {
       window.location.hash = 'feed';
       return true;
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      // Trate erros aqui.
-      /* const errorCode = error.code; */
-      /* console.log(errorCode); */
-      /* const errorMessage = error.message; */
-      /* console.log(errorMessage); */
-      // O e-mail da conta do usuário usado.
-      /* const email = error.customData.email; */
-      /* console.log(email); */
-      // The AuthCredential type that was used.
-      // O tipo AuthCredential que foi usado.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(credential);
-      // ...
-      return false;
-    });
+    }).catch(() => false);
 };

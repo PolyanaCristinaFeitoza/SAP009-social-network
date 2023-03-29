@@ -18,7 +18,13 @@
   text-align: center;
   margin-top: 5rem;
   color: #D42222;
-  display: none;
+  display: block;
+}
+
+@media only screen and (min-width: 600px) {
+  .message-error{
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (min-width: 912px) {

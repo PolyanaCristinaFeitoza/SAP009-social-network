@@ -11,9 +11,9 @@ export const firebaseError = (error) => {
   }
   if (errorCode === 'auth/email-already-in-use') {
     return 'Email já em uso.';
-  } 
+  }
   if (errorCode === 'auth/weak-password') {
     return 'A senha deve ter pelo menos 6 caracteres';
   }
   return errorCode;
-}
+};

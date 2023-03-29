@@ -1,5 +1,6 @@
 import { criarConta } from '../../firebase/firebase';
 import { firebaseError } from '../../lib/errors.js';
+
 export default () => {
   const container = document.createElement('main');
 
