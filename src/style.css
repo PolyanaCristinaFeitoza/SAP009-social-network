@@ -101,7 +101,7 @@ button:active{
 
 /* Se repete em botoes tela home, login, cadastro - cor branco e azul*/
 .btn-purple{
-  height: 5vh;
+  height: 4vh;
   background-color: #6A4085;
   border: none;
   color:#FFFFFF;
@@ -187,6 +187,12 @@ button:active{
     width: 2vw;
   }
 
+  .btn-purple{
+    font-size: 1.8rem;
+    width: 9vw;
+    height: 5vh;
+  }
+  
 }
 
 @media only screen and (min-width: 1366px) {
@@ -216,4 +222,5 @@ button:active{
     width: 13vw;
     font-size: 2rem;
   }
+
 }
