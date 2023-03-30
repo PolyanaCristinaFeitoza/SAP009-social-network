@@ -32,7 +32,7 @@ const provider = new GoogleAuthProvider();
 export const entrarComGoogle = () => {
   signInWithPopup(auth, provider)
     .then(() => {
-      window.location.hash = 'feed';
+      window.location.hash = '#feed';
       return true;
     }).catch((error) => {
       const credential = GoogleAuthProvider.credentialFromError(error);

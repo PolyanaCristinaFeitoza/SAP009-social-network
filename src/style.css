@@ -138,8 +138,8 @@ button:active{
   }
 
   .btn-purple{
-    font-size: 2rem;
-    width: 16vw;
+/*     font-size: 2rem;
+    width: 16vw; */
     height: 4vh;
   }
 
@@ -194,7 +194,7 @@ button:active{
     margin: 53rem -1rem;
   }
 
-  .position-card{
+/*   .position-card{
     justify-content: flex-end;
     flex-direction: row;
     margin-right: 5rem;
@@ -210,7 +210,7 @@ button:active{
 
   .logo{
     width: 8vw;
-  }
+  } */
 
   .btn-input-wb{
     width: 13vw;

@@ -3,8 +3,44 @@
 .background-feed{
   background-color: #F5DEF9;
   height: 100vh;
+  display: grid;
+  grid-template-rows: 80px auto 40px;
+  grid-template-columns: auto;
+  grid-template-areas: 
+    "header"
+    "section"
+    "footer";
 }
 
 .bg-header{
+  grid-area: header;
   background-color: #FFFFFF;
+}
+
+.conteudo{
+  grid-area: section;
+}
+
+.nav-feed{
+  grid-area: footer;
+  background-color: #FFFFFF;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: 
+    "home hash logout"
+}
+
+.home{
+  grid-area: home;
+}
+
+.hash{
+  grid-area: hash;
+  justify-self: center;
+}
+
+.sair{
+  grid-area: logout;
+  justify-self: end;
 }
