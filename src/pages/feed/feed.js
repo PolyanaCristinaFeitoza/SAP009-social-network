@@ -29,6 +29,7 @@ export default () => {
       <button class='img-like'>
         <img src='/image/like.svg' alt='like' class='img-like'>
       </button>
+      <p class='count'>0</p>
       <button class='img-comment'>
         <img src='/image/comment.svg' alt='comentario'>
       </button>
@@ -51,6 +52,28 @@ export default () => {
   `;
 
   container.innerHTML = template;
+
+  /* Adicionando dinamica nos cliques dos botões */
+  
+  const newPost = container.querySelector('.btn-add');
+  newPost.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const editPost = container.querySelector('.img-edit');
+  editPost.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const btnLike = container.querySelector('.img-like');
+  btnLike.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const btnDelete = container.querySelector('.img-delete');
+  btnDelete.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
 
   return container;
 };

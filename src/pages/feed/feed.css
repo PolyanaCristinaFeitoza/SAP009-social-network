@@ -23,7 +23,7 @@
   grid-area: section;
   display: grid;
   justify-content: center;
-  width: 90vw;
+  /* width: 90vw; */
   margin: 1rem;
 }
 
@@ -36,15 +36,28 @@
   padding: 0.5rem;
 }
 
+.text-area{
+  border: none;
+  font-size: 1.3rem;
+  width: 50vw;
+  resize: none;
+  background-color: #FFFFFF;
+}
+
+.btn-add{
+  border: none;
+  background-color: #ffffff;
+}
+
 .post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;
   display: grid;
   grid-template-areas: 
-   "photo username hour edit"
-   "message message message message"
-   "like comment . delete";
-  grid-template-columns: 10vw auto 5vw 10vw;
+   "photo username username hour edit"
+   "message message message message message"
+   "like count comment comment delete";
+  grid-template-columns: 10vw 3vw auto 5vw 10vw;
   grid-template-rows: 8vh auto 8vh;
   padding: 0.5rem;
 }
@@ -57,10 +70,13 @@
 
 .username{
   grid-area: username;
+  text-transform: lowercase;
+  align-self: center;
 }
 
 .hours{
   grid-area: hour;
+  color: #888080;
 }
 
 .img-edit{
@@ -79,28 +95,21 @@
   background-color: #ffffff;
 }
 
+.count{
+  grid-area: count;
+}
+
 .img-comment{
   grid-area: comment;
   border: none;
   background-color: #ffffff;
+  justify-self: start;
 }
 
 .img-delete{
   grid-area: delete;
   border: none;
   background-color: #ffffff;
-}
-
-.text-area{
-  border: none;
-  font-size: 1.3rem;
-  width: 50vw;
-  resize: none;
-  background-color: #FFFFFF;
-}
-
-.btn-add{
-  border: none;
 }
 
 .nav-feed{
