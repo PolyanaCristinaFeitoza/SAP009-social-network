@@ -36,6 +36,61 @@
   padding: 0.5rem;
 }
 
+.post{
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-areas: 
+   "photo username hour edit"
+   "message message message message"
+   "like comment . delete";
+  grid-template-columns: 10vw auto 5vw 10vw;
+  grid-template-rows: 8vh auto 8vh;
+  padding: 0.5rem;
+}
+
+.img-user{
+  grid-area: photo;
+  border: none;
+  background-color: #ffffff;
+}
+
+.username{
+  grid-area: username;
+}
+
+.hours{
+  grid-area: hour;
+}
+
+.img-edit{
+  grid-area: edit;
+  border: none;
+  background-color: #ffffff;
+}
+
+.message-post{
+  grid-area: message;
+}
+
+.img-like{
+  grid-area: like;
+  border: none;
+  background-color: #ffffff;
+}
+
+.img-comment{
+  grid-area: comment;
+  border: none;
+  background-color: #ffffff;
+}
+
+.img-delete{
+  grid-area: delete;
+  border: none;
+  background-color: #ffffff;
+}
+
 .text-area{
   border: none;
   font-size: 1.3rem;
