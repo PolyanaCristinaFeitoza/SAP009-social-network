@@ -13,5 +13,7 @@ export {
 export { 
   getFirestore,
   collection,
+  doc,
+  setDoc,
   addDoc,
 } from "firebase/firestore";

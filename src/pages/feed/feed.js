@@ -21,25 +21,7 @@ export default () => {
         </button>
       </form>
     </section>
-    <section class='post'>
-      <img src='/image/user.svg' alt='user' class='img-user'>
-      <p class='username'>Nome Usuário</p>
-      <p class='hours'>7h<p>
-      <button class='img-edit'>
-        <img src='/image/edit.svg' alt='edit'>
-      </button>
-      <p class='message-post'>Oi! Hoje fiz uma torta de amora!</p>
-      <button class='img-like'>
-        <img src='/image/like.svg' alt='like' class='img-like'>
-      </button>
-      <p class='count'>0</p>
-      <button class='img-comment'>
-        <img src='/image/comment.svg' alt='comentario'>
-      </button>
-      <button class='img-delete'>
-        <img src='/image/delete.svg' alt='delete'>
-      </button>    
-    </section>
+    <section class='post'></section>
   </section>
   <nav class='nav-feed'>
     <a href="/#feed" class='img-home'>
@@ -66,18 +48,27 @@ export default () => {
       });
   });
 
-  /* Quando o usuário clicar adicionar post,
+  /* Printar na tela o novo post da mensagem que esta no banco de dados 
+    Igual no data-lovers vamos escrever um template printar informaçãoes
+    1. Pegar a section onde quer iniciar
+    2. criar um template
+  */
+
+  
+  
+  /* Quando o usuário clicar no totão adicionar post,
   pegar o valor do textarea e
   chamar a função para armazenar no banco de dados*/
+
 
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getPost = container.querySelector('#post');
-    console.log(getPost);
     addPost(getPost);
   });
 
-  const editPost = container.querySelector('.img-edit');
+
+/*   const editPost = container.querySelector('.img-edit');
   editPost.addEventListener('click', () => {
     window.location.hash = '#feed';
   });
@@ -91,6 +82,6 @@ export default () => {
   btnDelete.addEventListener('click', () => {
     window.location.hash = '#feed';
   });
-
+ */
   return container;
 };
