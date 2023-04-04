@@ -1,3 +1,6 @@
+import { userLogout } from '../../firebase/firebase';
+import { addPost } from '../../firebase/firestore'
+
 /* Pagina Feed */
 export default () => {
   const container = document.createElement('main');
@@ -12,8 +15,8 @@ export default () => {
     <section class='add-post'>
       <form>
         <img src='/image/user.svg' alt='user'>
-        <textarea id="post" name="post" placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
-        <button class='btn-add'>
+        <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
+        <button type ='button' class='btn-add'>
             <img src='/image/teste.svg' alt='adicionar'>
         </button>
       </form>
@@ -45,7 +48,7 @@ export default () => {
     <a href="/#hash" class='img-hash'>
       <img src='/image/hash.svg' alt='hash'>
     </a>
-    <a href="/#logout" class='img-logout'>
+    <a href="/#home" class='img-logout'>
       <img src='/image/logout.svg' alt='sair'>
     </a>
   </nav>
@@ -53,11 +56,25 @@ export default () => {
 
   container.innerHTML = template;
 
-  /* Adicionando dinamica nos cliques dos botões */
-  
+  /* Quando o usuário clicar em logout, chamar a função para deslogar */
+
+  const valorLogout = container.querySelector('.img-logout');
+  valorLogout.addEventListener('click', () => {
+    userLogout()
+      .then(() => {
+        window.location.hash = 'home'
+      });
+  });
+
+  /* Quando o usuário clicar adicionar post,
+  pegar o valor do textarea e
+  chamar a função para armazenar no banco de dados*/
+
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
-    window.location.hash = '#feed';
+    const getPost = container.querySelector('#post');
+    console.log(getPost);
+    addPost(getPost);
   });
 
   const editPost = container.querySelector('.img-edit');
