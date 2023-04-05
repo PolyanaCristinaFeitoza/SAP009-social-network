@@ -4,7 +4,7 @@ import about from './pages/about/about.js';
 import login from './pages/login/index.js';
 import register from './pages/register/index.js';
 import feed from './pages/feed/feed.js';
-/* import { logado } from './firebase/firebase.js'; */
+/* import { logged } from './firebase/firebase.js'; */
 
 // Root definido no arquivo index.html
 const main = document.querySelector('#root');

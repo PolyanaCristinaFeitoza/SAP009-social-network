@@ -53,9 +53,11 @@ export const entrarComGoogle = () => {
   });
 };
 
+/* Quando clicar no logout e quiser entrar novamente com google,
+se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
-onAuthStateChanged(auth, (user) => {
+export const logged = () => onAuthStateChanged(auth, (user) => {
   if (user) {
     window.location.hash = 'feed';
   } else {
@@ -64,6 +66,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 const user = auth.currentUser;
+console.log(user)
 if (user !== null) {
   // The user object has basic properties such as display name, email, etc.
   const displayName = user.displayName;
