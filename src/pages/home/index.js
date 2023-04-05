@@ -51,15 +51,10 @@ export default () => {
     window.location.hash = 'register';
   });
 
-  const clicarGoogle = () => {
-    const provider = document.getElementById('google');
-    provider.addEventListener('click', () => {
-      entrarComGoogle();
-    });
-  };
-
-  container.addEventListener('click', (event) => { // pegando todos os eventos de click
-    if (event.target.id === 'google' && event.target.nodeName === 'BUTTON') clicarGoogle(); // event. target é o elemento no qual o evento ocorreu ou o elemento que acionou o evento. Já o nodeName mostra se o elemento clicado é um input ou boutton.
+  // const clicarGoogle = () => {
+  const provider = container.querySelector('#google');
+  provider.addEventListener('click', () => {
+    entrarComGoogle();
   });
 
   return container;

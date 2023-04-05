@@ -31,9 +31,21 @@
   background-color: #FFFFFF;
   border-radius: 0.5rem;
   height: 8vh;
+  width: 90vw;
   display: grid;
   place-items: center;
   padding: 0.5rem;
+  margin-left: 13px;
+}
+
+.centro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user{
+  margin-right: 58px;
 }
 
 .text-area{
@@ -42,10 +54,13 @@
   width: 50vw;
   resize: none;
   background-color: #FFFFFF;
+  margin-left: -38px;
+  margin-right: 22px;
 }
 
 .btn-add{
   border: none;
+  background-color: #FFFFFF;
 }
 
 .nav-feed{

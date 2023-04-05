@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
 } from './exports';
 
 const firebaseConfig = {
@@ -32,22 +34,52 @@ const provider = new GoogleAuthProvider();
 export const entrarComGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // Isso fornece um token de acesso do Google. Você pode usá-lo para acessar a API do Google.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       console.log(token);
-      // The signed-in user info.
-      // As informações do usuário conectado.
       const user = result.user;
       console.log(user);
-      // IdP data available using getAdditionalUserInfo(result)
-      // Dados de IdP disponíveis usando getAdditionalUserInfo(result)
       window.location.hash = 'feed';
       return true;
     }).catch((error) => {
+      const errorCode = error.code;
+      console.log(errorCode);
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      const email = error.customData.email;
+      console.log(email);
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(credential);
       return false;
     });
 };
+export const userLogout = () => signOut(auth);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.hash = 'feed';
+  } else {
+    window.location.hash = 'home';
+  }
+});
+
+export const getSignedUser = () => {
+  const user = auth.currentUser;
+  if (user) {
+    console.log(user);
+  } return 'Usuário não encontrado';
+};
+
+// const db = getFirestore(app);
+
+// try {
+//   const docRef = await addDoc(collection(db, "Posts"), {
+//     deleted: true,
+//     emailUser: 'inicio@gmail.com',
+//     likes: 0,
+//     nameUser: 'Polyana',
+//     post: 'Oi pessoal',
+//   });
+//   console.log("Document written with ID: ", docRef.id);
+// } catch (e) {
+//   console.error("Error adding document: ", e)};

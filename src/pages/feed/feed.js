@@ -1,3 +1,5 @@
+import { userLogout, getSignedUser } from '../../firebase/firebase';
+
 /* Pagina Feed */
 export default () => {
   const container = document.createElement('main');
@@ -20,23 +22,73 @@ export default () => {
     </section>
     <section class='post'>
       <img src='/image/user.svg' alt='user' class='img-user'>
-      <p></p>
-      <p><p>
-      <img src='/image/edit.svg' alt='edit' class='img-edit'>
-      <p><p>
-      <img src='/image/like.svg' alt='like' class='img-like'>
-      <img src='/image/comment.svg' alt='comentario' class='img-coment'>
-      <img src='/image/delete.svg' alt='delete' class='img-delete'>
+      <p class='username'>Nome Usuário</p>
+      <p class='hours'>7h<p>
+      <button class='img-edit'>
+        <img src='/image/edit.svg' alt='edit'>
+      </button>
+      <p class='message-post'>Oi! Hoje fiz uma torta de amora!</p>
+      <button class='img-like'>
+        <img src='/image/like.svg' alt='like' class='img-like'>
+      </button>
+      <p class='count'>0</p>
+      <button class='img-comment'>
+        <img src='/image/comment.svg' alt='comentario'>
+      </button>
+      <button class='img-delete'>
+        <img src='/image/delete.svg' alt='delete'>
+      </button>    
     </section>
   </section>
-  <footer class='nav-feed'>
-    <img src='/image/home.svg' alt='home' class='img-home'>
-    <img src='/image/hash.svg' alt='hash' class='img-hash'>
-    <img src='/image/logout.svg' alt='sair' class='img-logout'>
-  </footer>
+  <nav class='nav-feed'>
+    <a href="/#feed" class='img-home'>
+      <img src='/image/home.svg' alt='home'>
+    </a>
+    <a href="/#hash" class='img-hash'>
+      <img src='/image/hash.svg' alt='hash'>
+    </a>
+    <a href="/#logout" class='img-logout'>
+      <img src='/image/logout.svg' alt='sair'>
+    </a>
+  </nav>
   `;
 
   container.innerHTML = template;
+  const valorLogout = container.querySelector('.img-logout');
+  valorLogout.addEventListener('click', () => {
+    userLogout()
+      .then(() => {
+        window.location.hash = 'home';
+      });
+  });
 
+  const newPost = container.querySelector('.btn-add');
+  newPost.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const editPost = container.querySelector('.img-edit');
+  editPost.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const btnLike = container.querySelector('.img-like');
+  btnLike.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  const btnDelete = container.querySelector('.img-delete');
+  btnDelete.addEventListener('click', () => {
+    window.location.hash = '#feed';
+  });
+
+  window.addEventListener('load', () => {
+    const user = getSignedUser();
+    if (window.location.hash === '#feed') {
+      console.log(user);
+    } else {
+      console.log('erro');
+    }
+  });
   return container;
 };
