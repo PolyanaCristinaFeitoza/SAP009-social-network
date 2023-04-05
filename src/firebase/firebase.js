@@ -19,8 +19,7 @@ const firebaseConfig = {
 };
 
 // Iniciar Firebase
-const app = initializeApp(firebaseConfig);
-/* console.log("antes") */
+export const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
@@ -31,31 +30,32 @@ export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth,
 
 const provider = new GoogleAuthProvider();
 
-export const entrarComGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      console.log(token);
-      const user = result.user;
-      console.log(user);
-      window.location.hash = 'feed';
-      return true;
-    }).catch((error) => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      const email = error.customData.email;
-      console.log(email);
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(credential);
-      return false;
-    });
-};
+export const entrarComGoogle = () => signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    console.log(token);
+    const user = result.user;
+    console.log(user);
+    window.location.hash = 'feed'
+    return true;
+  }).catch((error) => {
+    const errorCode = error.code;
+    console.log(errorCode);
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    const email = error.customData.email;
+    console.log(email);
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    console.log(credential);
+    return false;
+  });
+
+// /* Quando clicar no logout e quiser entrar novamente com google,
+// se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
-onAuthStateChanged(auth, (user) => {
+export const logged = () => onAuthStateChanged(auth, (user) => {
   if (user) {
     window.location.hash = 'feed';
   } else {

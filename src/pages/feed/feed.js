@@ -1,4 +1,5 @@
 import { userLogout, getSignedUser } from '../../firebase/firebase';
+import { addPost } from '../../firebase/firestore';
 
 /* Pagina Feed */
 export default () => {
@@ -14,15 +15,15 @@ export default () => {
     <section class='add-post'>
       <form>
         <img src='/image/user.svg' alt='user'>
-        <textarea id="post" name="post" placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
-        <button class='btn-add'>
+        <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
+        <button type ='button' class='btn-add'>
             <img src='/image/teste.svg' alt='adicionar'>
         </button>
       </form>
     </section>
     <section class='post'>
       <img src='/image/user.svg' alt='user' class='img-user'>
-      <p class='username'>Nome Usuário</p>
+      <p class='username'></p>
       <p class='hours'>7h<p>
       <button class='img-edit'>
         <img src='/image/edit.svg' alt='edit'>
@@ -47,7 +48,7 @@ export default () => {
     <a href="/#hash" class='img-hash'>
       <img src='/image/hash.svg' alt='hash'>
     </a>
-    <a href="/#logout" class='img-logout'>
+    <a href="/#home" class='img-logout'>
       <img src='/image/logout.svg' alt='sair'>
     </a>
   </nav>
@@ -64,7 +65,8 @@ export default () => {
 
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
-    window.location.hash = '#feed';
+    const getPost = container.querySelector('#post');
+    addPost(getPost);
   });
 
   const editPost = container.querySelector('.img-edit');

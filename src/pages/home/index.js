@@ -51,7 +51,6 @@ export default () => {
     window.location.hash = 'register';
   });
 
-  // const clicarGoogle = () => {
   const provider = container.querySelector('#google');
   provider.addEventListener('click', () => {
     entrarComGoogle();

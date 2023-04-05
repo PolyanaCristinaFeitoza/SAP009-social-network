@@ -1,4 +1,5 @@
 import { criarConta } from '../../firebase/firebase';
+import { addUser } from '../../firebase/firestore';
 import { firebaseError } from '../../lib/errors.js';
 
 export default () => {
@@ -20,9 +21,9 @@ export default () => {
       </header>
       <h2 class='font-margin'>Criando conta no <br>Friandy</h2>
       <form class='form'>
-        <input type='text' name='nome' class='btn-input-wb m-b' id='nom' placeholder='Nome' required/>
+        <input type='text' name='nome' class='btn-input-wb m-b' id='name' placeholder='Nome' required/>
         <input type='email' name='email' class='btn-input-wb m-b' id='email' placeholder='Email' required/>
-        <input type='password' name='password' class='btn-input-wb m-b' id='senha' placeholder='Senha' required/>
+        <input type='password' name='password' class='btn-input-wb m-b' id='password' placeholder='Senha' required/>
         <button type='button' class='btn-purple create' id='criarConta'>Criar Conta</button>
         <p class='message-error'></p>
       </form>
@@ -41,11 +42,23 @@ export default () => {
     window.location.hash = '#home';
   });
 
+  /* Utilizar container no lugar do document vai dar typeError */
+
   const valoresCriarConta = () => {
+    const name = document.getElementById('name').value;
+    /* console.log(name); */
     const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    criarConta(email, senha)
-      .then(() => {
+    /* console.log(email); */
+    const password = document.getElementById('password').value;
+    /* console.log(password); */
+    criarConta(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        const uid = userCredential.user.uid;
+        console.log(uid);
+        addUser(name, email, uid);
+        console.log('sucesso');
         window.location.hash = 'login';
       })
       .catch((error) => {
