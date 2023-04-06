@@ -43,7 +43,6 @@ export default () => {
   const valoresLogin = () => {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
-    /* const mError = document.querySelector('.messagerror'); */
     login(email, senha)
       .then(() => {
         window.location.hash = 'feed';
@@ -63,12 +62,10 @@ export default () => {
     //     const errorMessage = error.message;
     //   });
   };
-  container.addEventListener('click', (event) => { // pegando todos os eventos de click
+  container.addEventListener('click', (event) => {
     if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') {
       valoresLogin();
     }
-    /* event. target é o elemento no qual o evento ocorreu ou o elemento que acionou o evento.
-    Já o nodeName mostra se o elemento clicado é um input ou boutton. */
   });
 
   return container;

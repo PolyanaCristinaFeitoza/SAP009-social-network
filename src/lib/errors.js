@@ -18,5 +18,8 @@ export const firebaseError = (error) => {
   if (errorCode === 'auth/too-many-requests') {
     return 'Confira seus dados';
   }
+  if (errorCode === 'auth/missing-password') {
+    return 'Confira seus dados';
+  }
   return errorCode;
 };

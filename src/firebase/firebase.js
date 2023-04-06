@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  onAuthStateChanged,
+  updateProfile,
 } from './exports';
 
 const firebaseConfig = {
@@ -27,6 +27,14 @@ export const auth = getAuth(app);
 export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
 export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
+
+export const updateName = (username) => updateProfile(auth.currentUser, {
+  displayName: username,
+}).then(() => {
+  console.log('atualizou nome', auth.currentUser.displayName);
+}).catch((error) => {
+  console.log('não atualizou nome', error);
+});
 
 const provider = new GoogleAuthProvider();
 
@@ -55,31 +63,9 @@ export const entrarComGoogle = () => signInWithPopup(auth, provider)
 // se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
-export const logged = () => onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.hash = 'feed';
-  } else {
-    window.location.hash = 'home';
-  }
-});
-
 export const getSignedUser = () => {
   const user = auth.currentUser;
   if (user) {
-    console.log(user);
+    return 'Usuário encontrado';
   } return 'Usuário não encontrado';
 };
-
-// const db = getFirestore(app);
-
-// try {
-//   const docRef = await addDoc(collection(db, "Posts"), {
-//     deleted: true,
-//     emailUser: 'inicio@gmail.com',
-//     likes: 0,
-//     nameUser: 'Polyana',
-//     post: 'Oi pessoal',
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e)};
