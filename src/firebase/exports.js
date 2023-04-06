@@ -7,17 +7,12 @@ export {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  onAuthStateChanged,
+  updateProfile,
 } from 'firebase/auth';
 
 export { 
   getFirestore,
   collection,
-  doc,
-  setDoc,
   addDoc,
   Timestamp,
-  query,
-  where,
-  getDocs,
 } from "firebase/firestore";

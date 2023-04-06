@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  onAuthStateChanged,
+  updateProfile,
 } from './exports';
 
 const firebaseConfig = {
@@ -21,17 +21,25 @@ const firebaseConfig = {
 // Iniciar Firebase
 export const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Entrar com email e senha
 export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
 export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
 
+export const updateName = (username) => updateProfile(auth.currentUser, {
+  displayName: username,
+}).then(() => {
+  console.log('atualizou nome', auth.currentUser.displayName);
+}).catch((error) => {
+  console.log('não atualizou nome');
+})
+
+
 const provider = new GoogleAuthProvider();
 
-export const entrarComGoogle = () => {
-  return signInWithPopup(auth, provider)
+export const entrarComGoogle = () => signInWithPopup(auth, provider)
   .then((result) => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
@@ -51,35 +59,14 @@ export const entrarComGoogle = () => {
     console.log(credential);
     return false;
   });
-};
 
 /* Quando clicar no logout e quiser entrar novamente com google,
 se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
-export const logged = () => onAuthStateChanged(auth, (user) => {
+export const getSignedUser = () => {
+  const user = auth.currentUser;
   if (user) {
-    window.location.hash = 'feed';
-  } else {
-    window.location.hash = 'home';
-  }
-});
-
-const user = auth.currentUser;
-console.log(user)
-if (user !== null) {
-  // The user object has basic properties such as display name, email, etc.
-  const displayName = user.displayName;
-  console.log('nome', displayName);
-  const email = user.email;
-  console.log('email', email);
-  const photoURL = user.photoURL;
-  console.log('photoURL', photoURL);
-  const emailVerified = user.emailVerified;
-  console.log('emailVerified', emailVerified);
-
-  // The user's ID, unique to the Firebase project. Do NOT use
-  // this value to authenticate with your backend server, if
-  // you have one. Use User.getToken() instead.
-  const uid = user.uid;
-}
+    return 'Usuário encontrado';
+  } return 'Usuário não encontrado';
+};

@@ -4,11 +4,11 @@ import about from './pages/about/about.js';
 import login from './pages/login/index.js';
 import register from './pages/register/index.js';
 import feed from './pages/feed/feed.js';
-/* import { logged } from './firebase/firebase.js'; */
+
 
 // Root definido no arquivo index.html
 const main = document.querySelector('#root');
-/* console.log('root ', document.querySelector('form')) */
+
 // Função inicializar a página
 const init = () => {
   window.addEventListener('hashchange', () => {
@@ -37,22 +37,9 @@ const init = () => {
 // Ao carregar a página
 window.addEventListener('load', () => {
   main.appendChild(home());
-  window.location.hash = '#';
+  window.location.hash = '';
   init();
 });
 
-/* window.addEventListener('load', () => {
-  if(window.location.hash === '#login' || window.location.hash === '#register' || window.location.hash === '#about' || window.location.hash === '#home'){
-     main.appendChild(home());
-     window.location.hash = '#home';
-  }else {
-    main.appendChild(feed());
-    window.location.hash = '#feed';
-  }
-  init();
-}); */
-
-
-/* Se o usuário estiver logado, levar direto para página feed, senão página home.*/
 
 

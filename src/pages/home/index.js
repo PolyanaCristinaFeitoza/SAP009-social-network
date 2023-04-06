@@ -40,7 +40,6 @@ export default () => {
 
   container.innerHTML = template;
 
-  // Adicionando hash.
   const buttonLogin = container.querySelector('#login');
   buttonLogin.addEventListener('click', () => {
     window.location.hash = 'login';
