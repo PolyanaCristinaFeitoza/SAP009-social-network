@@ -12,29 +12,12 @@ import {
 /* Iniciar o Firestore */
 const db = getFirestore(app);
 
-// /*Armazenar nova conta usuário*/
-
-export async function addUser(username, email, uid) {
-  await setDoc(doc(db, 'Users', uid), {
-    displayName: username,
-    email: email,
-    uid: uid,
-  });
-}
-
 // Função para usuário adicionar um novo post e armazenar
 
-export async function addPost(post) {
+export async function addPost(post, username) {
   const docRef = await addDoc(collection(db, 'Post'), {
+    name: username,
     text: post.value,
     date: Timestamp.fromDate(new Date()),
   });
 }
-
-
-/* export async const addPost = (post) => {
-  const docRef = await addDoc(collection(db, 'Post'), {
-    text: post.value
-  });
-  console.log("Document written with ID: ", docRef.id);
-} */

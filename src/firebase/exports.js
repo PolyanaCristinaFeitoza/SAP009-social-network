@@ -1,6 +1,4 @@
 export { initializeApp } from 'firebase/app';
-export { getFirestore } from 'firebase/firestore';
-export { collection, addDoc, getDocs } from 'firebase/firestore';
 
 export {
   getAuth,
@@ -12,7 +10,7 @@ export {
   onAuthStateChanged,
 } from 'firebase/auth';
 
-export { 
+export {
   getFirestore,
   collection,
   doc,
@@ -22,4 +20,4 @@ export {
   query,
   where,
   getDocs,
-} from "firebase/firestore";
+} from 'firebase/firestore';

@@ -21,7 +21,7 @@ const firebaseConfig = {
 // Iniciar Firebase
 export const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Entrar com email e senha
 export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
@@ -37,7 +37,7 @@ export const entrarComGoogle = () => signInWithPopup(auth, provider)
     console.log(token);
     const user = result.user;
     console.log(user);
-    window.location.hash = 'feed'
+    window.location.hash = 'feed';
     return true;
   }).catch((error) => {
     const errorCode = error.code;

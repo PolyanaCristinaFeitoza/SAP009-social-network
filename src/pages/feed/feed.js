@@ -1,4 +1,4 @@
-import { userLogout, getSignedUser } from '../../firebase/firebase';
+import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
 import { addPost } from '../../firebase/firestore';
 
 /* Pagina Feed */
@@ -66,7 +66,9 @@ export default () => {
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getPost = container.querySelector('#post');
-    addPost(getPost);
+    const user = auth.currentUser.displayName;
+    console.log('dados do usuário', user);
+    addPost(getPost, user);
   });
 
   const editPost = container.querySelector('.img-edit');
