@@ -5,7 +5,6 @@ import login from './pages/login/index.js';
 import register from './pages/register/index.js';
 import feed from './pages/feed/feed.js';
 
-
 // Root definido no arquivo index.html
 const main = document.querySelector('#root');
 
@@ -40,6 +39,3 @@ window.addEventListener('load', () => {
   window.location.hash = '';
   init();
 });
-
-
-

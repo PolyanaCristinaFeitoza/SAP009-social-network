@@ -33,9 +33,8 @@ export const updateName = (username) => updateProfile(auth.currentUser, {
 }).then(() => {
   console.log('atualizou nome', auth.currentUser.displayName);
 }).catch((error) => {
-  console.log('não atualizou nome');
-})
-
+  console.log('não atualizou nome', error);
+});
 
 const provider = new GoogleAuthProvider();
 
@@ -46,7 +45,7 @@ export const entrarComGoogle = () => signInWithPopup(auth, provider)
     console.log(token);
     const user = result.user;
     console.log(user);
-    window.location.hash = 'feed'
+    window.location.hash = 'feed';
     return true;
   }).catch((error) => {
     const errorCode = error.code;
@@ -61,7 +60,7 @@ export const entrarComGoogle = () => signInWithPopup(auth, provider)
   });
 
 /* Quando clicar no logout e quiser entrar novamente com google,
-se o erro for igual a auth/popup-closed-by-user*/
+se o erro for igual a auth/popup-closed-by-user */
 export const userLogout = () => signOut(auth);
 
 export const getSignedUser = () => {

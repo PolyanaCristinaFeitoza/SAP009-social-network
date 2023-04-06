@@ -1,11 +1,10 @@
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
 import { addPost } from '../../firebase/firestore';
 
-
 /* Pagina Feed */
 export default () => {
   const user1 = getSignedUser();
-  console.log('passei', user1)
+  console.log('passei', user1);
   if (user1 === 'Usuário não encontrado') {
     return window.location.href = ''
   }
@@ -34,7 +33,7 @@ export default () => {
         <img src='/image/delete.svg' alt='delete'>
       </button>    
     </section>
-  `
+  `;
 
   const template = `
   <header class='bg-header'>
@@ -78,7 +77,7 @@ export default () => {
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getPost = container.querySelector('#post');
-    console.log('dados do usuário', user)
+    console.log('dados do usuário', user);
     addPost(getPost, user);
   });
 

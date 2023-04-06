@@ -10,9 +10,9 @@ export {
   updateProfile,
 } from 'firebase/auth';
 
-export { 
+export {
   getFirestore,
   collection,
   addDoc,
   Timestamp,
-} from "firebase/firestore";
+} from 'firebase/firestore';
