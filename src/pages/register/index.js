@@ -1,5 +1,4 @@
-import { criarConta } from '../../firebase/firebase';
-import { addUser } from '../../firebase/firestore';
+import { criarConta, updateName } from '../../firebase/firebase';
 import { firebaseError } from '../../lib/errors.js';
 
 export default () => {
@@ -36,7 +35,6 @@ export default () => {
 
   container.innerHTML = template;
 
-  // clique botão voltar
   const arrow = container.querySelector('.seta');
   arrow.addEventListener('click', () => {
     window.location.hash = '#home';
@@ -46,19 +44,11 @@ export default () => {
 
   const valoresCriarConta = () => {
     const name = document.getElementById('name').value;
-    /* console.log(name); */
     const email = document.getElementById('email').value;
-    /* console.log(email); */
     const password = document.getElementById('password').value;
-    /* console.log(password); */
     criarConta(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        const uid = userCredential.user.uid;
-        console.log(uid);
-        addUser(name, email, uid);
-        console.log('sucesso');
+      .then(() => {
+        updateName(name);
         window.location.hash = 'login';
       })
       .catch((error) => {
