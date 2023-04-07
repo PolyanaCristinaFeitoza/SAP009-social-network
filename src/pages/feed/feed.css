@@ -49,6 +49,11 @@
   background-color: #ffffff;
 }
 
+.timeline{
+  display: grid;
+  gap: 1rem;
+}
+
 .post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;

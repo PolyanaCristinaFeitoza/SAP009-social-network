@@ -4,7 +4,8 @@ import {
   getFirestore,
   collection,
   addDoc,
-  Timestamp,
+  /* Timestamp, */
+  getDocs,
 } from './exports';
 
 /* Iniciar o Firestore. Este método precisa ser executado
@@ -18,7 +19,14 @@ export async function addPost(post, username) {
     name: username,
     likes: 0,
     text: post.value,
-    date: Timestamp.fromDate(new Date()),
+    date: new Date(),
   });
   console.log('Document written with ID: ', docRef.id);
+}
+
+/* Toda vez que a página carrega, ele vai no banco de dados e ler todos os posts */
+export async function loadPosts() {
+  /* const arrayPosts = []; */
+  const querySnapshot = await getDocs(collection(db, 'Post'));
+  return querySnapshot;
 }

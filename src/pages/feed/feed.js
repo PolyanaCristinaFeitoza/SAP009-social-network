@@ -1,40 +1,17 @@
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
-import { addPost } from '../../firebase/firestore';
+import { addPost, loadPosts } from '../../firebase/firestore';
+import { publishPost } from './post';
 
 /* Pagina Feed */
-export default () => {
+export default async () => {
   const user1 = getSignedUser();
   console.log('passei', user1);
   if (user1 === 'Usuário não encontrado') {
     return window.location.href = ''
   }
-
+  
   const container = document.createElement('main');
-
   container.classList.add('background-feed');
-  const user = auth.currentUser.displayName;
-  const templatePost = `
-     <section class='post'>
-      <img src='/image/user.svg' alt='user' class='img-user'>
-      <p class='username'>${user}</p>
-      <p class='hours'>7h<p>
-      <button class='img-edit'>
-        <img src='/image/edit.svg' alt='edit'>
-      </button>
-      <p class='message-post'>Oi! Hoje fiz uma torta de amora!</p>
-      <button class='img-like'>
-        <img src='/image/like.svg' alt='like' class='img-like'>
-      </button>
-      <p class='count'>0</p>
-      <button class='img-comment'>
-        <img src='/image/comment.svg' alt='comentario'>
-      </button>
-      <button class='img-delete'>
-        <img src='/image/delete.svg' alt='delete'>
-      </button>    
-    </section>
-  `;
-
   const template = `
   <header class='bg-header'>
     <img src='/image/logo.svg' alt='Logo'>
@@ -49,7 +26,7 @@ export default () => {
         </button>
       </form>
     </section>
-   <section>${templatePost}</section>
+   <section class='timeline'></section>
   </section>
   <nav class='nav-feed'>
     <a href="/#feed" class='img-home'>
@@ -66,19 +43,34 @@ export default () => {
 
   container.innerHTML = template;
 
-  const valorLogout = container.querySelector('.img-logout');
-  valorLogout.addEventListener('click', () => {
+  const newPost = container.querySelector('.btn-add');
+  newPost.addEventListener('click', () => {
+    const getPost = container.querySelector('#post');
+    const user = auth.currentUser.displayName;
+    console.log('dados do usuário', user);
+    addPost(getPost, user);
+  });
+
+  /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
+  const loadTimeline = container.querySelector('.timeline');
+
+ 
+  const carregar = await loadPosts();
+  console.log('carregar feed', carregar)
+  /* Chamar a função dos posts */
+  const published =  publishPost(carregar);
+  console.log('published', published)
+  /* Agora adiciona novamente no feed */
+  loadTimeline.innerHTML = published.join('');
+  
+ 
+
+  const logout = container.querySelector('.img-logout');
+  logout.addEventListener('click', () => {
     userLogout()
       .then(() => {
         window.location.href = '';
       });
-  });
-
-  const newPost = container.querySelector('.btn-add');
-  newPost.addEventListener('click', () => {
-    const getPost = container.querySelector('#post');
-    console.log('dados do usuário', user);
-    addPost(getPost, user);
   });
 
   return container;

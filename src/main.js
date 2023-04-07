@@ -10,7 +10,7 @@ const main = document.querySelector('#root');
 
 // Função inicializar a página
 const init = () => {
-  window.addEventListener('hashchange', () => {
+  window.addEventListener('hashchange', async () => {
     main.innerHTML = ' ';
     switch (window.location.hash) {
       case ' ':
@@ -26,7 +26,7 @@ const init = () => {
         main.appendChild(about());
         break;
       case '#feed':
-        main.appendChild(feed());
+        main.appendChild(await feed());
         break;
       default: main.appendChild(home());
     }
