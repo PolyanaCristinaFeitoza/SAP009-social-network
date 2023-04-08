@@ -6,6 +6,8 @@ import {
   addDoc,
   /* Timestamp, */
   getDocs,
+  doc,
+  deleteDoc,
 } from './exports';
 
 /* Iniciar o Firestore. Este método precisa ser executado
@@ -14,19 +16,34 @@ const db = getFirestore(app);
 
 /* Função para usuário adicionar um novo post e armazenar */
 
-export async function addPost(post, username) {
+export async function addPost(post, username, uidUser) {
   const docRef = await addDoc(collection(db, 'Post'), {
     name: username,
     likes: 0,
     text: post.value,
     date: new Date(),
+    uid: uidUser,
   });
-  console.log('Document written with ID: ', docRef.id);
+  /* console.log('Document written with ID: ', docRef.id); */
 }
 
 /* Toda vez que a página carrega, ele vai no banco de dados e ler todos os posts */
 export async function loadPosts() {
-  /* const arrayPosts = []; */
+  const arrayPosts = [];
   const querySnapshot = await getDocs(collection(db, 'Post'));
-  return querySnapshot;
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    /* Adicionando o id do doc no campo data */
+    data.id = doc.id;
+    /* console.log('data.id', data.id); */
+    arrayPosts.push(data);
+   /*  console.log('loadPosts firestore', doc.id, " => ", doc.data()); */
+  });
+  return arrayPosts;
+}
+
+/* Deletar seu elemento pelo id do post */
+export const deletePost = async (postId) => {
+  await deleteDoc(doc(db, 'Post', postId));
+  console.log('apagou');
 }

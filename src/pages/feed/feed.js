@@ -1,12 +1,13 @@
+import { async } from 'regenerator-runtime';
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
 import { addPost, loadPosts } from '../../firebase/firestore';
-import { publishPost } from './post';
+import publishPost  from './publishPost';
 
 /* Pagina Feed */
 export default async () => {
-  const user1 = getSignedUser();
-  console.log('passei', user1);
-  if (user1 === 'Usuário não encontrado') {
+  const logged = getSignedUser();
+  /* console.log('passei', logged); */
+  if (logged === 'Usuário não encontrado') {
     return window.location.href = ''
   }
   
@@ -46,24 +47,19 @@ export default async () => {
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getPost = container.querySelector('#post');
-    const user = auth.currentUser.displayName;
-    console.log('dados do usuário', user);
-    addPost(getPost, user);
+    const username = auth.currentUser.displayName;
+    const uidUser = auth.currentUser.uid;
+ /*    console.log('dados do usuário', username);
+    console.log('dados do usuário', uidUser); */
+    addPost(getPost, username, uidUser);
   });
-
   /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
-  const loadTimeline = container.querySelector('.timeline');
 
- 
-  const carregar = await loadPosts();
-  console.log('carregar feed', carregar)
-  /* Chamar a função dos posts */
-  const published =  publishPost(carregar);
-  console.log('published', published)
-  /* Agora adiciona novamente no feed */
-  loadTimeline.innerHTML = published.join('');
-  
- 
+  const data = await loadPosts();
+ /*  console.log('dados doc', data); */
+  const loadTimeline = container.querySelector('.timeline');
+  const uidUser = auth.currentUser.uid;
+  publishPost(data, loadTimeline, uidUser);
 
   const logout = container.querySelector('.img-logout');
   logout.addEventListener('click', () => {
