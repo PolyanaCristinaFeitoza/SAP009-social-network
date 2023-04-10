@@ -12,16 +12,15 @@ export default () => {
   const container = document.createElement('main');
 
   container.classList.add('background-feed');
-  const user = auth.currentUser.displayName;
   const templatePost = `
      <section class='post'>
       <img src='/image/user.svg' alt='user' class='img-user'>
-      <p class='username'>${user}</p>
+      <p class='username'></p>
       <p class='hours'>7h<p>
       <button class='img-edit'>
         <img src='/image/edit.svg' alt='edit'>
       </button>
-      <p class='message-post'>Oi! Hoje fiz uma torta de amora!</p>
+      <p class='message-post'></p>
       <button class='img-like'>
         <img src='/image/like.svg' alt='like' class='img-like'>
       </button>
@@ -33,8 +32,7 @@ export default () => {
         <img src='/image/delete.svg' alt='delete'>
       </button>    
     </section>
-  `
-
+  `;
   const template = `
   <header class='bg-header'>
     <img src='/image/logo.svg' alt='Logo'>
@@ -76,6 +74,7 @@ export default () => {
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getPost = container.querySelector('#post');
+    const user = auth.currentUser.displayName;
     console.log('dados do usuário', user);
     addPost(getPost, user);
   });
