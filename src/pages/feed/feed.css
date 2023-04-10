@@ -39,7 +39,7 @@
 .text-area{
   border: none;
   font-size: 1.3rem;
-  width: 50vw;
+  width: 70vw;
   resize: none;
   background-color: #FFFFFF;
 }
@@ -66,6 +66,8 @@
   grid-template-columns: 10vw 3vw auto 5vw 10vw;
   grid-template-rows: 8vh auto 8vh;
   padding: 0.5rem;
+  width: 90vw;
+  gap: 1rem;
 }
 
 .img-user{
@@ -93,10 +95,16 @@
 
 .message-post{
   grid-area: message;
-  /* resize: none; */
+  resize: none;
   border: none;
   color: #000000;
   background-color: #ffffff;
+}
+
+.message-post:placeholder-shown {
+  border: 1px solid pink;
+  background: yellow;
+  color: blue;
 }
 
 .img-like{

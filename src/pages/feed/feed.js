@@ -9,7 +9,7 @@ export default async () => {
   const logged = getSignedUser();
   /* console.log('passei', logged); */
   if (logged === 'Usuário não encontrado') {
-    return window.location.href = ''
+    window.location.href = ''
   }
 
 /*   let nowDate = new Date();
@@ -69,6 +69,11 @@ export default async () => {
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   publishPost(data, loadTimeline, uidUser);
+
+  const backToTop = container.querySelector('.img-home');
+  backToTop.addEventListener('click', () =>{
+    window.scrollTo(0,0);
+  });
 
   const logout = container.querySelector('.img-logout');
   logout.addEventListener('click', () => {

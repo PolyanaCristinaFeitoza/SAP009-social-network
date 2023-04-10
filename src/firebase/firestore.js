@@ -55,5 +55,14 @@ export const updatePost = async (postId, newText) => {
   await updateDoc(postRef, {
     text: newText.value,
   });
-  
+
+}
+
+export const likePost = async (postId, likes) => {
+  const postRef = doc(db, 'Post', postId);
+  await updateDoc(postRef, {
+    likes: likes + 1,
+  });
+  console.log(postRef.likes)
+    
 }
