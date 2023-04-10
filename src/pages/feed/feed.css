@@ -2,7 +2,7 @@
 
 .background-feed{
   background-color: #F5DEF9;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 13vh auto 6vh;
   grid-template-columns: auto;
@@ -93,6 +93,10 @@
 
 .message-post{
   grid-area: message;
+  /* resize: none; */
+  border: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .img-like{

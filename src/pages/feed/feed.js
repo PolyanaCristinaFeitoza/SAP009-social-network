@@ -5,12 +5,21 @@ import publishPost  from './publishPost';
 
 /* Pagina Feed */
 export default async () => {
+  
   const logged = getSignedUser();
   /* console.log('passei', logged); */
   if (logged === 'Usuário não encontrado') {
     return window.location.href = ''
   }
-  
+
+/*   let nowDate = new Date();
+  let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
+  let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000) );
+
+  console.log('now', nowDate);
+  console.log('expiry', expiryDate);
+  console.log('expiry 2', expiryDate2); */
+ 
   const container = document.createElement('main');
   container.classList.add('background-feed');
   const template = `
@@ -56,7 +65,7 @@ export default async () => {
   /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
 
   const data = await loadPosts();
- /*  console.log('dados doc', data); */
+  /* console.log('dados doc', data); */
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   publishPost(data, loadTimeline, uidUser);

@@ -15,8 +15,9 @@ export {
   getFirestore,
   collection,
   addDoc,
-  Timestamp,
+/*   Timestamp, */
   getDocs,
   doc,
   deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';

@@ -8,6 +8,7 @@ import {
   getDocs,
   doc,
   deleteDoc,
+  updateDoc,
 } from './exports';
 
 /* Iniciar o Firestore. Este método precisa ser executado
@@ -37,7 +38,7 @@ export async function loadPosts() {
     data.id = doc.id;
     /* console.log('data.id', data.id); */
     arrayPosts.push(data);
-   /*  console.log('loadPosts firestore', doc.id, " => ", doc.data()); */
+    /* console.log('loadPosts firestore', doc.id, " => ", doc.data()); */
   });
   return arrayPosts;
 }
@@ -46,4 +47,13 @@ export async function loadPosts() {
 export const deletePost = async (postId) => {
   await deleteDoc(doc(db, 'Post', postId));
   console.log('apagou');
+}
+
+/* editar irá precisar saber do id do doc e value do novo text */
+export const updatePost = async (postId, newText) => {
+  const postRef = doc(db, 'Post', postId);
+  await updateDoc(postRef, {
+    text: newText.value,
+  });
+  
 }
