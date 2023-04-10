@@ -8,11 +8,16 @@ export {
   GoogleAuthProvider,
   signOut,
   updateProfile,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
-export { 
+export {
   getFirestore,
   collection,
   addDoc,
-  Timestamp,
-} from "firebase/firestore";
+/*   Timestamp, */
+  getDocs,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from 'firebase/firestore';

@@ -2,7 +2,7 @@
 
 .background-feed{
   background-color: #F5DEF9;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 13vh auto 6vh;
   grid-template-columns: auto;
@@ -49,6 +49,12 @@
   background-color: #ffffff;
 }
 
+.timeline{
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;
@@ -87,6 +93,10 @@
 
 .message-post{
   grid-area: message;
+  /* resize: none; */
+  border: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .img-like{
