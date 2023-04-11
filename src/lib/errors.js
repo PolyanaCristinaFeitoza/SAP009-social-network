@@ -4,9 +4,9 @@ export const firebaseError = (error) => {
     return 'Usuário não encontrado.';
   }
   if (errorCode === 'auth/wrong-password') {
-    return 'Senha incorreta';
+    return 'Email ou senha incorretos';
   }
-  if (errorCode === 'auth/internal-error' || errorCode === 'auth/invalid-email') {
+  if (errorCode === 'auth/internal-error' || errorCode === 'auth/invalid-email' || errorCode === 'auth/missing-password') {
     return 'Confira seus dados';
   }
   if (errorCode === 'auth/email-already-in-use') {

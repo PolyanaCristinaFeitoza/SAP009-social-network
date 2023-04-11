@@ -60,8 +60,8 @@ export const entrarComGoogle = () => signInWithPopup(auth, provider)
     return false;
   });
 
-/* Quando clicar no logout e quiser entrar novamente com google,
-se o erro for igual a auth/popup-closed-by-user */
+// /* Quando clicar no logout e quiser entrar novamente com google,
+// se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
 onAuthStateChanged(auth, (user) => {
@@ -70,7 +70,7 @@ onAuthStateChanged(auth, (user) => {
   } else {
     window.location.hash = 'home';
   }
-}); 
+});
 
 export const getSignedUser = () => {
   const user = auth.currentUser;

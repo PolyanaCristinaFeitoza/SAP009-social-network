@@ -15,7 +15,6 @@ export {
   getFirestore,
   collection,
   addDoc,
-/*   Timestamp, */
   getDocs,
   doc,
   deleteDoc,
