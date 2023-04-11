@@ -1,59 +1,49 @@
-import { async } from 'regenerator-runtime';
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
 import { addPost, loadPosts } from '../../firebase/firestore';
-import publishPost  from './publishPost';
+import publishPost from './publishPost';
 
 /* Pagina Feed */
 export default async () => {
-  
   const logged = getSignedUser();
   /* console.log('passei', logged); */
   if (logged === 'Usuário não encontrado') {
-    window.location.href = ''
+    window.location.href = '';
   }
+  // let nowDate = new Date();
+  // let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
+  // let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000) );
 
-  let nowDate = new Date();
-  let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
-  let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000) );
-
-  console.log('now', nowDate);
-  console.log('expiry', expiryDate);
-  console.log('expiry 2', expiryDate2);
-
-  const timeElapsed = Date.now();
-  console.log('tempo decorrido em milissegundos', timeElapsed); //tempo decoorrido
-  const today = new Date(timeElapsed);
-  console.log('data atual', today);
-  today.toLocaleDateString();
-  console.log(today.toLocaleDateString())
+  // console.log('now', nowDate);
+  // console.log('expiry', expiryDate);
+  // console.log('expiry 2', expiryDate2);
 
   const container = document.createElement('main');
   container.classList.add('background-feed');
   const template = `
   <header class='bg-header'>
-    <img src='/image/logo.svg' alt='Logo'>
+    <img src='/image/logo.svg' alt='Logo' class='img-logo'>
   </header>
   <section class='conteudo'>
     <section class='add-post'>
-      <form action='' id='postForm'>
-        <img src='/image/user.svg' alt='user'>
+      <form action='' id= 'postForm' class='postagem'>
+        <img src='/image/user.svg' alt='user' class='img-user'>
         <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
         <button type ='button' class='btn-add'>
-            <img src='/image/teste.svg' alt='adicionar'>
+            <img src='/image/teste.svg' alt='adicionar' class='img-add'>
         </button>
       </form>
     </section>
    <section class='timeline'></section>
   </section>
   <nav class='nav-feed'>
-    <a href="/#feed" class='img-home'>
-      <img src='/image/home.svg' alt='home'>
+    <a href="/#feed" class='nav-home'>
+      <img src='/image/home.svg' alt='home' class='img-home'>
     </a>
-    <a href="/#hash" class='img-hash'>
-      <img src='/image/hash.svg' alt='hash'>
+    <a href="/#hash" class='nav-hash'>
+      <img src='/image/hash.svg' alt='hash' class='img-hash'>
     </a>
-    <a href="/#home" class='img-logout'>
-      <img src='/image/logout.svg' alt='sair'>
+    <a href="/#home" class='nav-logout'>
+      <img src='/image/logout.svg' alt='sair' class='img-logout'>
     </a>
   </nav>
   `;
@@ -65,8 +55,8 @@ export default async () => {
     const getPost = container.querySelector('#post');
     const username = auth.currentUser.displayName;
     const uidUser = auth.currentUser.uid;
- /*    console.log('dados do usuário', username);
-    console.log('dados do usuário', uidUser); */
+    // console.log('dados do usuário', username);
+    // console.log('dados do usuário', uidUser);
     addPost(getPost, username, uidUser);
   });
 
@@ -83,12 +73,7 @@ export default async () => {
   const uidUser = auth.currentUser.uid;
   publishPost(data, loadTimeline, uidUser);
 
- /*  const backToTop = container.querySelector('.img-home');
-  backToTop.addEventListener('click', () =>{
-    window.scrollTo(0,0);
-  }); */
-
-  const logout = container.querySelector('.img-logout');
+  const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {
     userLogout()
       .then(() => {

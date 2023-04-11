@@ -52,6 +52,15 @@ export default () => {
         const errorParagraph = container.querySelector('.message-error');
         errorParagraph.innerHTML = errorMessage;
       });
+    // userPersistente()
+    //   .then(() => signInWithEmailAndPassword(auth, email, senha),
+    //     window.location.hash = 'feed');
+    //   }
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     console.log(errorCode);
+    //     const errorMessage = error.message;
+    //   });
   };
   container.addEventListener('click', (event) => {
     if (event.target.id === 'entrar' && event.target.nodeName === 'BUTTON') {

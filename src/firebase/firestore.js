@@ -4,7 +4,6 @@ import {
   getFirestore,
   collection,
   addDoc,
-  Timestamp,
   getDocs,
   doc,
   deleteDoc,
@@ -12,12 +11,11 @@ import {
   onSnapshot,
 } from './exports';
 
-/* Iniciar o Firestore. Este método precisa ser executado
-toda vez que quisermos interagir com nosso banco de dados Firestore. */
+// Iniciar o Firestore. Este método precisa ser executado
+// toda vez que quisermos interagir com nosso banco de dados Firestore.
 const db = getFirestore(app);
 
-/* Função para usuário adicionar um novo post e armazenar */
-
+// Função para usuário adicionar um novo post e armazenar
 export async function addPost(post, username, uidUser) {
   const docRef = await addDoc(collection(db, 'Post'), {
     name: username,
@@ -26,7 +24,7 @@ export async function addPost(post, username, uidUser) {
     date: Timestamp.fromDate(new Date().getDate()),
     uid: uidUser,
   });
-  console.log(Timestamp.fromDate(new Date()).toDate())
+  console.log('Document written with ID: ', docRef.id);
   /* console.log('Document written with ID: ', docRef.id); */
 }
 
@@ -45,11 +43,11 @@ export async function loadPosts() {
   return arrayPosts;
 }
 
-/* Deletar seu elemento pelo id do post */
+// Deletar seu elemento pelo id do post
 export const deletePost = async (postId) => {
   await deleteDoc(doc(db, 'Post', postId));
   console.log('apagou');
-}
+};
 
 /* editar irá precisar saber do id do doc e value do novo text */
 export const updatePost = async (postId, newText) => {
@@ -57,28 +55,22 @@ export const updatePost = async (postId, newText) => {
   await updateDoc(postRef, {
     text: newText.value,
   });
+};
 
-}
-
-export const likePost = async (postId, likes) => {
-  console.log('postId', postId);
-  console.log('likes', likes);
+export const likeCounter = async (postId, likes) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
     likes: likes + 1,
   });
-  console.log(postRef.likes)
-    
-}
-
-/* export const likePost = async (postId, likes) => {
-  const unsub = onSnapshot(doc(db, 'Post', postId),
-    { includeMetadataChanges: true },
-    (doc) => {
-    const data = doc.data();
-    console.log(doc.data());
-    console.log('unsub', unsub);
-    data.likes = likes + 1
-    console.log(data.likes = likes + 1)
-    });
-} */
+};
+export const deslikeCounter = async (postId, likes) => {
+  const postRef = doc(db, 'Post', postId);
+  await updateDoc(postRef, {
+    likes: likes - 1,
+  });
+};
+export const updateTimestamp = async (postId) => {
+  const docRef = doc(db, 'Post', postId);
+  await updateDoc(docRef, {
+  });
+};
