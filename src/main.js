@@ -5,13 +5,12 @@ import login from './pages/login/index.js';
 import register from './pages/register/index.js';
 import feed from './pages/feed/feed.js';
 
-
 // Root definido no arquivo index.html
 const main = document.querySelector('#root');
 
 // Função inicializar a página
 const init = () => {
-  window.addEventListener('hashchange', () => {
+  window.addEventListener('hashchange', async () => {
     main.innerHTML = ' ';
     switch (window.location.hash) {
       case ' ':
@@ -27,7 +26,7 @@ const init = () => {
         main.appendChild(about());
         break;
       case '#feed':
-        main.appendChild(feed());
+        main.appendChild(await feed());
         break;
       default: main.appendChild(home());
     }
@@ -40,6 +39,3 @@ window.addEventListener('load', () => {
   window.location.hash = '';
   init();
 });
-
-
-

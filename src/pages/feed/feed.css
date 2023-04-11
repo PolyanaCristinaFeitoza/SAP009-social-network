@@ -1,8 +1,7 @@
 /* CSS do Feed */
-
 .background-feed{
   background-color: #F5DEF9;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 13vh auto 6vh;
   grid-template-columns: auto;
@@ -31,31 +30,17 @@
   background-color: #FFFFFF;
   border-radius: 0.5rem;
   height: 8vh;
-  width: 90vw;
   display: grid;
   place-items: center;
   padding: 0.5rem;
-  margin-left: 13px;
-}
-
-.centro{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.user{
-  margin-right: 58px;
 }
 
 .text-area{
   border: none;
   font-size: 1.3rem;
-  width: 50vw;
+  width: 70vw;
   resize: none;
   background-color: #FFFFFF;
-  margin-left: -38px;
-  margin-right: 22px;
 }
 
 .btn-add{
@@ -63,17 +48,25 @@
   background-color: #ffffff;
 }
 
+.timeline{
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;
   display: grid;
-  grid-template-areas: 
-   "photo username username hour edit"
-   "message message message message message"
-   "like count comment comment delete";
-  grid-template-columns: 10vw 3vw auto 5vw 10vw;
+  grid-template-areas:
+  "photo username username username hour"
+  "message message message message message"
+  "like count comment edit delete";
+  row-gap: 2rem;
+  padding: 1rem;
+  grid-template-columns: 10vw 7vw auto 2vw 24vw;
   grid-template-rows: 8vh auto 8vh;
-  padding: 0.5rem;
+  /* width: 90vw; */
 }
 
 .img-user{
@@ -93,7 +86,7 @@
   color: #888080;
 }
 
-.img-edit{
+.btn-edit{
   grid-area: edit;
   border: none;
   background-color: #ffffff;
@@ -101,9 +94,13 @@
 
 .message-post{
   grid-area: message;
+  resize: none; 
+  border: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
-.img-like{
+.btn-like{
   grid-area: like;
   border: none;
   background-color: #ffffff;
@@ -113,17 +110,23 @@
   grid-area: count;
 }
 
-.img-comment{
+.btn-comment{
   grid-area: comment;
   border: none;
   background-color: #ffffff;
   justify-self: start;
 }
 
-.img-delete{
+.img-edit{
+  width: 9vw;
+}
+
+.btn-delete{
   grid-area: delete;
   border: none;
   background-color: #ffffff;
+  width: 6vw;
+  justify-self: end;
 }
 
 .nav-feed{
@@ -133,20 +136,147 @@
   grid-template-areas: 
    "home hash logout";
   grid-template-columns: auto auto auto;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
-.img-home{
+.nav-home{
   grid-area: home;
 }
 
-.img-hash{
+.nav-hash{
   grid-area: hash;
   justify-self: center;
 }
 
-.img-logout{
+.nav-logout{
   grid-area: logout;
   justify-self: end;
 }
 
+@media only screen and (min-width: 1024px){
+  .background-feed{
+    grid-template-areas: 
+    "header section"
+    "footer section";
+    grid-template-rows: 13vh auto;
+    grid-template-columns: 13vw auto;
+  }
+
+  .conteudo{
+    width: 85vw;
+    margin-top: 2rem;
+  }
+
+  .img-logo{
+    width: 6vw;
+    position: fixed;
+    margin-top: 4rem;
+  }
+
+  .nav-feed{
+    grid-template-areas: 
+    "home"
+    "hash"
+    "logout";
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-template-columns: auto;
+    gap: 7rem;
+    padding: 5rem;
+  
+  }
+
+  .nav-home{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-home{
+    width: 4vw;
+    position: fixed 
+  }
+
+  .nav-hash{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-hash{
+    width: 4vw;
+    position: fixed;
+    margin-top: -1rem;
+  }
+
+  .nav-logout{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-logout{
+    width: 4vw;
+    position: fixed;
+    margin-top: -3rem;
+  }
+
+  .add-post{
+    height: 12vh;
+  }
+
+  .postagem{
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .img-user{
+    width: 5vw;
+  }
+
+  .text-area{
+    font-size: 2rem;
+    align-self: flex-end;
+  }
+
+  .img-add{
+    width: 3vw;
+  }
+
+  .post{
+    grid-template-columns: 5vw 4vw auto 2vw 11vw;
+  }
+
+  .username{
+    font-size: 2.3rem;
+  }
+  
+  .hours{
+    font-size: 2rem;
+  }
+
+  .img-like{
+    width: 4vw;
+  }
+
+  .img-coment{
+    width: 4vw;
+  }
+
+  .img-edit{
+    width: 5vw;
+  }
+
+  .img-delete{
+    width: 3vw;
+  }
+
+  .message-post{
+    font-size: 2rem;
+  }
+
+  .count{
+    font-size: 2rem;
+  }
+
+  .btn-delete{
+    margin-top: 0.5rem;
+  }
+}
