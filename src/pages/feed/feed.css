@@ -23,17 +23,17 @@
   grid-area: section;
   display: grid;
   justify-content: center;
-  /* width: 90vw; */
+  /* width: 94vw; */
   margin: 1rem;
 }
 
 .add-post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;
-  height: 8vh;
+  /* height: 8vh;
   display: grid;
   place-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem; */
 }
 
 .text-area{
@@ -66,7 +66,7 @@
   grid-template-columns: 10vw 3vw auto 5vw 10vw;
   grid-template-rows: 8vh auto 8vh;
   padding: 0.5rem;
-  width: 90vw;
+  /* width: 90vw; */
   gap: 1rem;
 }
 
@@ -154,3 +154,46 @@
   justify-self: end;
 }
 
+@media only screen and (min-width: 912px) {
+  .background-feed{
+    grid-template-areas:
+    "header section"
+    "footer section";
+    grid-template-rows: 13vh auto;
+    grid-template-columns: 13vw auto;
+  }
+
+  .conteudo{
+    width: 85vw;
+    margin-top: 2rem;
+  }
+
+  .nav-feed{
+    grid-template-areas:
+    "home"
+    "hash"
+    "logout";
+    grid-template-rows: 13vh 13vh 13vh;
+    grid-template-columns: auto;
+    gap: 7rem;
+    padding: 7rem;
+  }
+
+  .img-home{
+    justify-self: center;
+  }
+
+  .img-logout{
+    justify-self: center;
+  }
+
+  #postForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  
+}

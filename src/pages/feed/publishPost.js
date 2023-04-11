@@ -29,7 +29,7 @@ export default (posts, container, user) => {
     <button class='img-like'>
       <img src='/image/like.svg' alt='like' class='img-like'>
     </button>
-    <p class='count'>0</p>
+    <p class='count'>${post.likes}</p>
     <button class='img-comment'>
       <img src='/image/comment.svg' alt='comentario'>
     </button>
@@ -55,7 +55,7 @@ export default (posts, container, user) => {
           editMessage.disabled = true;
           await updatePost(post.id, editMessage);
         } else {
-          editMessage.style.border = '2px solid #F5DEF9';
+          editMessage.style.border = '2px solid #6A4085';
           editMessage.disabled = false;
         }
         console.log('pode editar');
@@ -71,11 +71,16 @@ export default (posts, container, user) => {
     }
 
     /* Se o usuário logado clicar no coração, executa likepPost(), caso ele volte a curtir novamente deslike */
-    console.log('like post', post.likes)
+    /* console.log('like post', post.likes) */
     const btnLike = postContainer.querySelector('.img-like');
     btnLike.addEventListener('click', async () => {
       await likePost(post.id, post.likes);
+      /* console.log(await likePost(post.id, post.likes)) */
+      const countLike = postContainer.querySelector('.count');
+      countLike.innerHTML = post.likes + 1;
     });
+
+    
 
     return container.appendChild(postContainer);
   });

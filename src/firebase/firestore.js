@@ -4,11 +4,12 @@ import {
   getFirestore,
   collection,
   addDoc,
-  /* Timestamp, */
+  Timestamp,
   getDocs,
   doc,
   deleteDoc,
   updateDoc,
+  onSnapshot,
 } from './exports';
 
 /* Iniciar o Firestore. Este método precisa ser executado
@@ -22,9 +23,10 @@ export async function addPost(post, username, uidUser) {
     name: username,
     likes: 0,
     text: post.value,
-    date: new Date(),
+    date: Timestamp.fromDate(new Date().getDate()),
     uid: uidUser,
   });
+  console.log(Timestamp.fromDate(new Date()).toDate())
   /* console.log('Document written with ID: ', docRef.id); */
 }
 
@@ -59,6 +61,8 @@ export const updatePost = async (postId, newText) => {
 }
 
 export const likePost = async (postId, likes) => {
+  console.log('postId', postId);
+  console.log('likes', likes);
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
     likes: likes + 1,
@@ -66,3 +70,15 @@ export const likePost = async (postId, likes) => {
   console.log(postRef.likes)
     
 }
+
+/* export const likePost = async (postId, likes) => {
+  const unsub = onSnapshot(doc(db, 'Post', postId),
+    { includeMetadataChanges: true },
+    (doc) => {
+    const data = doc.data();
+    console.log(doc.data());
+    console.log('unsub', unsub);
+    data.likes = likes + 1
+    console.log(data.likes = likes + 1)
+    });
+} */

@@ -12,14 +12,21 @@ export default async () => {
     window.location.href = ''
   }
 
-/*   let nowDate = new Date();
+  let nowDate = new Date();
   let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
   let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000) );
 
   console.log('now', nowDate);
   console.log('expiry', expiryDate);
-  console.log('expiry 2', expiryDate2); */
- 
+  console.log('expiry 2', expiryDate2);
+
+  const timeElapsed = Date.now();
+  console.log('tempo decorrido em milissegundos', timeElapsed); //tempo decoorrido
+  const today = new Date(timeElapsed);
+  console.log('data atual', today);
+  today.toLocaleDateString();
+  console.log(today.toLocaleDateString())
+
   const container = document.createElement('main');
   container.classList.add('background-feed');
   const template = `
@@ -28,7 +35,7 @@ export default async () => {
   </header>
   <section class='conteudo'>
     <section class='add-post'>
-      <form action='' id= 'postForm'>
+      <form action='' id='postForm'>
         <img src='/image/user.svg' alt='user'>
         <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
         <button type ='button' class='btn-add'>
@@ -62,6 +69,12 @@ export default async () => {
     console.log('dados do usuário', uidUser); */
     addPost(getPost, username, uidUser);
   });
+
+  /* container.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+      newPost.click();
+    }
+  }); */
   /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
 
   const data = await loadPosts();
@@ -70,10 +83,10 @@ export default async () => {
   const uidUser = auth.currentUser.uid;
   publishPost(data, loadTimeline, uidUser);
 
-  const backToTop = container.querySelector('.img-home');
+ /*  const backToTop = container.querySelector('.img-home');
   backToTop.addEventListener('click', () =>{
     window.scrollTo(0,0);
-  });
+  }); */
 
   const logout = container.querySelector('.img-logout');
   logout.addEventListener('click', () => {

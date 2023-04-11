@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+
+/* Page about */
+
+.main-about{
+  min-height: 100vh;
+}
+
+.header-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7rem; 
+}
+
+.name-about{
+  font-size: 2rem;
+  font-family: 'Emilys Candy', cursive;
+}
+
+.mt-1rem{
+  margin-top: 1rem;
+}
+
+.entrar-about{
+  font-size: 2rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.main-section{
+  display: grid;
+  margin: 2rem;
+  /* background-color: #f0f0f0; */
+  gap:4rem;
+  margin-top: 5rem;
+}
+
+.img-test{
+  width: 35vw;
+  border-radius: 1rem;
+}
+
+.img-txt{
+  display: flex;
+  gap: 5rem;
+}
+
+.p-about{
+  font-family: 'Thasadith', sans-serif;
+}
