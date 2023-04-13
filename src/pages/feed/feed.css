@@ -22,17 +22,17 @@
   grid-area: section;
   display: grid;
   justify-content: center;
-  /* width: 94vw; */
+  /* width: 90vw; */
   margin: 1rem;
 }
 
 .add-post{
   background-color: #FFFFFF;
   border-radius: 0.5rem;
-  /* height: 8vh;
+  height: 8vh;
   display: grid;
   place-items: center;
-  padding: 0.5rem; */
+  padding: 0.5rem;
 }
 
 .text-area{

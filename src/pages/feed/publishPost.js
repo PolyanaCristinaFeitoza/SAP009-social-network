@@ -90,19 +90,26 @@ export default (posts, container, user) => {
         }
       });
     }
+    /* console.log('post.likes', post.likes); */
 
     const btnLike = postContainer.querySelector('.btn-like');
+    
     const imgLike = postContainer.querySelector('.img-like');
+   /*  var align = imgLike.getAttribute('src');
+    console.log(align) */
     btnLike.addEventListener('click', async () => {
-      await likeCounter(post.id, post.likes);
-      imgLike.setAttribute('src', '/image/like-purple.svg');
-      const countLike = postContainer.querySelector('.count');
-      countLike.innerHTML = post.likes + 1;
-      if (imgLike.src === '/image/like-purple.svg') {
+      if(imgLike.getAttribute('src') === '/image/like.svg'){
+        console.log('clique botao like', btnLike);
+        await likeCounter(post.id, post.likes);
+        console.log(likeCounter(post.id, post.likes));
+        const countLike = postContainer.querySelector('.count');
+        countLike.innerHTML = post.likes + 1;
+        imgLike.setAttribute('src', '/image/like-purple.svg');
+      } else {
         await deslikeCounter(post.id, post.likes);
-        imgLike.setAttribute('src', '/image/like.svg');
         const countDeslike = postContainer.querySelector('.count');
         countDeslike.innerHTML = post.likes - 1;
+        imgLike.setAttribute('src', '/image/like.svg');
       }
     });
 

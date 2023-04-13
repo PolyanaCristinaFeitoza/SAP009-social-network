@@ -7,7 +7,7 @@ export default async () => {
   const logged = getSignedUser();
   /* console.log('passei', logged); */
   if (logged === 'Usuário não encontrado') {
-    window.location.href = '';
+    return window.location.href = '';
   }
   // let nowDate = new Date();
   // let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
@@ -25,7 +25,7 @@ export default async () => {
   </header>
   <section class='conteudo'>
     <section class='add-post'>
-      <form action='' id= 'postForm' class='postagem'>
+      <form action='' id= 'postForm' class='form-post'>
         <img src='/image/user.svg' alt='user' class='img-user'>
         <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
         <button type ='button' class='btn-add'>
@@ -68,7 +68,7 @@ export default async () => {
   /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
 
   const data = await loadPosts();
-  /* console.log('dados doc', data); */
+  console.log('dados doc', data);
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   publishPost(data, loadTimeline, uidUser);

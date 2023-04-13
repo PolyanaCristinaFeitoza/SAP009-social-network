@@ -20,4 +20,5 @@ export {
   deleteDoc,
   updateDoc,
   onSnapshot,
+  query,
 } from 'firebase/firestore';
