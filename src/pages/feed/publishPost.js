@@ -4,16 +4,14 @@ adicionar na section específica */
 import {
   deletePost,
   updatePost,
-  likeCounter,
-  deslikeCounter,
   updateTimestamp,
+  likePost,
 } from '../../firebase/firestore';
 /* publicar Post, excluir post */
 export default (posts, container, user) => {
 /*   console.log('dados', posts);
   console.log('dados', container);
   console.log('dados', user); */
-
   posts.map((post) => {
     // chamando a função de data e hora
     updateTimestamp(post.date);
@@ -35,9 +33,9 @@ export default (posts, container, user) => {
 
     const isAuthor = user === post.uid;
     const templatePost = `
-    <img src='/image/user.svg' alt='user' class='img-user'>
+    <img src='/image/user.svg' alt='user' class='img-user-post'>
     <p class='username'>${post.name}</p>
-    <p class='hours'>${dia} | ${mes} | ${ano}</p>
+    <p class='hours'>${dia} / ${mes} / ${ano}</p>
     ${isAuthor ? `<button class='btn-edit'>
       <img src='/image/edit.svg' alt='edit' class='img-edit'>
     </button>` : ''} 
@@ -45,7 +43,7 @@ export default (posts, container, user) => {
     <button class='btn-like'>
       <img src='/image/like.svg' alt='like' class='img-like'>
     </button>
-    <p class='count'>${post.likes}</p>
+    <p class='count'></p>
     <button class='btn-comment'>
       <img src='/image/comment.svg' alt='comentario' class='img-coment'>
     </button>
@@ -73,13 +71,6 @@ export default (posts, container, user) => {
           editMessage.style.border = '2px solid #F5DEF9';
           editMessage.disabled = false;
         }
-        /*   postContainer.addEventListener('click', (event) => {
-          const clicouForaTextarea = !editMessage.post(event.target);
-          if(clicouForaTextarea){
-            editMessage.disabled = true;
-          }
-        }) */
-        console.log('pode editar');
       });
       const btnDelete = postContainer.querySelector('.img-delete');
       /* console.log('btnDelete', btnDelete); */
@@ -93,16 +84,20 @@ export default (posts, container, user) => {
 
     const btnLike = postContainer.querySelector('.btn-like');
     const imgLike = postContainer.querySelector('.img-like');
+    const countLike = postContainer.querySelector('.count');
     btnLike.addEventListener('click', async () => {
-      await likeCounter(post.id, post.likes);
-      imgLike.setAttribute('src', '/image/like-purple.svg');
-      const countLike = postContainer.querySelector('.count');
-      countLike.innerHTML = post.likes + 1;
-      if (imgLike.src === '/image/like-purple.svg') {
-        await deslikeCounter(post.id, post.likes);
+      const status = await likePost(post.id, user);
+      if (status.liked === true) {
+        imgLike.setAttribute('src', '/image/like-purple.svg');
+        countLike.innerHTML = status.count;
+        console.log(status.count);
+      }
+    });
+    btnLike.addEventListener('click', async () => {
+      const status = await likePost(post.id, user);
+      if (status.liked === false) {
         imgLike.setAttribute('src', '/image/like.svg');
-        const countDeslike = postContainer.querySelector('.count');
-        countDeslike.innerHTML = post.likes - 1;
+        countLike.innerHTML = status.count;
       }
     });
 
