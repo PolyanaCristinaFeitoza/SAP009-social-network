@@ -8,6 +8,11 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  getDoc,
+  arrayRemove,
+  arrayUnion,
+  onSnapshot,
+  query,
 } from './exports';
 
 // Iniciar o Firestore. Este método precisa ser executado
@@ -18,41 +23,53 @@ const db = getFirestore(app);
 export async function addPost(post, username, uidUser) {
   const docRef = await addDoc(collection(db, 'Post'), {
     name: username,
-    likes: 0,
+    likes: [],
     text: post.value,
     date: new Date(),
     uid: uidUser,
-    /* id: docRef.id, */
   });
   console.log('Document written with ID: ', docRef.id);
   /* console.log('Document written with ID: ', docRef.id); */
 }
 
 /* Toda vez que a página carrega, ele vai no banco de dados e ler todos os posts */
-export async function loadPosts() {
+/* export async function loadPosts() {
   const arrayPosts = [];
   const querySnapshot = await getDocs(collection(db, 'Post'));
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    /* Adicionando o id do doc no campo data */
+    Adicionando o id do doc no campo data
     data.id = doc.id;
-    /* console.log('data.id', data.id); */
+    console.log('data.id', data.id);
     arrayPosts.push(data);
-    /* console.log('loadPosts firestore', doc.id, " => ", doc.data()); */
+    console.log('loadPosts firestore', doc.id, " => ", doc.data());
   });
-  console.log(arrayPosts)
   return arrayPosts;
-}
+} */
 
-/* const q = query(collection(db, "cities"), where("state", "==", "CA"));
-const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  const cities = [];
-  querySnapshot.forEach((doc) => {
-      cities.push(doc.data().name);
+/* export function loadPosts() {
+  const arrayPosts = [];
+  const q = query(collection(db, 'Post'));
+  console.log('q', q);
+  const unsubscribe = onSnapshot(q, (querySnapshot => {
+    console.log('querySnapshot', querySnapshot);
+    querySnapshot.forEach((doc) => {
+      arrayPosts.push(doc.data());
+    });
+  }));
+  console.log('unsubscribe', unsubscribe)
+  console.log('arrayPosts', arrayPosts);
+  return arrayPosts;
+} */
+
+export function loadPosts() {
+  /* const arrayPosts = []; */
+  const unsub = onSnapshot(doc(db, 'Post'), (doc) => {
+    console.log("Current data: ", doc.data());
   });
-  console.log("Current cities in CA: ", cities.join(", "));
-}); */
-
+  console.log('unsub', unsub)
+  /* return arrayPosts; */
+}
 
 // Deletar seu elemento pelo id do post
 export const deletePost = async (postId) => {
@@ -73,13 +90,13 @@ const getPost = async (postId) => {
   return post.data();
 };
 
-export const likeCounter = async (postId, likes) => {
+const like = async (postId, userId) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
     likes: arrayUnion(userId),
   });
 };
-export const deslikeCounter = async (postId, likes) => {
+const deslike = async (postId, userId) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
     likes: arrayRemove(userId),

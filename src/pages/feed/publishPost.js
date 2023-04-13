@@ -1,6 +1,3 @@
-/* Eu tenho que pegar as informações do loadPosts e aparecer no feed.js */
-/* Então será necessário exportar para o feed e lá chamar a função loadposts e
-adicionar na section específica */
 import {
   deletePost,
   updatePost,
@@ -32,6 +29,7 @@ export default (posts, container, user) => {
     postContainer.classList.add('post');
 
     const isAuthor = user === post.uid;
+    const status = post.likes.includes(user);
     const templatePost = `
     <img src='/image/user.svg' alt='user' class='img-user-post'>
     <p class='username'>${post.name}</p>
@@ -41,9 +39,9 @@ export default (posts, container, user) => {
     </button>` : ''} 
     <textarea id='message-post' name='message-post' class='message-post' rows='3' cols='30' disabled>${post.text}</textarea>
     <button class='btn-like'>
-      <img src='/image/like.svg' alt='like' class='img-like'>
+      ${status ? `<img src='/image/like-purple.svg' alt='like' class='img-like'>` : `<img src='/image/like.svg' alt='like' class='img-like'>`}
     </button>
-    <p class='count'></p>
+    <p class='count'>${post.likes.length}</p>
     <button class='btn-comment'>
       <img src='/image/comment.svg' alt='comentario' class='img-coment'>
     </button>
@@ -81,10 +79,8 @@ export default (posts, container, user) => {
         }
       });
     }
-    /* console.log('post.likes', post.likes); */
 
     const btnLike = postContainer.querySelector('.btn-like');
-    
     const imgLike = postContainer.querySelector('.img-like');
     const countLike = postContainer.querySelector('.count');
     btnLike.addEventListener('click', async () => {
@@ -104,5 +100,5 @@ export default (posts, container, user) => {
     });
 
     return container.appendChild(postContainer);
-  });
+  });
 };
