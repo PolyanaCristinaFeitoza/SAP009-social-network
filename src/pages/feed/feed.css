@@ -1,4 +1,6 @@
 /* CSS do Feed */
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+
 .background-feed{
   background-color: #F5DEF9;
   min-height: 100vh;
@@ -28,7 +30,7 @@
 
 .add-post{
   background-color: #FFFFFF;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   height: 8vh;
   display: grid;
   place-items: center;
@@ -56,7 +58,7 @@
 
 .post{
   background-color: #FFFFFF;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   display: grid;
   grid-template-areas:
   "photo username username username hour"
@@ -64,12 +66,12 @@
   "like count comment edit delete";
   row-gap: 2rem;
   padding: 1rem;
-  grid-template-columns: 10vw 7vw auto 2vw 24vw;
+  grid-template-columns: 10vw 7vw auto 0vw 24vw;
   grid-template-rows: 8vh auto 8vh;
   /* width: 90vw; */
 }
 
-.img-user{
+.img-user-post{
   grid-area: photo;
   border: none;
   background-color: #ffffff;
@@ -79,6 +81,8 @@
   grid-area: username;
   text-transform: lowercase;
   align-self: center;
+  margin-top: -2rem;
+  font-family: 'Emilys Candy', cursive;
 }
 
 .hours{
@@ -119,6 +123,8 @@
 
 .img-edit{
   width: 9vw;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
 }
 
 .btn-delete{
@@ -191,8 +197,9 @@
   }
 
   .img-home{
-    width: 4vw;
-    position: fixed 
+    width: 3vw;
+    position: fixed;
+    margin-left: 1rem;
   }
 
   .nav-hash{
@@ -201,9 +208,10 @@
   }
 
   .img-hash{
-    width: 4vw;
+    width: 3vw;
     position: fixed;
     margin-top: -1rem;
+    margin-left: 1rem;
   }
 
   .nav-logout{
@@ -212,9 +220,10 @@
   }
 
   .img-logout{
-    width: 4vw;
+    width: 3vw;
     position: fixed;
     margin-top: -3rem;
+    margin-left: 1rem;
   }
 
   .add-post{
@@ -225,10 +234,11 @@
     display: flex;
     padding: 1rem;
     gap: 1rem;
+    width: 64vw;
   }
 
-  .img-user{
-    width: 5vw;
+  .img-user-post{
+    width: 3vw;
   }
 
   .text-area{
@@ -236,16 +246,22 @@
     align-self: flex-end;
   }
 
+  .img-user{
+    width: 3.5vw;
+  }
+
   .img-add{
-    width: 3vw;
+    width: 2.5vw;
   }
 
   .post{
-    grid-template-columns: 5vw 4vw auto 2vw 11vw;
+    grid-template-columns: 5vw 1vw auto 1vw 9vw;
+    width: 65vw;
   }
 
   .username{
     font-size: 2.3rem;
+    margin-left: -2rem;
   }
   
   .hours{
@@ -253,19 +269,20 @@
   }
 
   .img-like{
-    width: 4vw;
+    width: 2.5vw;
   }
 
   .img-coment{
-    width: 4vw;
+    width: 2.5vw;
   }
 
   .img-edit{
-    width: 5vw;
+    width: 3vw;
   }
 
   .img-delete{
-    width: 3vw;
+    width: 2vw;
+    margin-top: 1rem;
   }
 
   .message-post{
@@ -274,9 +291,14 @@
 
   .count{
     font-size: 2rem;
+    margin-left: -1rem;
   }
 
   .btn-delete{
     margin-top: 0.5rem;
+  }
+
+  .btn-edit{
+    margin-top: 1rem;
   }
 }

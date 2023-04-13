@@ -19,4 +19,9 @@ export {
   doc,
   deleteDoc,
   updateDoc,
+  getDoc,
+  arrayRemove,
+  arrayUnion,
+  onSnapshot,
+  query,
 } from 'firebase/firestore';
