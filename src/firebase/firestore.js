@@ -15,6 +15,9 @@ import {
   query,
 } from './exports';
 
+import publishPost from '../pages/feed/publishPost';
+import { auth } from './firebase';
+
 // Iniciar o Firestore. Este método precisa ser executado
 // toda vez que quisermos interagir com nosso banco de dados Firestore.
 const db = getFirestore(app);
@@ -47,28 +50,28 @@ export async function addPost(post, username, uidUser) {
   return arrayPosts;
 } */
 
-/* export function loadPosts() {
-  const arrayPosts = [];
+export  function loadPosts() {
+  
   const q = query(collection(db, 'Post'));
   console.log('q', q);
   const unsubscribe = onSnapshot(q, (querySnapshot => {
+    const arrayPosts = [];
     console.log('querySnapshot', querySnapshot);
     querySnapshot.forEach((doc) => {
-      arrayPosts.push(doc.data());
+      arrayPosts.push({
+      id:doc.id,
+      ...doc.data()
+      });
     });
+    console.log('arrayPosts', arrayPosts);
+    const loadTimeline = document.querySelector('.timeline');
+    const uidUser = auth.currentUser.uid;
+    publishPost(arrayPosts, loadTimeline, uidUser);
+    return arrayPosts;
   }));
   console.log('unsubscribe', unsubscribe)
-  console.log('arrayPosts', arrayPosts);
-  return arrayPosts;
-} */
-
-export function loadPosts() {
-  /* const arrayPosts = []; */
-  const unsub = onSnapshot(doc(db, 'Post'), (doc) => {
-    console.log("Current data: ", doc.data());
-  });
-  console.log('unsub', unsub)
-  /* return arrayPosts; */
+  console.log('entrei')
+  
 }
 
 // Deletar seu elemento pelo id do post
@@ -79,10 +82,16 @@ export const deletePost = async (postId) => {
 
 /* editar irá precisar saber do id do doc e value do novo text */
 export const updatePost = async (postId, newText) => {
+  console.log(newText.value);
+  console.log(postId);
   const postRef = doc(db, 'Post', postId);
+  
+  console.log(postRef)
   await updateDoc(postRef, {
     text: newText.value,
+    date: new Date(),
   });
+  loadPosts()
 };
 const getPost = async (postId) => {
   const postRef = doc(db, 'Post', postId);

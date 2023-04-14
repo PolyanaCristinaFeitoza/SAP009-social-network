@@ -9,9 +9,10 @@ export default (posts, container, user) => {
 /*   console.log('dados', posts);
   console.log('dados', container);
   console.log('dados', user); */
+  container.innerHTML = '';
   posts.map((post) => {
     // chamando a função de data e hora
-    updateTimestamp(post.date);
+    
 
     // add o toDate()
     const data = post.date.toDate();
@@ -63,7 +64,9 @@ export default (posts, container, user) => {
       btnEdit.addEventListener('click', async () => {
         if (editMessage.disabled === false) {
           editMessage.style.border = 'none';
+          console.log(editMessage);
           editMessage.disabled = true;
+          console.log(post)
           await updatePost(post.id, editMessage);
         } else {
           editMessage.style.border = '2px solid #F5DEF9';
@@ -100,5 +103,5 @@ export default (posts, container, user) => {
     });
 
     return container.appendChild(postContainer);
-  });
+  });
 };

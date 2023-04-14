@@ -67,11 +67,11 @@ export default async () => {
   }); */
   /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
 
-  const data = await loadPosts();
-  console.log('dados doc', data);
+  const data = loadPosts();
+/*   console.log('dados doc', data);
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
-  publishPost(data, loadTimeline, uidUser);
+  publishPost(data, loadTimeline, uidUser); */
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {
