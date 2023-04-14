@@ -1,7 +1,6 @@
 import {
   deletePost,
   updatePost,
-  updateTimestamp,
   likePost,
 } from '../../firebase/firestore';
 /* publicar Post, excluir post */
@@ -11,9 +10,6 @@ export default (posts, container, user) => {
   console.log('dados', user); */
   container.innerHTML = '';
   posts.map((post) => {
-    // chamando a função de data e hora
-    
-
     // add o toDate()
     const data = post.date.toDate();
 
@@ -64,9 +60,9 @@ export default (posts, container, user) => {
       btnEdit.addEventListener('click', async () => {
         if (editMessage.disabled === false) {
           editMessage.style.border = 'none';
-          console.log(editMessage);
+          /* console.log(editMessage); */
           editMessage.disabled = true;
-          console.log(post)
+          /* console.log(post) */
           await updatePost(post.id, editMessage);
         } else {
           editMessage.style.border = '2px solid #F5DEF9';
@@ -91,7 +87,7 @@ export default (posts, container, user) => {
       if (status.liked === true) {
         imgLike.setAttribute('src', '/image/like-purple.svg');
         countLike.innerHTML = status.count;
-        console.log(status.count);
+        /* console.log(status.count); */
       }
     });
     btnLike.addEventListener('click', async () => {

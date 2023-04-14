@@ -4,7 +4,7 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
+  /* getDocs, */
   doc,
   deleteDoc,
   updateDoc,
@@ -13,6 +13,7 @@ import {
   arrayUnion,
   onSnapshot,
   query,
+  orderBy,
 } from './exports';
 
 import publishPost from '../pages/feed/publishPost';
@@ -31,7 +32,7 @@ export async function addPost(post, username, uidUser) {
     date: new Date(),
     uid: uidUser,
   });
-  console.log('Document written with ID: ', docRef.id);
+  /* console.log('Document written with ID: ', docRef.id); */
   /* console.log('Document written with ID: ', docRef.id); */
 }
 
@@ -41,7 +42,6 @@ export async function addPost(post, username, uidUser) {
   const querySnapshot = await getDocs(collection(db, 'Post'));
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    Adicionando o id do doc no campo data
     data.id = doc.id;
     console.log('data.id', data.id);
     arrayPosts.push(data);
@@ -52,47 +52,46 @@ export async function addPost(post, username, uidUser) {
 
 export  function loadPosts() {
   
-  const q = query(collection(db, 'Post'));
-  console.log('q', q);
+  const q = query(collection(db, 'Post'), orderBy('date', 'desc'));
+  /* console.log('q', q); */
   const unsubscribe = onSnapshot(q, (querySnapshot => {
     const arrayPosts = [];
-    console.log('querySnapshot', querySnapshot);
+    /* console.log('querySnapshot', querySnapshot); */
     querySnapshot.forEach((doc) => {
       arrayPosts.push({
       id:doc.id,
       ...doc.data()
       });
     });
-    console.log('arrayPosts', arrayPosts);
+    /* console.log('arrayPosts', arrayPosts); */
     const loadTimeline = document.querySelector('.timeline');
     const uidUser = auth.currentUser.uid;
     publishPost(arrayPosts, loadTimeline, uidUser);
     return arrayPosts;
   }));
-  console.log('unsubscribe', unsubscribe)
-  console.log('entrei')
-  
+  /* console.log('unsubscribe', unsubscribe)
+  console.log('entrei') */
 }
 
 // Deletar seu elemento pelo id do post
 export const deletePost = async (postId) => {
   await deleteDoc(doc(db, 'Post', postId));
-  console.log('apagou');
+  /* console.log('apagou'); */
 };
 
 /* editar irá precisar saber do id do doc e value do novo text */
 export const updatePost = async (postId, newText) => {
-  console.log(newText.value);
-  console.log(postId);
+ /*  console.log(newText.value);
+  console.log(postId); */
   const postRef = doc(db, 'Post', postId);
-  
-  console.log(postRef)
+  /* console.log(postRef) */
   await updateDoc(postRef, {
     text: newText.value,
     date: new Date(),
   });
   loadPosts()
 };
+
 const getPost = async (postId) => {
   const postRef = doc(db, 'Post', postId);
   const post = await getDoc(postRef);
@@ -105,6 +104,7 @@ const like = async (postId, userId) => {
     likes: arrayUnion(userId),
   });
 };
+
 const deslike = async (postId, userId) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
@@ -128,10 +128,4 @@ export const likePost = async (postId, userId) => {
     liked = true;
   }
   return { liked, count };
-};
-
-export const updateTimestamp = async (postId) => {
-  const docRef = doc(db, 'Post', postId);
-  await updateDoc(docRef, {
-  });
 };
