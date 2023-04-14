@@ -30,7 +30,7 @@ export default (posts, container, user) => {
     const templatePost = `
     <img src='/image/user.svg' alt='user' class='img-user-post'>
     <p class='username'>${post.name}</p>
-    <p class='hours'>${dia} / ${mes} / ${ano}</p>
+    <p class='date'>${dia} / ${mes} / ${ano}</p>
     ${isAuthor ? `<button class='btn-edit'>
       <img src='/image/edit.svg' alt='edit' class='img-edit'>
     </button>` : ''} 
@@ -73,7 +73,7 @@ export default (posts, container, user) => {
       /* console.log('btnDelete', btnDelete); */
 
       btnDelete.addEventListener('click', async () => {
-        if (window.confirm('Tem certeza?')) {
+        if (confirm('Tem certeza?')) {
           await deletePost(post.id);
         }
       });

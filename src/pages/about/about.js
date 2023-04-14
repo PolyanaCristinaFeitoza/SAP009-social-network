@@ -1,14 +1,17 @@
 /* Pagina Sobre */
-export default () => {
-  const container = document.createElement('main');
+import { getSignedUser } from '../../firebase/firebase';
 
+export default () => {
+  const logged = getSignedUser();
+  const userLogged = logged === 'Usuário não encontrado';
+  const container = document.createElement('main');
   container.classList.add('main-about');
 
   const template = `
     <header class='header-about'>
       <h1 class='name-about'>Friandy</h1>
       <img src='/image/logo.svg' alt='Logo' class='logo mt-1rem'> 
-      <a href='/#home' class='entrar-about'>Entrar</a>
+      ${userLogged ? `<a href='/#home' class='entrar-about'>Entrar</a>` : `<a href='/#feed' class='entrar-about'>Feed</a>`}
     </header>
     <section class='main-section'>
       <section class='img-txt'>

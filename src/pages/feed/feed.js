@@ -1,21 +1,11 @@
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
 import { addPost, loadPosts } from '../../firebase/firestore';
-import publishPost from './publishPost';
 
-/* Pagina Feed */
 export default async () => {
   const logged = getSignedUser();
-  /* console.log('passei', logged); */
   if (logged === 'Usuário não encontrado') {
     return window.location.href = '';
   }
-  // let nowDate = new Date();
-  // let expiryDate = new Date(new Date().setHours(new Date().getHours() + 2));
-  // let expiryDate2 = new Date(Date.now() + 2 * (60 * 60 * 1000) );
-
-  // console.log('now', nowDate);
-  // console.log('expiry', expiryDate);
-  // console.log('expiry 2', expiryDate2);
 
   const container = document.createElement('main');
   container.classList.add('background-feed');
@@ -27,7 +17,8 @@ export default async () => {
     <section class='add-post'>
       <form action='' id= 'postForm' class='form-post'>
         <img src='/image/user.svg' alt='user' class='img-user'>
-        <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30'></textarea>
+        <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30' required></textarea>
+        <p class='message-error'></p>
         <button type ='button' class='btn-add'>
             <img src='/image/teste.svg' alt='adicionar' class='img-add'>
         </button>
@@ -39,7 +30,7 @@ export default async () => {
     <a href="/#feed" class='nav-home'>
       <img src='/image/home.svg' alt='home' class='img-home'>
     </a>
-    <a href="/#hash" class='nav-hash'>
+    <a href="/#about" class='nav-hash'>
       <img src='/image/hash.svg' alt='hash' class='img-hash'>
     </a>
     <a href="/#home" class='nav-logout'>
@@ -52,26 +43,28 @@ export default async () => {
 
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
-    const getPost = container.querySelector('#post');
-    const username = auth.currentUser.displayName;
-    const uidUser = auth.currentUser.uid;
-    // console.log('dados do usuário', username);
-    // console.log('dados do usuário', uidUser);
-    addPost(getPost, username, uidUser);
+    const getText = container.querySelector('#post');
+    /* console.log(getText.value) */
+    if(getText.value === ''){
+      const messageError = container.querySelector('.message-error');
+      messageError.innerHTML = 'Preencha o campo antes de publicar';
+      /* console.log('vazio') */
+    }else{
+      const username = auth.currentUser.displayName;
+      const uidUser = auth.currentUser.uid;
+      addPost(getText, username, uidUser);
+    }
+    container.querySelector('#post').value = '';
   });
 
-  /* container.addEventListener('keypress', (e) => {
+/*   container.addEventListener('keypress', (e) => {
     if(e.key === 'Enter'){
       newPost.click();
     }
   }); */
-  /* Seleciona em qual section colocar o post. Tentei fazer ${não deu certo, chamei a função} */
 
-  const data = loadPosts();
-/*   console.log('dados doc', data);
   const loadTimeline = container.querySelector('.timeline');
-  const uidUser = auth.currentUser.uid;
-  publishPost(data, loadTimeline, uidUser); */
+  const data = loadPosts(loadTimeline);
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {
