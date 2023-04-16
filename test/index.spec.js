@@ -3,6 +3,7 @@ import {
   createNewAccount,
   entrarComGoogle,
   userLogout,
+  app,
 } from '../src/firebase/firebase';
 
 import {
@@ -10,6 +11,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  getAuth,
 } from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
@@ -20,11 +22,14 @@ describe('Login do Usuário', () => {
   });
 
   it('Deve realizar login do usuário com sucesso', async () => {
-    await login('teste@teste.com', 'teste987654');
+    const email = 'teste@teste.com';
+    const password = 'teste987654';
+
+    await login(email, password);
     /* Conta quantas vezes a função foi chamada */
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
-    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'teste@teste.com', 'teste987654');
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });
 
@@ -33,12 +38,13 @@ describe('Criar nova conta', () => {
     expect(typeof createNewAccount).toBe('function');
   });
 
-  it('Deve criar uma nova conta com sucesso', async () => {
-    await createNewAccount('teste3@teste.com', 'teste54321');
-    /* Conta quantas vezes a função foi chamada */
+  it('Deve criar uma nova conta com sucesso', () => {
+    const email = 'teste3@teste.com';
+    const password = 'teste54321';
+    createNewAccount(email, password);
+   
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    /* Com quais parâmetros a função foi chamada */
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'teste3@teste.com', 'teste54321');
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });
 
@@ -48,11 +54,13 @@ describe('Login com o Google', () => {
   });
 
   it('Deve realizar login com Google com sucesso', async () => {
-    await signInWithPopup(undefined, 'adrianakatarina.estudos@gmail.com');
+    const emailGoogle = 'adrianakatarina.estudos@gmail.com';
+
+    await signInWithPopup(undefined, emailGoogle);
     /* Conta quantas vezes a função foi chamada  */
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
-    expect(signInWithPopup).toHaveBeenCalledWith(undefined, 'adrianakatarina.estudos@gmail.com');
+    expect(signInWithPopup).toHaveBeenCalledWith(undefined, emailGoogle);
   });
 });
 
@@ -62,9 +70,10 @@ describe('Sair da rede social', () => {
   });
 
   it('Deve sair da rede social com sucesso', async () => {
-    await signOut(undefined);
+    const auth = getAuth();
+    await signOut(auth);
 
     expect(signOut).toHaveBeenCalledTimes(1);
-    expect(signOut).toHaveBeenCalledWith(undefined);
+    expect(signOut).toHaveBeenCalledWith(auth);
   });
 });
