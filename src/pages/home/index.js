@@ -8,7 +8,7 @@ export default () => {
 
   const template = `
   <figure>
-    <img class='d-w' src='../../image/mulheres.svg' alt='Duas pessoas preparando um bolo na vasilha'>
+    <img class='d-w' src='../../image/people.svg' alt='Duas pessoas preparando um bolo na vasilha'>
   </figure>
   <section class='position-card'>
   <section class='card'>

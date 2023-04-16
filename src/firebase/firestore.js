@@ -20,7 +20,7 @@ import publishPost from '../pages/feed/publishPost';
 const db = getFirestore(app);
 
 export async function addPost(text, username, uidUser) {
-  const docRef = await addDoc(collection(db, 'Post'), {
+  await addDoc(collection(db, 'Post'), {
     name: username,
     likes: [],
     text: text.value,
@@ -31,18 +31,18 @@ export async function addPost(text, username, uidUser) {
 
 export function loadPosts(loadTimeline) {
   const q = query(collection(db, 'Post'), orderBy('date', 'desc'));
-  const unsubscribe = onSnapshot(q, (querySnapshot => {
+  onSnapshot(q, (querySnapshot) => {
     const arrayPosts = [];
     querySnapshot.forEach((doc) => {
       arrayPosts.push({
-      id:doc.id,
-      ...doc.data()
+        id: doc.id,
+        ...doc.data(),
       });
     });
     const uidUser = auth.currentUser.uid;
     publishPost(arrayPosts, loadTimeline, uidUser);
     return arrayPosts;
-  }));
+  });
 }
 
 export const deletePost = async (postId) => {
@@ -55,7 +55,7 @@ export const updatePost = async (postId, newText) => {
     text: newText.value,
     date: new Date(),
   });
-  loadPosts()
+  loadPosts();
 };
 
 const getPost = async (postId) => {
@@ -81,7 +81,6 @@ const deslike = async (postId, userId) => {
 export const likePost = async (postId, userId) => {
   const post = await getPost(postId);
   const alreadyLiked = post.likes.includes(userId);
-  console.log(alreadyLiked);
   let count = post.likes.length;
   let liked;
   if (alreadyLiked) {

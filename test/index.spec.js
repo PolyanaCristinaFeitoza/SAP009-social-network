@@ -1,6 +1,16 @@
-// importando as funções que vamos testar
-import { login, criarConta, entrarComGoogle } from '../src/firebase/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from '../src/firebase/exports';
+import {
+  login,
+  createNewAccount,
+  entrarComGoogle,
+  userLogout,
+} from '../src/firebase/firebase';
+
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
 
@@ -18,13 +28,13 @@ describe('Login do Usuário', () => {
   });
 });
 
-describe('Criar conta', () => {
+describe('Criar nova conta', () => {
   test('is a function', () => {
-    expect(typeof criarConta).toBe('function');
+    expect(typeof createNewAccount).toBe('function');
   });
 
   it('Deve criar uma nova conta com sucesso', async () => {
-    await criarConta('teste3@teste.com', 'teste54321');
+    await createNewAccount('teste3@teste.com', 'teste54321');
     /* Conta quantas vezes a função foi chamada */
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
@@ -43,5 +53,18 @@ describe('Login com o Google', () => {
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
     expect(signInWithPopup).toHaveBeenCalledWith(undefined, 'adrianakatarina.estudos@gmail.com');
+  });
+});
+
+describe('Sair da rede social', () => {
+  test('is a function', () => {
+    expect(typeof userLogout).toBe('function');
+  });
+
+  it('Deve sair da rede social com sucesso', async () => {
+    await signOut(undefined);
+
+    expect(signOut).toHaveBeenCalledTimes(1);
+    expect(signOut).toHaveBeenCalledWith(undefined);
   });
 });

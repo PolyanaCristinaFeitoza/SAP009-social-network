@@ -18,7 +18,6 @@ export default async () => {
       <form action='' id= 'postForm' class='form-post'>
         <img src='/image/user.svg' alt='user' class='img-user'>
         <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30' required></textarea>
-        <p class='message-error'></p>
         <button type ='button' class='btn-add'>
             <img src='/image/teste.svg' alt='adicionar' class='img-add'>
         </button>
@@ -44,12 +43,10 @@ export default async () => {
   const newPost = container.querySelector('.btn-add');
   newPost.addEventListener('click', () => {
     const getText = container.querySelector('#post');
-    /* console.log(getText.value) */
-    if(getText.value === ''){
+    if (getText.value === '') {
       const messageError = container.querySelector('.message-error');
       messageError.innerHTML = 'Preencha o campo antes de publicar';
-      /* console.log('vazio') */
-    }else{
+    } else {
       const username = auth.currentUser.displayName;
       const uidUser = auth.currentUser.uid;
       addPost(getText, username, uidUser);
@@ -57,14 +54,14 @@ export default async () => {
     container.querySelector('#post').value = '';
   });
 
-/*   container.addEventListener('keypress', (e) => {
+  /* container.addEventListener('keypress', (e) => {
     if(e.key === 'Enter'){
       newPost.click();
     }
   }); */
 
   const loadTimeline = container.querySelector('.timeline');
-  const data = loadPosts(loadTimeline);
+  loadPosts(loadTimeline);
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {

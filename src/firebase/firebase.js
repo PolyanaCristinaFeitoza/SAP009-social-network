@@ -19,22 +19,17 @@ const firebaseConfig = {
   appId: '1:636010240748:web:e7e8c6e52cde393d7423c9',
 };
 
-// Iniciar Firebase
 export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-// Entrar com email e senha
-export const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+export const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const criarConta = (email, senha) => createUserWithEmailAndPassword(auth, email, senha);
-
-export const updateName = (username) => updateProfile(auth.currentUser, {
+export const createNewAccount = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password);
+}
+export const updateName = async (username) => await updateProfile(auth.currentUser, {
   displayName: username,
-}).then(() => {
-  console.log('atualizou nome', auth.currentUser.displayName);
-}).catch((error) => {
-  console.log('não atualizou nome', error);
 });
 
 const provider = new GoogleAuthProvider();

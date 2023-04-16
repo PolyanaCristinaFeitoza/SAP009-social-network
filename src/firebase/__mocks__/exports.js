@@ -5,3 +5,7 @@ export const GoogleAuthProvider = jest.fn();
 export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve());
 export const createUserWithEmailAndPassword = jest.fn(() => Promise.resolve());
 export const signInWithPopup = jest.fn(() => true);
+export const onAuthStateChanged = jest.fn();
+export const signOut = jest.fn();
+
+export const addDoc = jest.fn();
