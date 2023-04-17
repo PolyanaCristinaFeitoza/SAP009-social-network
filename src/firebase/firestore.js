@@ -36,7 +36,7 @@ export const updatePost = async (postId, newText) => {
   });
 };
 
-const getPost = async (postId) => {
+export const getPost = async (postId) => {
   const postRef = doc(db, 'Post', postId);
   const post = await getDoc(postRef);
   return post.data();

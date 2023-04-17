@@ -3,6 +3,7 @@ import {
   createNewAccount,
   entrarComGoogle,
   userLogout,
+  checkAuthentication,
 } from '../src/firebase/firebase';
 
 import {
@@ -11,6 +12,7 @@ import {
   signInWithPopup,
   signOut,
   getAuth,
+  onAuthStateChanged,
 } from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
@@ -52,10 +54,10 @@ describe('Login com o Google', () => {
     expect(typeof entrarComGoogle).toBe('function');
   });
 
-  it('Deve realizar login com Google com sucesso', async () => {
+  it('Deve realizar login com Google com sucesso', () => {
     const emailGoogle = 'adrianakatarina.estudos@gmail.com';
 
-    await signInWithPopup(undefined, emailGoogle);
+    signInWithPopup(undefined, emailGoogle);
     /* Conta quantas vezes a função foi chamada  */
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
@@ -74,5 +76,14 @@ describe('Sair da rede social', () => {
 
     expect(signOut).toHaveBeenCalledTimes(1);
     expect(signOut).toHaveBeenCalledWith(auth);
+  });
+});
+
+describe('Permanecer usuário logado', () => {
+  it('O usuário deve permanecer logado', () => {
+    const callback = jest.fn();
+    checkAuthentication(callback);
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, callback);
   });
 });

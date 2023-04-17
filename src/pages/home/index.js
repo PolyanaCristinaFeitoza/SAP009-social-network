@@ -51,8 +51,8 @@ export default () => {
   });
 
   const provider = container.querySelector('#google');
-  provider.addEventListener('click', () => {
-    entrarComGoogle();
+  provider.addEventListener('click', async () => {
+    await entrarComGoogle();
   });
 
   return container;

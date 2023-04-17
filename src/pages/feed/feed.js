@@ -62,7 +62,8 @@ export default () => {
   }); */
 
   const loadTimeline = container.querySelector('.timeline');
-  loadPosts(loadTimeline);
+  const uidUser = auth.currentUser.uid;
+  loadPosts(loadTimeline, uidUser);
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {

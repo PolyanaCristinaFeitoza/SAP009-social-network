@@ -1,4 +1,4 @@
-import { app, auth } from './firebase';
+import { app } from './firebase';
 
 import {
   getFirestore,
@@ -12,7 +12,7 @@ import publishPost from '../pages/feed/publishPost';
 
 const db = getFirestore(app);
 
-export function loadPosts(loadTimeline) {
+export const loadPosts = (loadTimeline, uidUser) => {
   const q = query(collection(db, 'Post'), orderBy('date', 'desc'));
   onSnapshot(q, (querySnapshot) => {
     const arrayPosts = [];
@@ -22,8 +22,7 @@ export function loadPosts(loadTimeline) {
         ...doc.data(),
       });
     });
-    const uidUser = auth.currentUser.uid;
     publishPost(arrayPosts, loadTimeline, uidUser);
     return arrayPosts;
   });
-}
+};

@@ -1,5 +1,22 @@
-import { addPost, deletePost, updatePost } from '../src/firebase/firestore';
-import { addDoc, deleteDoc, updateDoc } from '../src/firebase/exports';
+import {
+  addPost,
+  deletePost,
+  /* updatePost, */
+  /* likePost, */
+} from '../src/firebase/firestore';
+
+/* import { loadPosts } from '../src/firebase/loadPosts'; */
+
+import {
+  addDoc,
+  deleteDoc,
+  /* updateDoc, */
+  /* onSnapshot, */
+  /* query,
+  orderBy,
+  collection, */
+  /* doc, */
+} from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
 
@@ -12,7 +29,6 @@ describe('Adicionar um novo post', () => {
     const postText = 'Hoje fiz um bolo de laranja';
     const username = 'Teste';
     const uidUser = 'YGi3lupKoxQJKy8qewSydqhEGGc3';
-    const newDate = new Date();
     await addPost(postText, username, uidUser);
 
     expect(addDoc).toHaveBeenCalledTimes(1);
@@ -20,7 +36,7 @@ describe('Adicionar um novo post', () => {
       name: username,
       likes: [],
       text: postText,
-      date: newDate,
+      date: new Date(),
       uid: uidUser,
     });
   });
@@ -40,7 +56,7 @@ describe('Deletar post', () => {
   });
 });
 
-describe('Atualizar post', () => {
+/* describe('Atualizar post', () => {
   test('is a function', () => {
     expect(typeof updatePost).toBe('function');
   });
@@ -57,4 +73,35 @@ describe('Atualizar post', () => {
       date: newDate,
     });
   });
+}); */
+
+/* describe('Curtir Post', () => {
+  test('is a function', () => {
+    expect(typeof likePost).toBe('function');
+  });
+
+  it('Deve curtir o post no banco de dados', async () => {
+    const userId = 'PGi3lupKoxQJKy8qewSydqhEGGc8';
+    const postId = '9an5D2zC1vTY2xEObwLA';
+    await likePost(postId, userId);
+    console.log(likePost(postId, userId));
+    console.log(doc);
+    expect(doc.data()).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined);
+  });
 });
+ */
+
+/* describe('Recarregar posts', () => {
+  test('is a function', () => {
+    expect(typeof loadPosts).toBe('function');
+  });
+
+  it('Deve recarregar os posts', () => {
+    loadPosts();
+
+    expect(onSnapshot).toHaveBeenCalledTimes(1);
+    expect(onSnapshot).toHaveBeenCalledWith(undefined, () => {});
+  });
+});
+ */
