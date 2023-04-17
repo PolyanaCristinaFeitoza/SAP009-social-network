@@ -29,7 +29,7 @@ export default (posts, container, loggedUser) => {
     </button>` : ''} 
     <textarea id='message-post' name='message-post' class='message-post' rows='3' cols='30' disabled>${post.text}</textarea>
     <button class='btn-like'>
-      ${statusLikes ? `<img src='/image/like-purple.svg' alt='like' class='img-like'>` : `<img src='/image/like.svg' alt='like' class='img-like'>`}
+      ${statusLikes ? '<img src="/image/like-purple.svg" alt="like" class="img-like">' : '<img src="/image/like.svg" alt="like" class="img-like">'}
     </button>
     <p class='count'>${post.likes.length}</p>
     <button class='btn-comment'>
@@ -50,7 +50,7 @@ export default (posts, container, loggedUser) => {
         if (editMessage.disabled === false) {
           editMessage.style.border = 'none';
           editMessage.disabled = true;
-          await updatePost(post.id, editMessage);
+          await updatePost(post.id, editMessage.value);
         } else {
           editMessage.style.border = '2px solid #F5DEF9';
           editMessage.disabled = false;

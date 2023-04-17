@@ -27,8 +27,8 @@ export const login = (email, password) => signInWithEmailAndPassword(auth, email
 
 export const createNewAccount = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password);
-}
-export const updateName = async (username) => await updateProfile(auth.currentUser, {
+};
+export const updateName = async (username) => updateProfile(auth.currentUser, {
   displayName: username,
 });
 

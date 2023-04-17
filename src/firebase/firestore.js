@@ -1,4 +1,4 @@
-import { app, auth } from './firebase';
+import { app } from './firebase';
 
 import {
   getFirestore,
@@ -10,12 +10,7 @@ import {
   getDoc,
   arrayRemove,
   arrayUnion,
-  onSnapshot,
-  query,
-  orderBy,
 } from './exports';
-
-import publishPost from '../pages/feed/publishPost';
 
 const db = getFirestore(app);
 
@@ -23,25 +18,9 @@ export async function addPost(text, username, uidUser) {
   await addDoc(collection(db, 'Post'), {
     name: username,
     likes: [],
-    text: text.value,
+    text,
     date: new Date(),
     uid: uidUser,
-  });
-}
-
-export function loadPosts(loadTimeline) {
-  const q = query(collection(db, 'Post'), orderBy('date', 'desc'));
-  onSnapshot(q, (querySnapshot) => {
-    const arrayPosts = [];
-    querySnapshot.forEach((doc) => {
-      arrayPosts.push({
-        id: doc.id,
-        ...doc.data(),
-      });
-    });
-    const uidUser = auth.currentUser.uid;
-    publishPost(arrayPosts, loadTimeline, uidUser);
-    return arrayPosts;
   });
 }
 
@@ -52,10 +31,9 @@ export const deletePost = async (postId) => {
 export const updatePost = async (postId, newText) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
-    text: newText.value,
+    text: newText,
     date: new Date(),
   });
-  loadPosts();
 };
 
 const getPost = async (postId) => {

@@ -1,10 +1,11 @@
 import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
-import { addPost, loadPosts } from '../../firebase/firestore';
+import { addPost } from '../../firebase/firestore';
+import { loadPosts } from '../../firebase/loadPosts';
 
-export default async () => {
+export default () => {
   const logged = getSignedUser();
   if (logged === 'Usuário não encontrado') {
-    return window.location.href = '';
+    window.location.href = '';
   }
 
   const container = document.createElement('main');
@@ -44,12 +45,12 @@ export default async () => {
   newPost.addEventListener('click', () => {
     const getText = container.querySelector('#post');
     if (getText.value === '') {
-      const messageError = container.querySelector('.message-error');
-      messageError.innerHTML = 'Preencha o campo antes de publicar';
+      /* const messageError = container.querySelector('.message-error'); */
+      alert('Preencha o campo antes de publicar');
     } else {
       const username = auth.currentUser.displayName;
       const uidUser = auth.currentUser.uid;
-      addPost(getText, username, uidUser);
+      addPost(getText.value, username, uidUser);
     }
     container.querySelector('#post').value = '';
   });

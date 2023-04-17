@@ -3,7 +3,6 @@ import {
   createNewAccount,
   entrarComGoogle,
   userLogout,
-  app,
 } from '../src/firebase/firebase';
 
 import {
@@ -42,7 +41,7 @@ describe('Criar nova conta', () => {
     const email = 'teste3@teste.com';
     const password = 'teste54321';
     createNewAccount(email, password);
-   
+
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });

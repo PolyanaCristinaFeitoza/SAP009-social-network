@@ -11,7 +11,7 @@ export default () => {
     <header class='header-about'>
       <h1 class='name-about'>Friandy</h1>
       <img src='/image/logo.svg' alt='Logo' class='logo mt-1rem'> 
-      ${userLogged ? `<a href='/#home' class='entrar-about'>Entrar</a>` : `<a href='/#feed' class='entrar-about'>Feed</a>`}
+      ${userLogged ? '<a href="/#home" class="entrar-about">Entrar</a>' : '<a href="/#feed" class="entrar-about">Feed</a>'}
     </header>
     <section class='main-section'>
       <section class='img-txt'>
