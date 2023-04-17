@@ -15,7 +15,6 @@ export {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
   doc,
   deleteDoc,
   updateDoc,
@@ -24,4 +23,5 @@ export {
   arrayUnion,
   onSnapshot,
   query,
+  orderBy,
 } from 'firebase/firestore';
