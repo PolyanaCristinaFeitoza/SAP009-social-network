@@ -11,6 +11,7 @@ import {
   getDoc,
   arrayRemove,
   arrayUnion,
+  onSnapshot,
 } from './exports';
 
 // Iniciar o Firestore. Este método precisa ser executado
@@ -30,20 +31,17 @@ export async function addPost(post, username, uidUser) {
   /* console.log('Document written with ID: ', docRef.id); */
 }
 
-/* Toda vez que a página carrega, ele vai no banco de dados e ler todos os posts */
 export async function loadPosts() {
   const arrayPosts = [];
   const querySnapshot = await getDocs(collection(db, 'Post'));
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    /* Adicionando o id do doc no campo data */
     data.id = doc.id;
-    /* console.log('data.id', data.id); */
     arrayPosts.push(data);
-    /* console.log('loadPosts firestore', doc.id, " => ", doc.data()); */
   });
   return arrayPosts;
 }
+
 
 // Deletar seu elemento pelo id do post
 export const deletePost = async (postId) => {

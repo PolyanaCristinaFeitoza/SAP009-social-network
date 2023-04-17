@@ -40,7 +40,7 @@
 .text-area{
   border: none;
   font-size: 1.3rem;
-  width: 70vw;
+  width: 57vw;
   resize: none;
   background-color: #FFFFFF;
 }
@@ -234,7 +234,7 @@
     display: flex;
     padding: 1rem;
     gap: 1rem;
-    width: 64vw;
+    width: 34vw;
   }
 
   .img-user-post{
@@ -244,19 +244,20 @@
   .text-area{
     font-size: 2rem;
     align-self: flex-end;
+    width: 27vw;
   }
 
   .img-user{
-    width: 3.5vw;
+    width: 3vw;
   }
 
   .img-add{
-    width: 2.5vw;
+    width: 2.3vw;
   }
 
   .post{
     grid-template-columns: 5vw 1vw auto 1vw 9vw;
-    width: 65vw;
+    width: 35vw;
   }
 
   .username{
@@ -269,19 +270,19 @@
   }
 
   .img-like{
-    width: 2.5vw;
+    width: 2.3vw;
   }
 
   .img-coment{
-    width: 2.5vw;
+    width: 2.3vw;
   }
 
   .img-edit{
-    width: 3vw;
+    width: 2.8vw;
   }
 
   .img-delete{
-    width: 2vw;
+    width: 1.8vw;
     margin-top: 1rem;
   }
 
