@@ -14,12 +14,12 @@ import {
 
 const db = getFirestore(app);
 
-export async function addPost(text, username, uidUser) {
+export async function addPost(text, username, uidUser, date) {
   await addDoc(collection(db, 'Post'), {
     name: username,
     likes: [],
     text,
-    date: new Date(),
+    date,
     uid: uidUser,
   });
 }
@@ -28,11 +28,11 @@ export const deletePost = async (postId) => {
   await deleteDoc(doc(db, 'Post', postId));
 };
 
-export const updatePost = async (postId, newText) => {
+export const updatePost = async (postId, newText, date) => {
   const postRef = doc(db, 'Post', postId);
   await updateDoc(postRef, {
     text: newText,
-    date: new Date(),
+    date,
   });
 };
 

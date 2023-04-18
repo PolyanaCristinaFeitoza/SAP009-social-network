@@ -50,7 +50,7 @@ export default () => {
     } else {
       const username = auth.currentUser.displayName;
       const uidUser = auth.currentUser.uid;
-      addPost(getText.value, username, uidUser);
+      addPost(getText.value, username, uidUser, new Date());
     }
     container.querySelector('#post').value = '';
   });

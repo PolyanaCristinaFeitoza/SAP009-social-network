@@ -1,7 +1,7 @@
 import {
   addPost,
   deletePost,
-  /* updatePost, */
+  updatePost,
   /* likePost, */
 } from '../src/firebase/firestore';
 
@@ -10,7 +10,7 @@ import {
 import {
   addDoc,
   deleteDoc,
-  /* updateDoc, */
+  updateDoc,
   /* onSnapshot, */
   /* query,
   orderBy,
@@ -29,14 +29,14 @@ describe('Adicionar um novo post', () => {
     const postText = 'Hoje fiz um bolo de laranja';
     const username = 'Teste';
     const uidUser = 'YGi3lupKoxQJKy8qewSydqhEGGc3';
-    await addPost(postText, username, uidUser);
-
+    const date = new Date();
+    await addPost(postText, username, uidUser, date);
     expect(addDoc).toHaveBeenCalledTimes(1);
     expect(addDoc).toHaveBeenCalledWith(undefined, {
       name: username,
       likes: [],
       text: postText,
-      date: new Date(),
+      date,
       uid: uidUser,
     });
   });
@@ -56,24 +56,19 @@ describe('Deletar post', () => {
   });
 });
 
-/* describe('Atualizar post', () => {
-  test('is a function', () => {
-    expect(typeof updatePost).toBe('function');
-  });
-
+describe('Atualizar post', () => {
   it('Deve atualizar o post no banco de dados', async () => {
     const postId = '9an5D2zC1vTY2xEObwLA';
     const newText = 'Hoje fiz um bolo de macaxeira';
-    const newDate = new Date();
-    await updatePost(postId, newText);
-
+    const date = new Date();
+    await updatePost(postId, newText, date);
     expect(updateDoc).toHaveBeenCalledTimes(1);
     expect(updateDoc).toHaveBeenCalledWith(undefined, {
       text: newText,
-      date: newDate,
+      date,
     });
   });
-}); */
+});
 
 /* describe('Curtir Post', () => {
   test('is a function', () => {
@@ -93,15 +88,10 @@ describe('Deletar post', () => {
  */
 
 /* describe('Recarregar posts', () => {
-  test('is a function', () => {
-    expect(typeof loadPosts).toBe('function');
-  });
-
   it('Deve recarregar os posts', () => {
     loadPosts();
 
     expect(onSnapshot).toHaveBeenCalledTimes(1);
     expect(onSnapshot).toHaveBeenCalledWith(undefined, () => {});
   });
-});
- */
+}); */

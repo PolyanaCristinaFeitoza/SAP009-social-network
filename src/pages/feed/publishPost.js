@@ -50,7 +50,7 @@ export default (posts, container, loggedUser) => {
         if (editMessage.disabled === false) {
           editMessage.style.border = 'none';
           editMessage.disabled = true;
-          await updatePost(post.id, editMessage.value);
+          await updatePost(post.id, editMessage.value, new Date());
         } else {
           editMessage.style.border = '2px solid #F5DEF9';
           editMessage.disabled = false;
