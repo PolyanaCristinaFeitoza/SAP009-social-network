@@ -63,7 +63,7 @@
   font-size: 2rem;
   font-family: 'Thasadith', sans-serif;
   margin-left: 4rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .text-tree{
@@ -79,7 +79,7 @@
   font-family: 'Emilys Candy', cursive;
 }
 
-.dev{
+.dev-poly, .dev-adri{
   display: grid;
   grid-template-areas:
   "img-dev img-dev"
@@ -92,7 +92,7 @@
 .img-dev{
   justify-self: center;
   grid-area: img-dev;
-  width: 35vw;
+  width: 33vw;
   border-radius: 2rem;
 }
 
@@ -101,7 +101,6 @@
   text-align: center;
   font-size: 2rem;
   font-family: 'Thasadith', sans-serif;
-  margin-left: 1rem;
 }
 
 .icon-git{
@@ -159,13 +158,26 @@
     font-size: 4rem;
   }
 
-  .dev{
+  .dev-poly{
+    grid-template-areas:
+      "text-dev text-dev img-dev"
+      "icon-git icon-linkedin img-dev";
+    grid-template-rows: 43vh 46vh;
+    grid-template-columns: 32vw 33vw 33vw;
+    row-gap: 1rem;
+  }
+
+  .dev-adri{
     grid-template-areas:
       "img-dev text-dev text-dev"
       "img-dev icon-git icon-linkedin";
     grid-template-rows: 52vh 46vh;
     grid-template-columns: 45vw 25vw 24vw;
     row-gap: 1rem;
+  }
+
+  .img-dev{
+    width: 25vw;
   }
 
   .text-dev{
