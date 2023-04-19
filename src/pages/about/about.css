@@ -37,7 +37,13 @@
 }
 
 .img-test{
-  width: 35vw;
+  width: 40vw;
+  border-radius: 1rem;
+  margin-left: -1rem;
+}
+
+.img-batedeira{
+  width: 37vw;
   border-radius: 1rem;
 }
 
@@ -46,6 +52,133 @@
   gap: 5rem;
 }
 
-.p-about{
+.text-one{
+  font-size: 2rem;
   font-family: 'Thasadith', sans-serif;
+  margin-left: -5rem;
+  margin-top: 4rem;
+}
+
+.text-two{
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: 4rem;
+  margin-top: 4rem;
+}
+
+.text-tree{
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: 1rem;
+  margin-top: 4rem;
+}
+
+.text-about{
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Emilys Candy', cursive;
+}
+
+.dev{
+  display: grid;
+  grid-template-areas:
+  "img-dev img-dev"
+  "text-dev text-dev"
+  "icon-git icon-linkedin";
+  grid-template-rows: 30vh auto 7vh;
+  grid-template-columns: 45vw 45vw;
+}
+
+.img-dev{
+  justify-self: center;
+  grid-area: img-dev;
+  width: 35vw;
+  border-radius: 2rem;
+}
+
+.text-dev{
+  grid-area: text-dev;
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: 1rem;
+}
+
+.icon-git{
+  justify-self: end;
+  grid-area: icon-git;
+}
+
+.img-git{
+  width: 5vw;
+  height: 5vh;
+}
+
+.icon-linkedin{
+  grid-area: icon-linkedin;
+}
+
+.img-linkedin{
+  width: 7vw;
+  height: 5vh;
+}
+
+@media only screen and (min-width: 1024px){
+  .header-about{
+    gap: 35rem;
+  }
+
+  .entrar-about{
+    font-size: 3rem;
+  }
+
+  .name-about{
+    font-size: 3rem;
+  }
+
+  .img-txt{
+    justify-content: center;
+    align-items: center;
+    gap: 12rem;
+  }
+
+  .text-one{
+    font-size: 4rem;
+  }
+
+  .text-two{
+    font-size: 4rem;
+    margin-left: 25rem;
+  }
+
+  .text-tree{
+    font-size: 4rem;
+  }
+
+  .text-about{
+    font-size: 4rem;
+  }
+
+  .dev{
+    grid-template-areas:
+      "img-dev text-dev text-dev"
+      "img-dev icon-git icon-linkedin";
+    grid-template-rows: 52vh 46vh;
+    grid-template-columns: 45vw 25vw 24vw;
+    row-gap: 1rem;
+  }
+
+  .text-dev{
+    font-size: 4rem;
+    align-self: end;
+  }
+
+  .icon-linkedin{
+    justify-self: start;
+  }
+
+  .img-linkedin{
+    width: 6.5vw;
+    height: 6.5vh;
+  }
 }

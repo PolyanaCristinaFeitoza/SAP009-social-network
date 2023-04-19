@@ -1,10 +1,10 @@
-import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
+import { userLogout, auth } from '../../firebase/firebase';
 import { addPost } from '../../firebase/firestore';
 import { loadPosts } from '../../firebase/loadPosts';
 
 export default () => {
-  const logged = getSignedUser();
-  if (logged === 'Usuário não encontrado') {
+  const user = auth.currentUser;
+  if (!user) {
     window.location.href = '';
   }
 
@@ -31,7 +31,7 @@ export default () => {
       <img src='/image/home.svg' alt='home' class='img-home'>
     </a>
     <a href="/#about" class='nav-hash'>
-      <img src='/image/hash.svg' alt='hash' class='img-hash'>
+      <img src='/image/cake.svg' alt='hash' class='img-hash'>
     </a>
     <a href="/#home" class='nav-logout'>
       <img src='/image/logout.svg' alt='sair' class='img-logout'>
@@ -62,7 +62,6 @@ export default () => {
   backToHome.addEventListener('click', () => {
     window.scrollTo(0, 0);
   });
-
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {

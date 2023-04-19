@@ -2,7 +2,7 @@ import {
   addPost,
   deletePost,
   updatePost,
-  /* likePost, */
+  likePost,
 } from '../src/firebase/firestore';
 
 /* import { loadPosts } from '../src/firebase/loadPosts'; */
@@ -11,14 +11,17 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
-  /* onSnapshot, */
-  /* query,
-  orderBy,
-  collection, */
-  /* doc, */
+  doc,
+  arrayRemove,
+  getDoc,
+  arrayUnion,
 } from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('Adicionar um novo post', () => {
   test('is a function', () => {
@@ -49,6 +52,7 @@ describe('Deletar post', () => {
 
   it('Deve deletar o post no banco de dados', async () => {
     const postId = '9an5D2zC1vTY2xEObwLA';
+
     await deletePost(postId);
 
     expect(deleteDoc).toHaveBeenCalledTimes(1);
@@ -61,7 +65,9 @@ describe('Atualizar post', () => {
     const postId = '9an5D2zC1vTY2xEObwLA';
     const newText = 'Hoje fiz um bolo de macaxeira';
     const date = new Date();
+
     await updatePost(postId, newText, date);
+
     expect(updateDoc).toHaveBeenCalledTimes(1);
     expect(updateDoc).toHaveBeenCalledWith(undefined, {
       text: newText,
@@ -70,28 +76,23 @@ describe('Atualizar post', () => {
   });
 });
 
-/* describe('Curtir Post', () => {
-  test('is a function', () => {
-    expect(typeof likePost).toBe('function');
-  });
-
+describe('Curtir Post', () => {
   it('Deve curtir o post no banco de dados', async () => {
+    const docRef = {};
+    doc.mockReturnValue(docRef);
+    arrayUnion.mockReturnValue([]);
+    arrayRemove.mockReturnValue([]);
+    const post = { data: () => ({ likes: [] }) };
+    getDoc.mockReturnValue(post);
     const userId = 'PGi3lupKoxQJKy8qewSydqhEGGc8';
     const postId = '9an5D2zC1vTY2xEObwLA';
+
     await likePost(postId, userId);
-    console.log(likePost(postId, userId));
-    console.log(doc);
-    expect(doc.data()).toHaveBeenCalledTimes(1);
-    expect(doc).toHaveBeenCalledWith(undefined);
+
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(undefined, 'Post', postId);
+    expect(updateDoc).toHaveBeenCalledWith(docRef, {
+      likes: [],
+    });
   });
 });
- */
-
-/* describe('Recarregar posts', () => {
-  it('Deve recarregar os posts', () => {
-    loadPosts();
-
-    expect(onSnapshot).toHaveBeenCalledTimes(1);
-    expect(onSnapshot).toHaveBeenCalledWith(undefined, () => {});
-  });
-}); */

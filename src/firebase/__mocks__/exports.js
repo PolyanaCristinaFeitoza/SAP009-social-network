@@ -19,3 +19,5 @@ export const getDoc = jest.fn();
 export const onSnapshot = jest.fn();
 export const query = jest.fn();
 export const orderBy = jest.fn();
+export const arrayUnion = jest.fn();
+export const arrayRemove = jest.fn();

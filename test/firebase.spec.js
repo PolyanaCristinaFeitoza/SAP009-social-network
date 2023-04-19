@@ -2,6 +2,7 @@ import {
   login,
   createNewAccount,
   checkAuthentication,
+  updateName,
 } from '../src/firebase/firebase';
 
 import {
@@ -29,20 +30,10 @@ describe('Login do Usuário', () => {
 });
 
 describe('Criar nova conta', () => {
-  it('Deve criar uma nova conta com sucesso', async () => {
+  it('Deve criar uma nova conta com sucesso', () => {
     const email = 'teste3@teste.com';
     const password = 'teste54321';
-    const username = 'Polyana';
-
-    const mockGetAuth = {
-      currentUser: {},
-    };
-
-    getAuth.mockReturnValueOnce(mockGetAuth);
-    createUserWithEmailAndPassword.mockResolvedValueOnce();
-
-    await createNewAccount(email, password, username);
-
+    createNewAccount(email, password);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockGetAuth, email, password);
     expect(updateProfile).toHaveBeenCalledTimes(1);
@@ -79,15 +70,14 @@ describe('Permanecer usuário logado', () => {
   });
 });
 
-/* describe('Gravar nome do usuário', () => {
+describe('Gravar nome do usuário', () => {
   it('Deve gravar o nome do usuário', async () => {
-    const mockGetAuth = {
-      currentUser: {},
-    };
-
-    getAuth.mockReturnValueOnce(mockGetAuth);
-    createUserWithEmailAndPassword.mockResolvedValueOnce();
+    getAuth.mockReturnValue({ currentUser: 'Adriana' });
     const username = 'Polyana';
     await updateName(username);
+    expect(updateProfile).toHaveBeenCalledTimes(1);
+    expect(updateProfile).toHaveBeenCalledWith('Adriana', {
+      displayName: username,
+    });
   });
-}); */
+});

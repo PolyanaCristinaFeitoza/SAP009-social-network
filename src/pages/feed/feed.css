@@ -61,12 +61,12 @@
   border-radius: 1.5rem;
   display: grid;
   grid-template-areas:
-  "photo username username username hour"
-  "message message message message message"
-  "like count comment edit delete";
+  "photo username username hour"
+  "message message message message"
+  "like count edit delete";
   row-gap: 2rem;
   padding: 1rem;
-  grid-template-columns: 10vw 7vw auto 0vw 24vw;
+  grid-template-columns: 9vw auto 29vw 23vw;
   grid-template-rows: 8vh auto 8vh;
   /* width: 90vw; */
 }
@@ -114,17 +114,14 @@
   grid-area: count;
 }
 
-.btn-comment{
-  grid-area: comment;
-  border: none;
-  background-color: #ffffff;
-  justify-self: start;
-}
-
 .img-edit{
   width: 9vw;
   margin-left: 1rem;
   margin-top: 0.5rem;
+}
+
+.img-delete{
+  margin-top: 1rem;
 }
 
 .btn-delete{
@@ -208,7 +205,7 @@
   }
 
   .img-hash{
-    width: 3vw;
+    width: 3.5vw;
     position: fixed;
     margin-top: -1rem;
     margin-left: 1rem;
@@ -256,7 +253,7 @@
   }
 
   .post{
-    grid-template-columns: 5vw 1vw auto 1vw 9vw;
+    grid-template-columns: 5vw auto 17vw 8vw;
     width: 35vw;
   }
 
