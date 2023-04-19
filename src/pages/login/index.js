@@ -1,6 +1,7 @@
 import { login } from '../../firebase/firebase.js';
 import { firebaseError } from '../../lib/errors.js';
 import peopleImg from '../../image/people.svg';
+import logoImg from '/image/logo.svg';
 
 export default () => {
   const container = document.createElement('main');
@@ -17,7 +18,7 @@ export default () => {
         <button class='seta'>
           <img src='/image/arrow.svg' alt='seta' class='img-seta'>
         </button>
-        <img src='/image/logo.svg' alt='Logo' class='logo'>
+        <img src='${logoImg}' alt='Logo' class='logo'>
       </header>
       <h2 class='font-margin'>Entre no Friandy</h2>
       <form class='form'>
