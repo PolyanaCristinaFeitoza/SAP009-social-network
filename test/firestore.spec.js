@@ -11,10 +11,6 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
-  /* onSnapshot, */
-  /* query,
-  orderBy,
-  collection, */
   doc,
   arrayRemove,
   getDoc,
