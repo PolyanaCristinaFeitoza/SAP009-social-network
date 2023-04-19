@@ -23,15 +23,10 @@ export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const login = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password);
-};
-export const createNewAccount = async (email, password, username) => {
-  await createUserWithEmailAndPassword(auth, email, password);
-  /* console.log(auth.currentUser); */
-  return updateProfile(auth.currentUser, {
-    displayName: username,
-  });
+export const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+export const createNewAccount = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password);
 };
 export const updateName = async (username) => {
   const autenticacao = getAuth(app);

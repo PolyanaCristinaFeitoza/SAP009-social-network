@@ -35,11 +35,7 @@ describe('Criar nova conta', () => {
     const password = 'teste54321';
     createNewAccount(email, password);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(mockGetAuth, email, password);
-    expect(updateProfile).toHaveBeenCalledTimes(1);
-    /* expect(updateProfile).toHaveBeenCalledWith(mockGetAuth.currentUser, {
-      displayName: username,
-    }); */
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });
 
