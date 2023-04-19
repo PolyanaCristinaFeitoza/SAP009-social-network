@@ -8,7 +8,7 @@ export default () => {
 
   const template = `
   <figure>
-    <img class='d-w' src='../../image/mulheres.svg' alt='Duas pessoas preparando um bolo na vasilha'>
+    <img class='d-w' src='../../image/people.svg' alt='Duas pessoas preparando um bolo na vasilha'>
   </figure>
   <section class='position-card'>
   <section class='card'>
@@ -51,8 +51,8 @@ export default () => {
   });
 
   const provider = container.querySelector('#google');
-  provider.addEventListener('click', () => {
-    entrarComGoogle();
+  provider.addEventListener('click', async () => {
+    await entrarComGoogle();
   });
 
   return container;

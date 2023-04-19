@@ -1,63 +1,79 @@
-// importando as funções que vamos testar
-import { login, criarConta, entrarComGoogle } from '../src/firebase/firebase';
+import {
+  login,
+  createNewAccount,
+  checkAuthentication,
+  updateName,
+} from '../src/firebase/firebase';
+
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  updateProfile,
+  getAuth,
 } from '../src/firebase/exports';
 
 jest.mock('../src/firebase/exports');
 
 describe('Login do Usuário', () => {
-  test('is a function', () => {
-    expect(typeof login).toBe('function');
-  });
-
   it('Deve realizar login do usuário com sucesso', async () => {
-    await login('teste@teste.com', 'teste987654');
+    const email = 'teste@teste.com';
+    const password = 'teste987654';
+    await login(email, password);
     /* Conta quantas vezes a função foi chamada */
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
     /* Com quais parâmetros a função foi chamada */
-    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'teste@teste.com', 'teste987654');
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });
 
-describe('Criar conta', () => {
-  test('is a function', () => {
-    expect(typeof criarConta).toBe('function');
-  });
-
-  it('Deve criar uma nova conta com sucesso', async () => {
-    await criarConta('teste3@teste.com', 'teste54321');
-    /* Conta quantas vezes a função foi chamada */
+describe('Criar nova conta', () => {
+  it('Deve criar uma nova conta com sucesso', () => {
+    const email = 'teste3@teste.com';
+    const password = 'teste54321';
+    createNewAccount(email, password);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    /* Com quais parâmetros a função foi chamada */
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, 'teste3@teste.com', 'teste54321');
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });
 
 describe('Login com o Google', () => {
-  test('is a function', () => {
-    expect(typeof entrarComGoogle).toBe('function');
-  });
-
-  it('Deve realizar login com Google com sucesso', async () => {
-    await signInWithPopup(undefined, 'adrianakatarina.estudos@gmail.com');
-    /* Conta quantas vezes a função foi chamada  */
+  it('Deve realizar login com Google com sucesso', () => {
+    const emailGoogle = 'adrianakatarina.estudos@gmail.com';
+    signInWithPopup(undefined, emailGoogle);
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
-    /* Com quais parâmetros a função foi chamada */
-    expect(signInWithPopup).toHaveBeenCalledWith(undefined, 'adrianakatarina.estudos@gmail.com');
+    expect(signInWithPopup).toHaveBeenCalledWith(undefined, emailGoogle);
   });
 });
 
-describe('Adicionar post', () => {
-  test('is a function', () => {
-    expect(typeof addPost).toBe('function');
+describe('Sair da rede social', () => {
+  it('Deve sair da rede social com sucesso', () => {
+    const auth = getAuth();
+    signOut(auth);
+    expect(signOut).toHaveBeenCalledTimes(1);
+    expect(signOut).toHaveBeenCalledWith(auth);
   });
 });
 
-describe('Deletar post', () => {
-  test('is a function', () => {
-    expect(typeof deletePost).toBe('function');
+describe('Permanecer usuário logado', () => {
+  it('O usuário deve permanecer logado', () => {
+    const callback = jest.fn();
+    checkAuthentication(callback);
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledWith(undefined, callback);
+  });
+});
+
+describe('Gravar nome do usuário', () => {
+  it('Deve gravar o nome do usuário', async () => {
+    getAuth.mockReturnValue({ currentUser: 'Adriana' });
+    const username = 'Polyana';
+    await updateName(username);
+    expect(updateProfile).toHaveBeenCalledTimes(1);
+    expect(updateProfile).toHaveBeenCalledWith('Adriana', {
+      displayName: username,
+    });
   });
 });
