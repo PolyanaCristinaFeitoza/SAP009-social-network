@@ -54,16 +54,15 @@ export default () => {
     }
     container.querySelector('#post').value = '';
   });
-
-  /* container.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter'){
-      newPost.click();
-    }
-  }); */
-
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   loadPosts(loadTimeline, uidUser);
+
+  const backToHome = container.querySelector('.nav-home');
+  backToHome.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+  });
+
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {

@@ -8,6 +8,7 @@ import { defineConfig } from 'vite';
 export default defineConfig(({ command }) => {
   if (command === 'build') {
     return {
+      base: '',
       root: 'src',
       // para hacer un deploy en github pages, configura propiedad base con el
       // nombre/url de tu repo

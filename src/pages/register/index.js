@@ -1,4 +1,4 @@
-import { createNewAccount, updateName } from '../../firebase/firebase';
+import { createNewAccount } from '../../firebase/firebase';
 import { firebaseError } from '../../lib/errors.js';
 
 export default () => {
@@ -45,9 +45,8 @@ export default () => {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    createNewAccount(email, password)
-      .then(async () => {
-        await updateName(name);
+    createNewAccount(email, password, name)
+      .then(() => {
         window.location.hash = 'login';
       })
       .catch((error) => {

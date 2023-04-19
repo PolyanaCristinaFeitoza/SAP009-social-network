@@ -27,7 +27,7 @@ export default (posts, container, loggedUser) => {
     ${isAuthor ? `<button class='btn-edit'>
       <img src='/image/edit.svg' alt='edit' class='img-edit'>
     </button>` : ''} 
-    <textarea id='message-post' name='message-post' class='message-post' rows='3' cols='30' disabled>${post.text}</textarea>
+    <textarea id='message-post' name='message-post' class='message-post' rows='5' cols='30' disabled>${post.text}</textarea>
     <button class='btn-like'>
       ${statusLikes ? '<img src="/image/like-purple.svg" alt="like" class="img-like">' : '<img src="/image/like.svg" alt="like" class="img-like">'}
     </button>

@@ -23,21 +23,21 @@ export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
-export const createNewAccount = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
+export const login = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password);
 };
-export const updateName = async (username) => updateProfile(auth.currentUser, {
-  displayName: username,
-});
+export const createNewAccount = async (email, password, username) => {
+  await createUserWithEmailAndPassword(auth, email, password);
+  /* console.log(auth.currentUser); */
+  return updateProfile(auth.currentUser, {
+    displayName: username,
+  });
+};
 
 const provider = new GoogleAuthProvider();
 
 export const entrarComGoogle = async () => signInWithPopup(auth, provider);
 
-// /* Quando clicar no logout e quiser entrar novamente com google,
-// se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
 export const checkAuthentication = (cb) => onAuthStateChanged(auth, cb);
