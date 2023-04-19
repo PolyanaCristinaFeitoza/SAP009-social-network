@@ -1,0 +1,809 @@
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+
+/* CSS - Página inicial */
+.font-margin{
+  font-size: 2.5rem;
+  /* margin-top: 8rem; */
+  text-align: center;
+  font-family: 'Emilys Candy', cursive;
+}
+.btn-login{
+  margin-top: 1rem;
+  text-align: center;
+}
+fieldset {
+  border-top: 0.1rem solid #333;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  display: block;
+  text-align: center;
+}
+fieldset legend {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.sem-conta{
+  margin-top: 5rem;
+}
+#register{
+  width: 30vw;
+  margin-bottom: 9rem;
+}
+button{
+  cursor: pointer;
+}
+@media only screen and (min-width: 600px) {
+  .font-margin{
+    font-size: 4rem;
+  }
+  .sem-conta{
+    font-size: 2.5rem;
+  }
+  #register{
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 912px) {
+  .h2-home{
+    font-size: 4rem;
+    margin-top: 3.5rem;
+    margin-bottom: 60px;
+  }
+
+  .sem-conta {
+    font-size: 2rem;
+  }
+
+  #register{
+    width: 10vw;
+  }
+
+  .sobre {
+    font-size: 2rem;
+  }
+
+}
+/* CSS - Página de Login com Email e Senha */
+
+.input-size{
+  cursor: text;
+}
+
+.password{
+  margin-top: 2rem;
+}
+
+.enter{
+  width: 20vw;
+  position: relative;
+  left: 6rem;
+}
+
+.message-error{
+  text-align: center;
+  margin-top: 5rem;
+  color: #D42222;
+  display: block;
+}
+
+@media only screen and (min-width: 600px) {
+  .message-error{
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 912px) {
+  .enter{
+    width: 6vw;
+  }
+
+  .btn-input-wb .input-size{
+    width: 22vw;
+  }
+}
+/* CSS - Página de Criar Conta */
+.create{
+  width: 20vh;
+}
+
+.form .m-b{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .form .m-b{
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (min-width: 912px) {
+  .create{
+    width: 10vw;
+  }
+
+/*   .form .m-b{
+  font-size: 1.8rem;
+} */
+}
+
+/* CSS do Feed */
+.background-feed{
+  background-color: #F5DEF9;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 13vh auto 6vh;
+  grid-template-columns: auto;
+  grid-template-areas: 
+    "header"
+    "section"
+    "footer";
+}
+.bg-header{
+  grid-area: header;
+  background-color: #FFFFFF;
+  display: grid;
+  place-items: center;
+}
+.conteudo{
+  grid-area: section;
+  display: grid;
+  justify-content: center;
+  /* width: 90vw; */
+  margin: 1rem;
+}
+.add-post{
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  height: 8vh;
+  display: grid;
+  place-items: center;
+  padding: 0.5rem;
+}
+.text-area{
+  border: none;
+  font-size: 1.3rem;
+  width: 57vw;
+  resize: none;
+  background-color: #FFFFFF;
+}
+.btn-add{
+  border: none;
+  background-color: #ffffff;
+}
+.timeline{
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.post{
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  display: grid;
+  grid-template-areas:
+  "photo username username hour"
+  "message message message message"
+  "like count edit delete";
+  row-gap: 2rem;
+  padding: 1rem;
+  grid-template-columns: 9vw auto 29vw 23vw;
+  grid-template-rows: 8vh auto 8vh;
+  /* width: 90vw; */
+}
+.img-user-post{
+  grid-area: photo;
+  border: none;
+  background-color: #ffffff;
+}
+.username{
+  grid-area: username;
+  text-transform: lowercase;
+  align-self: center;
+  margin-top: -2rem;
+  font-family: 'Emilys Candy', cursive;
+}
+.date{
+  grid-area: hour;
+  color: #888080;
+}
+.btn-edit{
+  grid-area: edit;
+  border: none;
+  background-color: #ffffff;
+}
+.message-post{
+  grid-area: message;
+  resize: none; 
+  border: none;
+  color: #000000;
+  background-color: #ffffff;
+}
+.btn-like{
+  grid-area: like;
+  border: none;
+  background-color: #ffffff;
+}
+.count{
+  grid-area: count;
+}
+.img-edit{
+  width: 9vw;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.img-delete{
+  margin-top: 1rem;
+}
+.btn-delete{
+  grid-area: delete;
+  border: none;
+  background-color: #ffffff;
+  width: 6vw;
+  justify-self: end;
+}
+.nav-feed{
+  grid-area: footer;
+  background-color: white;
+  display: grid;
+  grid-template-areas: 
+   "home hash logout";
+  grid-template-columns: auto auto auto;
+  padding: 1rem;
+}
+.nav-home{
+  grid-area: home;
+}
+.nav-hash{
+  grid-area: hash;
+  justify-self: center;
+}
+.nav-logout{
+  grid-area: logout;
+  justify-self: end;
+}
+@media only screen and (min-width: 1024px){
+  .background-feed{
+    grid-template-areas: 
+    "header section"
+    "footer section";
+    grid-template-rows: 13vh auto;
+    grid-template-columns: 13vw auto;
+  }
+
+  .conteudo{
+    width: 85vw;
+    margin-top: 2rem;
+  }
+
+  .img-logo{
+    width: 6vw;
+    position: fixed;
+    margin-top: 4rem;
+  }
+
+  .nav-feed{
+    grid-template-areas: 
+    "home"
+    "hash"
+    "logout";
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-template-columns: auto;
+    gap: 7rem;
+    padding: 5rem;
+  
+  }
+
+  .nav-home{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-home{
+    width: 3vw;
+    position: fixed;
+    margin-left: 1rem;
+  }
+
+  .nav-hash{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-hash{
+    width: 3.5vw;
+    position: fixed;
+    margin-top: -1rem;
+    margin-left: 1rem;
+  }
+
+  .nav-logout{
+    margin-top: 7rem;
+    justify-self: start
+  }
+
+  .img-logout{
+    width: 3vw;
+    position: fixed;
+    margin-top: -3rem;
+    margin-left: 1rem;
+  }
+
+  .add-post{
+    height: 12vh;
+  }
+
+  .form-post{
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    width: 34vw;
+  }
+
+  .img-user-post{
+    width: 3vw;
+  }
+
+  .text-area{
+    font-size: 2rem;
+    align-self: flex-end;
+    width: 27vw;
+  }
+
+  .img-user{
+    width: 3vw;
+  }
+
+  .img-add{
+    width: 2.3vw;
+  }
+
+  .post{
+    grid-template-columns: 5vw auto 17vw 8vw;
+    width: 35vw;
+  }
+
+  .username{
+    font-size: 2.3rem;
+    margin-left: -2rem;
+  }
+  
+  .date{
+    font-size: 2rem;
+  }
+
+  .img-like{
+    width: 2.3vw;
+  }
+
+  .img-coment{
+    width: 2.3vw;
+  }
+
+  .img-edit{
+    width: 2.8vw;
+  }
+
+  .img-delete{
+    width: 1.8vw;
+    margin-top: 1rem;
+  }
+
+  .message-post{
+    font-size: 2rem;
+  }
+
+  .count{
+    font-size: 2rem;
+    margin-left: -1rem;
+  }
+
+  .btn-delete{
+    margin-top: 0.5rem;
+  }
+
+  .btn-edit{
+    margin-top: 1rem;
+  }
+}
+
+/* Page about */
+
+.main-about{
+  min-height: 100vh;
+}
+
+.header-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7rem; 
+}
+
+.name-about{
+  font-size: 2rem;
+  font-family: 'Emilys Candy', cursive;
+}
+
+.mt-1rem{
+  margin-top: 1rem;
+}
+
+.entrar-about{
+  font-size: 2rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.main-section{
+  display: grid;
+  margin: 2rem;
+  /* background-color: #f0f0f0; */
+  gap:4rem;
+  margin-top: 5rem;
+}
+
+.img-test{
+  width: 40vw;
+  border-radius: 1rem;
+  margin-left: -1rem;
+}
+
+.img-batedeira{
+  width: 37vw;
+  border-radius: 1rem;
+}
+
+.img-txt{
+  display: flex;
+  gap: 5rem;
+}
+
+.text-one{
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: -5rem;
+  margin-top: 4rem;
+}
+
+.text-two{
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: 4rem;
+  margin-top: 2rem;
+}
+
+.text-tree{
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+  margin-left: 1rem;
+  margin-top: 4rem;
+}
+
+.text-about{
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Emilys Candy', cursive;
+}
+
+.dev-poly, .dev-adri{
+  display: grid;
+  grid-template-areas:
+  "img-dev img-dev"
+  "text-dev text-dev"
+  "icon-git icon-linkedin";
+  grid-template-rows: 30vh auto 7vh;
+  grid-template-columns: 45vw 45vw;
+}
+
+.img-dev{
+  justify-self: center;
+  grid-area: img-dev;
+  width: 33vw;
+  border-radius: 2rem;
+}
+
+.text-dev{
+  grid-area: text-dev;
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Thasadith', sans-serif;
+}
+
+.icon-git{
+  justify-self: end;
+  grid-area: icon-git;
+}
+
+.img-git{
+  width: 5vw;
+  height: 5vh;
+}
+
+.icon-linkedin{
+  grid-area: icon-linkedin;
+}
+
+.img-linkedin{
+  width: 7vw;
+  height: 5vh;
+}
+
+@media only screen and (min-width: 1024px){
+  .header-about{
+    gap: 35rem;
+  }
+
+  .entrar-about{
+    font-size: 3rem;
+  }
+
+  .name-about{
+    font-size: 3rem;
+  }
+
+  .img-txt{
+    justify-content: center;
+    align-items: center;
+    gap: 12rem;
+  }
+
+  .text-one{
+    font-size: 4rem;
+  }
+
+  .text-two{
+    font-size: 4rem;
+    margin-left: 25rem;
+  }
+
+  .text-tree{
+    font-size: 4rem;
+  }
+
+  .text-about{
+    font-size: 4rem;
+  }
+
+  .dev-poly{
+    grid-template-areas:
+      "text-dev text-dev img-dev"
+      "icon-git icon-linkedin img-dev";
+    grid-template-rows: 43vh 46vh;
+    grid-template-columns: 32vw 33vw 33vw;
+    row-gap: 1rem;
+  }
+
+  .dev-adri{
+    grid-template-areas:
+      "img-dev text-dev text-dev"
+      "img-dev icon-git icon-linkedin";
+    grid-template-rows: 52vh 46vh;
+    grid-template-columns: 45vw 25vw 24vw;
+    row-gap: 1rem;
+  }
+
+  .img-dev{
+    width: 25vw;
+  }
+
+  .text-dev{
+    font-size: 4rem;
+    align-self: end;
+  }
+
+  .icon-linkedin{
+    justify-self: start;
+  }
+
+  .img-linkedin{
+    width: 6.5vw;
+    height: 6.5vh;
+  }
+}
+
+/* CSS - Padrões das Páginas*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+/* Padrão usar o :root{} invés do html{} */
+:root{
+  font-size: 62.5%; /* Reseta todas as fontes. Agora tem medidas de 10px */
+}
+body{
+  font-size: 1.6rem;
+ /* 16px === 1.6rem. dividir por 10 */
+}
+.font-margin{
+  font-family: 'Emilys Candy', cursive;
+}
+.background-h-r-l{
+  background-image: url("../../image/background-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.d-w{
+  display: none;
+}
+.position-card{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  background-color: #FFFFFF;
+  width: 80vw;
+  height: 90vh;
+  min-height: 80vh;
+  border: 0.3rem solid #B98DD6;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+}
+.position-header{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.seta{
+  position: fixed;
+  left: 5rem;
+  top: 8rem;
+  border: none;
+  background-color: #ffffff;
+}
+.logo{
+  width: 20vw;
+  /* height: 20vh; */
+}
+.form{
+  display: grid;
+  place-items: center;
+}
+/* Se repete em botoes e inputs da tela home, login, cadastro - cor branco e azul*/
+.btn-input-wb{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 55vw;
+  height: 5vh;
+  border: 0.2rem solid #55CBCD;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.icon-login{
+  width: 6vw;
+}
+button:active{
+  opacity: 0.8;
+}
+/* Se repete em botoes tela home, login, cadastro - cor branco e azul*/
+.btn-purple{
+  height: 4vh;
+  background-color: #6A4085;
+  border: none;
+  color:#FFFFFF;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+.sobre{
+ /*  margin-top: 50px; */
+  color:#6A4085;
+  cursor: pointer;
+  font-family: 'Emilys Candy', cursive;
+}
+@media only screen and (min-width: 600px) {
+  .seta {
+    left: 9rem;
+    width: 10vw;
+    height: 10vh;
+  }
+  .img-seta {
+    width: 6vw;
+  }
+
+  .btn-input-wb{
+    width: 31vw;
+    font-size: 1.8rem;
+  }
+
+  .icon-login{
+    width: 4vw;
+  }
+
+  .btn-purple{
+/*     font-size: 2rem;
+    width: 16vw; */
+    height: 4vh;
+  }
+
+  .sobre{
+    font-size: 2.3rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .background-h-r-l{
+    background-image: url("../../image/background-desktop.svg");
+  }
+
+  .d-w{
+    display: block;
+    position: fixed;
+    margin: 35rem -1rem;
+    width: 25vw;
+  }
+
+  .position-card{
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 5rem;
+  }
+
+  .card{
+    width: 40%;
+  }
+
+  .seta{
+    display: none;
+  }
+
+  .logo{
+    width: 8vw;
+  }
+
+  .btn-input-wb{
+    width: 18vw;
+    font-size: 1.8rem;
+  }
+
+  .icon-login{
+    width: 2vw;
+  }
+
+  .btn-purple{
+    font-size: 1.8rem;
+    width: 9vw;
+    height: 5vh;
+  }
+  
+}
+@media only screen and (min-width: 1366px) {
+  .d-w{
+    margin: 48rem 1rem;
+  }
+
+/*   .position-card{
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 5rem;
+  }
+
+  .card{
+    width: 40%;
+  }
+
+  .seta{
+    display: none;
+  }
+
+  .logo{
+    width: 8vw;
+  } */
+
+  .btn-input-wb{
+    width: 13vw;
+    font-size: 2rem;
+  }
+
+}

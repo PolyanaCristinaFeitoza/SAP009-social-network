@@ -96,16 +96,3 @@ describe('Curtir Post', () => {
     });
   });
 });
-/* describe('Recarregar posts', () => {
-  test('is a function', () => {
-    expect(typeof loadPosts).toBe('function');
-  });
-
-  it('Deve recarregar os posts', () => {
-    loadPosts();
-
-    expect(onSnapshot).toHaveBeenCalledTimes(1);
-    expect(onSnapshot).toHaveBeenCalledWith(undefined, () => {});
-  });
-});
- */

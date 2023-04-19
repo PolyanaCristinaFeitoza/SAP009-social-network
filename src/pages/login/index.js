@@ -1,5 +1,6 @@
 import { login } from '../../firebase/firebase.js';
 import { firebaseError } from '../../lib/errors.js';
+import peopleImg from '../../image/people.svg';
 
 export default () => {
   const container = document.createElement('main');
@@ -8,7 +9,7 @@ export default () => {
 
   const template = `
   <figure>
-    <img class='d-w' src='../../image/people.svg' alt='Duas pessoas preparando um bolo na vasilha'>
+    <img class='d-w' src='${peopleImg}' alt='Duas pessoas preparando um bolo na vasilha'>
   </figure>
   <section class='position-card'>
     <section class='card'>

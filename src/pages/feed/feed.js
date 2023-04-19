@@ -54,7 +54,6 @@ export default () => {
     }
     container.querySelector('#post').value = '';
   });
-
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   loadPosts(loadTimeline, uidUser);
