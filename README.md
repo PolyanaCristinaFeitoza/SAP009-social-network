@@ -16,17 +16,17 @@
 
 Neste projeto proposto pela Laboratoria, o principal objetivo era construir uma rede social que permite qualquer usuário criar uma conta de acesso, logar-se com ela, criar, editar, deletar e dar _likes_ em publicações.
 
-Nosso tema escolhido foi uma rede social para os amantes de doces em geral. Para entender melhor as necessidades dos usuários fizemos uma pesquisa perguntando o que gostaria de ver e fazer no Friandy, para assim construir uma interface sugestiva e interessante.
+Nosso tema escolhido foi uma rede social para os amantes de doces em geral. Para entender melhor as necessidades dos usuários, fizemos uma pesquisa perguntando o que gostaria de ver e fazer no Friandy, para assim construir uma interface sugestiva e interessante.
 
 ## 2. Definição do produto
 
-Os principais usários são pessoas que gostam de doces e gostariam de compartilhar sobre eles em uma interface web, onde pudessem publicar e visualizar posts.
+Os principais usuários são pessoas que adoram doces e gostariam de compartilhar sobre eles em uma interface web, onde pudessem publicar e visualizar posts.
 
 A nossa rede social __Friandy__, permite ao usuário conhecer novos doces através dos posts de outros usuários, onde será possível curtir e descurtir. Além disso, editar e excluir as suas pŕoprias publicações.
 
 ### Histórias de usuários
 
-Planejamos um protótipo capaz de atender as necessidades dos nossos usuários. Partindo de nossas histórias de usuários.
+Planejamos um protótipo capaz de atender as necessidades dos nossos usuários. Partindo das seguintes histórias de usuários:
 
 1. Eu como usuário, quero poder criar uma conta para ter acesso a rede social.
 
@@ -36,55 +36,43 @@ Planejamos um protótipo capaz de atender as necessidades dos nossos usuários. 
 
 4. Eu como usuário, gostaria de ter a opção de deleter meus posts.
 
-5. Eu como usuário, gostaria de ter opções de curtir e descurtir de posts.
+5. Eu como usuário, gostaria de ter opções de curtir e descurtir posts.
  
-## 3. Objetivos de aprendizagem
-
-Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projeto. Pense nisso para decidir sua estratégia de trabalho.
-
-### HTML
-
-## 4. Protótipos
+## 3. Protótipos
 
 ### Baixa fidelidade
 
-![Protótipo baixa fidelidade tela home](/src/image/prototipo-baixa-fidelidade.jpg)
+![Protótipo baixa fidelidade tela home](/src/image/prototipo-baixa-fidelidade.png)
 
 ### Alta fidelidade
 
-![Protótipo alta fidelidade tela feed](/src/image/prototipo-alta-fidelidade.jpeg)
+![Protótipo alta fidelidade tela feed](/src/image/prototipo-alta-fidelidade.png)
 
-### 4. Testes unitários
+## 4. Testes unitários
 
 Realizamos testes unitários para as funções do Firebase e Firestore. 
 Os testes cobrem mais de 70% das linhas do código.
 
-Funções do Firebase testadas
+Funções do Firebase testadas:
 * signInWithEmailAndPassword
 * createUserWithEmailAndPassword
 * signInWithPopup
 * signOut
 * onAuthStateChanged
 * updateProfile
-* getAuth
 
-Funções do Firestore testadas
+Funções do Firestore testadas:
 * addDoc
 * deleteDoc
 * updateDoc
-* doc
-* arrayRemove
-* getDoc
-* arrayUnion
 
-### 5. Checklist
+## 5. Checklist
 
 * [✓] Ser uma SPA
 * [✓] Ser responsivo
 * [✓] Receber code review de pelo menos uma parceira de outra equipe
 * [✓] Fazer tests unitários
 * [✓] Fazer testes manuais buscando erros e imperfeições simples
-* [✓] Fazer testes de usabilidade e incorporar o feedback dos usuários como melhorias
 * [✓] Fazer deploy do aplicativo e marcar a versão (git tag)
 * [✓] O usuário deve poder criar uma conta de acesso ou autenticar-se com conta de e-mail e senha  e também com uma conta do Google
 * [✓] Somente usuários com contas válidas têm acesso permitido
@@ -101,7 +89,7 @@ Funções do Firestore testadas
 * [✓] Ao salvar as alterações, você deve voltar ao texto normal, mas com a informação editada
 * [✓] Ao recarregar a página, poder ver os textos editados
 
-### 6. Ferramentas utilizadas
+## 6. Ferramentas utilizadas
 
 * JavaScript
 
@@ -119,7 +107,7 @@ Funções do Firestore testadas
 
 * Figma
 
-### 7. Desenvolvedoras
+## 7. Desenvolvedoras
 
 __Polyana Feitoza__
 
