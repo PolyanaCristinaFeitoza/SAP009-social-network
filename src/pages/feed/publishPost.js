@@ -32,8 +32,6 @@ export default (posts, container, loggedUser) => {
       ${statusLikes ? '<img src="/image/like-purple.svg" alt="like" class="img-like">' : '<img src="/image/like.svg" alt="like" class="img-like">'}
     </button>
     <p class='count'>${post.likes.length}</p>
-    <button class='btn-comment'>
-      <img src='/image/comment.svg' alt='comentario' class='img-coment'>
     </button>
     ${isAuthor ? `<button class='btn-delete'>
       <img src='/image/delete.svg' alt='delete' class='img-delete'>
@@ -50,7 +48,7 @@ export default (posts, container, loggedUser) => {
         if (editMessage.disabled === false) {
           editMessage.style.border = 'none';
           editMessage.disabled = true;
-          await updatePost(post.id, editMessage.value);
+          await updatePost(post.id, editMessage.value, new Date());
         } else {
           editMessage.style.border = '2px solid #F5DEF9';
           editMessage.disabled = false;

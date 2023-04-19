@@ -28,23 +28,17 @@ export const login = (email, password) => signInWithEmailAndPassword(auth, email
 export const createNewAccount = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password);
 };
-export const updateName = async (username) => updateProfile(auth.currentUser, {
-  displayName: username,
-});
+export const updateName = async (username) => {
+  const autenticacao = getAuth(app);
+  updateProfile(autenticacao.currentUser, {
+    displayName: username,
+  });
+};
 
 const provider = new GoogleAuthProvider();
 
 export const entrarComGoogle = async () => signInWithPopup(auth, provider);
 
-// /* Quando clicar no logout e quiser entrar novamente com google,
-// se o erro for igual a auth/popup-closed-by-user*/
 export const userLogout = () => signOut(auth);
 
 export const checkAuthentication = (cb) => onAuthStateChanged(auth, cb);
-
-export const getSignedUser = () => {
-  const user = auth.currentUser;
-  if (user) {
-    return 'Usuário encontrado';
-  } return 'Usuário não encontrado';
-};

@@ -1,10 +1,10 @@
-import { userLogout, getSignedUser, auth } from '../../firebase/firebase';
+import { userLogout, auth } from '../../firebase/firebase';
 import { addPost } from '../../firebase/firestore';
 import { loadPosts } from '../../firebase/loadPosts';
 
 export default () => {
-  const logged = getSignedUser();
-  if (logged === 'Usuário não encontrado') {
+  const user = auth.currentUser;
+  if (!user) {
     window.location.href = '';
   }
 
@@ -31,7 +31,7 @@ export default () => {
       <img src='/image/home.svg' alt='home' class='img-home'>
     </a>
     <a href="/#about" class='nav-hash'>
-      <img src='/image/hash.svg' alt='hash' class='img-hash'>
+      <img src='/image/cake.svg' alt='hash' class='img-hash'>
     </a>
     <a href="/#home" class='nav-logout'>
       <img src='/image/logout.svg' alt='sair' class='img-logout'>
@@ -50,20 +50,19 @@ export default () => {
     } else {
       const username = auth.currentUser.displayName;
       const uidUser = auth.currentUser.uid;
-      addPost(getText.value, username, uidUser);
+      addPost(getText.value, username, uidUser, new Date());
     }
     container.querySelector('#post').value = '';
   });
 
-  /* container.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter'){
-      newPost.click();
-    }
-  }); */
-
   const loadTimeline = container.querySelector('.timeline');
   const uidUser = auth.currentUser.uid;
   loadPosts(loadTimeline, uidUser);
+
+  const backToHome = container.querySelector('.nav-home');
+  backToHome.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+  });
 
   const logout = container.querySelector('.nav-logout');
   logout.addEventListener('click', () => {
