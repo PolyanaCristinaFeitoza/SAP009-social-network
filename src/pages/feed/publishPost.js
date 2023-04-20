@@ -1,4 +1,9 @@
 import { deletePost, updatePost, likePost } from '../../firebase/firestore';
+import userImg from '../../image/user.svg';
+import editImg from '../../image/edit.svg';
+import likePurpleImg from '../../image/like-purple.svg';
+import likeImg from '../../image/like.svg';
+import deleteImg from '../../image/delete.svg';
 
 export default (posts, container, loggedUser) => {
   container.innerHTML = '';
@@ -21,20 +26,20 @@ export default (posts, container, loggedUser) => {
     const isAuthor = loggedUser === post.uid;
     const statusLikes = post.likes.includes(loggedUser);
     const templatePost = `
-    <img src='/image/user.svg' alt='user' class='img-user-post'>
+    <img src=${userImg} alt='user' class='img-user-post'>
     <p class='username'>${post.name}</p>
     <p class='date'>${dia} / ${mes} / ${ano}</p>
     ${isAuthor ? `<button class='btn-edit'>
-      <img src='/image/edit.svg' alt='edit' class='img-edit'>
+      <img src=${editImg} alt='edit' class='img-edit'>
     </button>` : ''} 
     <textarea id='message-post' name='message-post' class='message-post' rows='5' cols='30' disabled>${post.text}</textarea>
     <button class='btn-like'>
-      ${statusLikes ? '<img src="/image/like-purple.svg" alt="like" class="img-like">' : '<img src="/image/like.svg" alt="like" class="img-like">'}
+      ${statusLikes ? `<img src='${likePurpleImg}' alt='like' class='img-like'>` : `<img src='${likeImg}' alt='like' class='img-like'>`}
     </button>
     <p class='count'>${post.likes.length}</p>
     </button>
     ${isAuthor ? `<button class='btn-delete'>
-      <img src='/image/delete.svg' alt='delete' class='img-delete'>
+      <img src=${deleteImg} alt='delete' class='img-delete'>
     </button>` : ''}
         
     `;
@@ -69,14 +74,14 @@ export default (posts, container, loggedUser) => {
     btnLike.addEventListener('click', async () => {
       const status = await likePost(post.id, loggedUser);
       if (status.liked === true) {
-        imgLike.setAttribute('src', '/image/like-purple.svg');
+        imgLike.setAttribute('src', '${likePurpleImg}');
         countLike.innerHTML = status.count;
       }
     });
     btnLike.addEventListener('click', async () => {
       const status = await likePost(post.id, loggedUser);
       if (status.liked === false) {
-        imgLike.setAttribute('src', '/image/like.svg');
+        imgLike.setAttribute('src', '../../image/like.svg');
         countLike.innerHTML = status.count;
       }
     });

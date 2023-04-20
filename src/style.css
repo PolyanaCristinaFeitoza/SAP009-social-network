@@ -23,7 +23,6 @@ body{
 }
 
 .background-h-r-l{
-  background-image: url("../../image/background-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -138,8 +137,6 @@ button:active{
   }
 
   .btn-purple{
-/*     font-size: 2rem;
-    width: 16vw; */
     height: 4vh;
   }
 
@@ -149,10 +146,6 @@ button:active{
 }
 
 @media only screen and (min-width: 1024px) {
-  .background-h-r-l{
-    background-image: url("../../image/background-desktop.svg");
-  }
-
   .d-w{
     display: block;
     position: fixed;
@@ -199,25 +192,6 @@ button:active{
   .d-w{
     margin: 48rem 1rem;
   }
-
-/*   .position-card{
-    justify-content: flex-end;
-    flex-direction: row;
-    margin-right: 5rem;
-  }
-
-  .card{
-    width: 40%;
-  }
-
-  .seta{
-    display: none;
-  }
-
-  .logo{
-    width: 8vw;
-  } */
-
   .btn-input-wb{
     width: 13vw;
     font-size: 2rem;

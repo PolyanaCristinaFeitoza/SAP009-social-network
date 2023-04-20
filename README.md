@@ -18,6 +18,8 @@ Neste projeto proposto pela Laboratoria, o principal objetivo era construir uma 
 
 Nosso tema escolhido foi uma rede social para os amantes de doces em geral. Para entender melhor as necessidades dos usuários, fizemos uma pesquisa perguntando o que gostaria de ver e fazer no Friandy, para assim construir uma interface sugestiva e interessante.
 
+### Para acessar o projeto [clique aqui](https://friandy-83b1a.web.app/#home)
+
 ## 2. Definição do produto
 
 Os principais usuários são pessoas que adoram doces e gostariam de compartilhar sobre eles em uma interface web, onde pudessem publicar e visualizar posts.
