@@ -1,6 +1,12 @@
 import { userLogout, auth } from '../../firebase/firebase';
 import { addPost } from '../../firebase/firestore';
 import { loadPosts } from '../../firebase/loadPosts';
+import logoImg from '../../image/logo.svg';
+import userImg from '../../image/user.svg';
+import addPostImg from '../../image/addPost.svg';
+import homeImg from '../../image/home.svg';
+import cakeImg from '../../image/cake.svg';
+import logoutImg from '../../image/logout.svg';
 
 export default () => {
   const user = auth.currentUser;
@@ -12,15 +18,15 @@ export default () => {
   container.classList.add('background-feed');
   const template = `
   <header class='bg-header'>
-    <img src='/image/logo.svg' alt='Logo' class='img-logo'>
+    <img src=${logoImg} alt='Logo' class='img-logo'>
   </header>
   <section class='conteudo'>
     <section class='add-post'>
       <form action='' id= 'postForm' class='form-post'>
-        <img src='/image/user.svg' alt='user' class='img-user'>
+        <img src=${userImg} alt='user' class='img-user'>
         <textarea id='post' name='post' placeholder='No que está pensando...' class='text-area' rows='2' cols='30' required></textarea>
         <button type ='button' class='btn-add'>
-            <img src='/image/teste.svg' alt='adicionar' class='img-add'>
+            <img src=${addPostImg} alt='adicionar' class='img-add'>
         </button>
       </form>
     </section>
@@ -28,13 +34,13 @@ export default () => {
   </section>
   <nav class='nav-feed'>
     <a href="/#feed" class='nav-home'>
-      <img src='/image/home.svg' alt='home' class='img-home'>
+      <img src=${homeImg} alt='home' class='img-home'>
     </a>
     <a href="/#about" class='nav-hash'>
-      <img src='/image/cake.svg' alt='hash' class='img-hash'>
+      <img src=${cakeImg} alt='hash' class='img-hash'>
     </a>
     <a href="/#home" class='nav-logout'>
-      <img src='/image/logout.svg' alt='sair' class='img-logout'>
+      <img src=${logoutImg} alt='sair' class='img-logout'>
     </a>
   </nav>
   `;

@@ -1,24 +1,33 @@
 import { login } from '../../firebase/firebase.js';
 import { firebaseError } from '../../lib/errors.js';
 import peopleImg from '../../image/people.svg';
-import logoImg from '/image/logo.svg';
+import arrowImg from '../../image/arrow.svg';
+import logoImg from '../../image/logo.svg';
+import bgMobileImg from '../../image/background-mobile.svg';
+import bgDesktopImg from '../../image/background-desktop.svg';
 
 export default () => {
   const container = document.createElement('main');
 
   container.classList.add('background-h-r-l');
+  if(window.matchMedia('(min-width: 1024px)').matches){
+    container.style.backgroundImage = `url(${bgDesktopImg})`;
+  }else {
+    container.style.backgroundImage = `url(${bgMobileImg})`;
+  }
+
 
   const template = `
   <figure>
-    <img class='d-w' src='${peopleImg}' alt='Duas pessoas preparando um bolo na vasilha'>
+    <img class='d-w' src=${peopleImg} alt='Duas pessoas preparando um bolo na vasilha'>
   </figure>
   <section class='position-card'>
     <section class='card'>
       <header class='position-header'>
         <button class='seta'>
-          <img src='/image/arrow.svg' alt='seta' class='img-seta'>
+          <img src=${arrowImg} alt='seta' class='img-seta'>
         </button>
-        <img src='${logoImg}' alt='Logo' class='logo'>
+        <img src=${logoImg} alt='Logo' class='logo'>
       </header>
       <h2 class='font-margin'>Entre no Friandy</h2>
       <form class='form'>
